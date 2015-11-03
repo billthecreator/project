@@ -75,6 +75,24 @@ public class ProductsServlet extends HttpServlet {
             }
             
         }
+        else if (action.equals("removeProduct")) {
+            String productCode = request.getParameter("productCode");
+            
+            if (productCode != null || !productCode.isEmpty()){
+                Product productToDelete = prodIO.selectProduct(productCode);
+                
+                
+                if (prodIO.exists(productToDelete.getCode())){
+                    // if this product exists in the list, then update it
+                    prodIO.deleteProduct(productToDelete);
+                } else {
+                }
+                url = "/productMaint.jsp";    
+            } else {
+                url = "/addProduct.jsp";
+            }
+            
+        }
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
