@@ -39,5 +39,10 @@
                 </tr>
             </mma:product>
         </table>
+        <br/>
+        <form action="loadProducts">
+            <input type="hidden" name="action" value="addProduct"/>
+            <input type="submit" value="Add Product"/>
+        </form>
     </body>
 </html>

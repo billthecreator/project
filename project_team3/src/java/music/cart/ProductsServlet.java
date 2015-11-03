@@ -18,9 +18,10 @@ public class ProductsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         
         String path = getServletContext().getRealPath("/WEB-INF/products.txt");
-        ProductIO.init(path);
+        ProductIO prodIO = new ProductIO();
+        prodIO.init(path);
         
-        List<Product> products = ProductIO.selectProducts();
+        List<Product> products = prodIO.selectProducts();
         session.setAttribute("products", products);
         
         // create the action 
@@ -31,7 +32,7 @@ public class ProductsServlet extends HttpServlet {
 
         String url = "/productMaint.jsp";
         if (action.equals("displayProducts")) {
-            url = "/productMaint.jsp";    // the "index" page
+            url = "/productMaint.jsp";    
         } 
         else if (action.equals("addProduct")) {
             String productCode = request.getParameter("productCode");
@@ -40,13 +41,39 @@ public class ProductsServlet extends HttpServlet {
             if (productCode != null) {
                 
                 session.setAttribute("productCode", productCode);
-                session.setAttribute("productDesc", ProductIO.selectProduct(productCode).getDescription());
-                session.setAttribute("productPrice", ProductIO.selectProduct(productCode).getPrice());
+                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
+                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
+            }
+            else {
+                session.setAttribute("productCode", "");
+                session.setAttribute("productDesc", "");
+                session.setAttribute("productPrice", "");
             }
             
         }
-        else if (action.equals("checkout")) {
-            url = "/checkout.jsp";
+        else if (action.equals("updateProduct")) {
+            String productCode = request.getParameter("productCode");
+            String productDesc = request.getParameter("productDesc");
+            String productPrice= request.getParameter("productPrice");
+            
+            if (productCode != null || !productCode.isEmpty()){
+                Product newProduct = new Product();
+                newProduct.setCode(productCode);
+                newProduct.setDescription(productDesc);
+                newProduct.setPrice(Double.parseDouble(productPrice));
+                
+                if (prodIO.exists(newProduct.getCode())){
+                    // if this product exists in the list, then update it
+                    prodIO.updateProduct(newProduct);
+                } else {
+                    // if this product doesn't exist, create a new one
+                    prodIO.insertProduct(newProduct);
+                }
+                url = "/productMaint.jsp?action=displayProducts";
+            } else {
+                url = "/addProduct.jsp";
+            }
+            
         }
         getServletContext()
                 .getRequestDispatcher(url)

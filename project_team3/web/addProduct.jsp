@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Product</h1>
-        <form action="" method="post">
+        <form action="loadProducts" method="post">
             <table>
                 <tr>
                     <td><b>Code:</b></td>
@@ -30,12 +30,16 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Update Product"/> 
-                        <input type="button" value="View Products"/> 
-                    
+                        <input type="hidden" name="action" value="updateProduct"/>
+                        <input type="submit" value="Update Product"/>
                     </td>
                 </tr>
             </table>
+        </form>
+        <br/>
+        <form action="loadProducts">
+            <input type="hidden" name="action" value="displayProducts"/>
+            <input type="submit" value="View Products"/>
         </form>
     </body>
 </html>
