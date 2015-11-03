@@ -1,0 +1,37 @@
+<%-- 
+    Document   : productMaint
+    Created on : Nov 3, 2015, 1:17:59 PM
+    Author     : William
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Product Maintenance</title>
+    </head>
+    <body>
+        <h1>Products</h1>
+        
+        <table>
+            <tr>
+                <th>Code</th>
+                <th>Description</th>
+                <th class="right">Price</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
+            <mma:product>        
+                <tr>
+                    <td>${productCode}</td>
+                    <td>${productDescription}</td>
+                    <td class="right">${productPrice}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </mma:product>
+        </table>
+    </body>
+</html>
