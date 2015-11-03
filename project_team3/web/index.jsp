@@ -4,10 +4,10 @@
     Author     : William
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <head>        
         <c:import url='includes/header.html' />
     </head>
