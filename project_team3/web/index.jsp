@@ -9,12 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Product Maintenance</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <h2>Team 3</h2>
-        <h3>Hello team! Now you try</h3>
-        <h3>anything</h3>
+        <h1>Product Maintenance</h1>
+        <a href="">View Products</a>
     </body>
 </html>
