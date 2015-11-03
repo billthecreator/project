@@ -7,13 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Product Maintenance</title>
-        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <head>        
+        <c:import url='includes/header.html' />
     </head>
     <body>
-        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <h1>Product Maintenance</h1>
         <a href="<c:url value='/loadProducts' />">View Products</a>
     </body>
