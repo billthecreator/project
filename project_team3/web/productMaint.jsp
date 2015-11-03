@@ -28,8 +28,14 @@
                     <td>${productCode}</td>
                     <td>${productDescription}</td>
                     <td class="right">${productPrice}</td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="<c:url value='/loadProducts' >
+                               <c:param name='action' value='addProduct'/>
+                               <c:param name='productCode' value='${productCode}'/>
+                           </c:url>">Edit</a></td>
+                    <td><a href="<c:url value='/loadProducts' >
+                               <c:param name='action' value='removeProduct'/>
+                               <c:param name='productCode' value='${productCode}'/>
+                           </c:url>">Delete</a></td>
                 </tr>
             </mma:product>
         </table>
