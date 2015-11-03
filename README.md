@@ -9,3 +9,9 @@ Clone this repository and then open the folder <code>../project/project_team3</c
 Make sure you update the repository before you start the project.
 Just press the 'sync' button in the GitHub program.
 
+When committing changes, make you you follow the format:
+<br>
+Summary:<code>Project [x] v [y]</code>
+<br>
+Look up the last update in the history tab to see the last number used.
+![alt tag](http://i.imgur.com/Mj2IX6V.png)
