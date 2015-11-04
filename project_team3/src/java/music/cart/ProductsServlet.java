@@ -14,7 +14,7 @@ public class ProductsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         HttpSession session = request.getSession();
         
         //get the path of the file containing the products
@@ -23,7 +23,7 @@ public class ProductsServlet extends HttpServlet {
         ProductIO prodIO = new ProductIO();
         prodIO.init(path);
         //put the list of products in a List
-        List<Product> products = prodIO.selectProducts();
+        ArrayList<Product> products = prodIO.selectProducts();
         //set the List to the "products" attribute
         session.setAttribute("products", products);
         
@@ -56,7 +56,7 @@ public class ProductsServlet extends HttpServlet {
             else {
                 //if the product code is null, set everything blank
                 //so the the product is new
-                session.setAttribute("productCode", "");
+                session.setAttribute("productCode", null);
                 session.setAttribute("productDesc", "");
                 session.setAttribute("productPrice", "");
             }
@@ -69,7 +69,7 @@ public class ProductsServlet extends HttpServlet {
             String productPrice= request.getParameter("productPrice");
             
             //if the product code has any value 
-            if (productCode != null || !productCode.isEmpty()){
+            if (productCode != null){
                 Product newProduct = new Product();
                 newProduct.setCode(productCode);
                 newProduct.setDescription(productDesc);
@@ -91,21 +91,28 @@ public class ProductsServlet extends HttpServlet {
             
         }
         else if (action.equals("removeProduct")) {
-            //remove the product from the list
-            String productCode = request.getParameter("productCode");
             
-            if (productCode != null || !productCode.isEmpty()){
-                Product productToDelete = prodIO.selectProduct(productCode);
-                                
-                if (prodIO.exists(productToDelete.getCode())){
-                    // if this product exists in the list, then update it
-                    prodIO.deleteProduct(productToDelete);
-                } else {
-                }
-                url = "/productMaint.jsp";    
-            } else {
-                url = "/addProduct.jsp";
-            }
+            String productCode = request.getParameter("productCode");
+                session.setAttribute("productCode", productCode);
+                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
+                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
+            url = "/deleteProduct.jsp";
+            
+            //remove the product from the list
+//            String productCode = request.getParameter("productCode");
+//            
+//            if (productCode != null || !productCode.isEmpty()){
+//                Product productToDelete = prodIO.selectProduct(productCode);
+//                                
+//                if (prodIO.exists(productToDelete.getCode())){
+//                    // if this product exists in the list, then update it
+//                    prodIO.deleteProduct(productToDelete);
+//                } else {
+//                }
+//                url = "/productMaint.jsp";    
+//            } else {
+//                url = "/addProduct.jsp";
+//            }
             
         }
         getServletContext()
@@ -113,6 +120,7 @@ public class ProductsServlet extends HttpServlet {
                 .forward(request, response);
     }
     
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);

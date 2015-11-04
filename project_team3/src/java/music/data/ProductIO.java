@@ -13,15 +13,16 @@ import music.business.*;
  * @author William
  */
 public class ProductIO {
-    private static List<Product> products = null;
+    private static ArrayList<Product> products = null;
     private static String filePath = null;
+    String path = "/WEB-INF/products.txt";
 
     // Called once from the controller based on servlet context
     public static void init(String filePath) {
         ProductIO.filePath = filePath;
     }
 
-    public static List<Product> selectProducts() {
+    public static ArrayList<Product> selectProducts() {
         products = new ArrayList<Product>();
         File file = new File(filePath);
         try {
@@ -72,22 +73,23 @@ public class ProductIO {
         else return false;
     }    
     
-    private static void saveProducts(List<Product> products) {
+    private static void saveProducts(ArrayList<Product> products) {
+        BufferedWriter output = null;
         try {
             File file = new File(filePath);
-            PrintWriter out
-                    = new PrintWriter(
-                            new FileWriter(file));
+//            PrintWriter out = new PrintWriter(filePath, "UTF-8");
+            output = new BufferedWriter(new FileWriter(file));
 
             for (Product p : products) {
-                out.println(p.getCode() + "|"
+                output.write(p.getCode() + "|"
                         + p.getDescription() + "|"
-                        + p.getPrice());
+                        + p.getPrice()+"\n");
             }
-
-            out.close();
+            
         } catch (IOException e) {
             System.out.println(e);
+        } finally {
+             try {output.close();} catch (Exception ex) {/*ignore*/}
         }
     }
 

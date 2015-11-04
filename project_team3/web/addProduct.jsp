@@ -14,10 +14,18 @@
     <body>
         <h1>Product</h1>
         <form action="loadProducts" method="post">
-            <table>
+            <table class="noBorder">
                 <tr>
                     <td><b>Code:</b></td>
-                    <td><input type="text" name="productCode" value="${productCode}"/></td>
+                    <c:if test="${productCode == null}">
+                        <td><input type="text" name="productCode" value=""/></td>
+                    </c:if>
+                    <c:if test="${productCode != null}">
+                        <td>
+                            <input type="hidden" name="productCode" value="${productCode}"/>
+                            ${productCode}
+                        </td>
+                    </c:if>
                 </tr>
                 <tr>
                     <td><b>Description</b></td>
@@ -29,10 +37,18 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>
-                        <input type="hidden" name="action" value="updateProduct"/>
-                        <input type="submit" value="Update Product"/>
-                    </td>
+                    <c:if test="${productCode == null}">
+                        <td>
+                            <input type="hidden" name="action" value="updateProduct"/>
+                            <input type="submit" value="Add Product"/>
+                        </td>
+                    </c:if>
+                    <c:if test="${productCode != null}">
+                        <td>
+                            <input type="hidden" name="action" value="updateProduct"/>
+                            <input type="submit" value="Update Product"/>
+                        </td>
+                    </c:if>
                 </tr>
             </table>
         </form>

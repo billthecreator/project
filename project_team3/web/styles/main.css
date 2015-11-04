@@ -34,3 +34,21 @@ th, td {
 .right {
     text-align: right;
 }
+.noBorder th, .noBorder td, .noBorder{
+    border-width: 0;
+}
+
+table input[type="text"] {
+    padding: 4px;
+}
+
+table input[name="productDesc"] {
+    width: 200%;
+}
+
+table input[type="submit"] {
+    float:left;
+    margin-right: 4px;
+    padding: 4px;
+    min-width: 80px;
+}
