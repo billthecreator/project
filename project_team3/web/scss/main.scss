@@ -29,12 +29,13 @@ br {
     width: 100%;
     
     .block {    
-        line-height: 80px;
+        height: 50px;
         display: inline-block;
         float: left;
         padding: 0 12px;
         
         h1 {
+            line-height: 24px;
             padding: 0;
             margin: 0;
         }
@@ -74,6 +75,11 @@ table {
     .description {
         font-size: 1.1em;
         font-weight: 500;
+        
+        .ellipsis{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 }
 
