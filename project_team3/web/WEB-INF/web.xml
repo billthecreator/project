@@ -8,6 +8,10 @@
         <servlet-name>ProductsServlet</servlet-name>
         <servlet-class>music.cart.ProductsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>music.cart.deleteProduct</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cart</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ProductsServlet</servlet-name>
         <url-pattern>/loadProducts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/deleteProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -29,11 +29,11 @@
             <tr>
                 <td></td>
                 <td>
-                    <form action="loadProducts" method="post">
+                    <form action="deleteProduct" method="post">
                         <input type="hidden" name="productCode" value="${productCode}"/>
                         <input type="hidden" name="productDesc" value="${productDesc}"/>
                         <input type="hidden" name="productPrice" value="${productPrice}"/>
-                        <input type="hidden" name="action" value="insertProduct"/>
+                        <input type="hidden" name="action" value="confirmDeletion"/>
                         <input type="submit" value="Yes"/>
                     </form>
                     <form action="loadProducts" method="get">
