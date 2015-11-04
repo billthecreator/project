@@ -38,6 +38,10 @@ th {
 tr:nth-of-type(2n) td {
     background-color: #efefef;
 }
+
+.noColor tr:nth-of-type(2n) td {
+    background-color: transparent;
+}
 tr:last-of-type td {
     border-bottom: none;
 }

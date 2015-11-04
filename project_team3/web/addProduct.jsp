@@ -14,7 +14,7 @@
     <body>
         <h1>Product</h1>
         <form action="updateProduct" method="post">
-            <table class="noBorder">
+            <table class="noBorder noColor">
                 <tr>
                     <td><b>Code:</b></td>
                     <c:if test="${productCode == null}">

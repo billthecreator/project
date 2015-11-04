@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Are you sure you want to delete this product?</h1>
-        <table class="noBorder">
+        <table class="noBorder noColor">
             <tr>
                 <td><b>Code:</b></td>
                 <td>${productCode}</td>
