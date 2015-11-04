@@ -13,9 +13,18 @@
     </head>
     <body>
         <div class="container">
-            <h1>Products</h1>
+            <div class="header">
+                <div class="block"><h1>Products</h1></div>
+                <div class="block" style="text-align: right;">
+                    <form action="loadProducts">
+                        <input type="hidden" name="productCode" value=""/>
+                        <input type="hidden" name="action" value="addProduct"/>
+                        <input type="submit" value="Add Product"/>
+                    </form>
+                </div>
+            </div>
         
-            <table>
+            <table class="card" >
                 <tr>
                     <th class="right">Code</th>
                     <th>Description</th>
@@ -27,13 +36,13 @@
                 <mma:product>        
                     <tr>
                         <td class="right">${productCode}</td>
-                        <td>${productDescription}</td>
+                        <td class="description">${productDescription}</td>
                         <td class="right">${productPrice}</td>
-                        <td><a href="<c:url value='/loadProducts' >
+                        <td class="center"><a href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='addProduct'/>
                                    <c:param name='productCode' value='${productCode}'/>
-                               </c:url>">Edit</a></td>
-                        <td><a href="<c:url value='/loadProducts' >
+                               </c:url>">Edit info</a></td>
+                        <td class="center"><a href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='removeProduct'/>
                                    <c:param name='productCode' value='${productCode}'/>
                                </c:url>">Delete</a></td>
@@ -41,11 +50,6 @@
                 </mma:product>
             </table>
             <br/>
-            <form action="loadProducts">
-                <input type="hidden" name="productCode" value=""/>
-                <input type="hidden" name="action" value="addProduct"/>
-                <input type="submit" value="Add Product"/>
-            </form>
         </div>
     </body>
 </html>

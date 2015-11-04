@@ -13,9 +13,18 @@
     </head>
     <body>
         <div class="container">
-            <h1>Product</h1>
+            <div class="header">
+                <div class="block"><h1>Product</h1></div>
+                <div class="block">
+                    <form action="loadProducts">
+                        <input type="hidden" name="action" value="displayProducts"/>
+                        <input type="submit" value="View Products"/>
+                    </form>
+                </div>
+            </div>
+            
             <form action="updateProduct" method="post">
-                <table class="noBorder noColor">
+                <table class="noBorder noColor card">
                     <tr>
                         <td class="right"><b>Code:</b></td>
                         <td>
@@ -51,10 +60,6 @@
                 </table>
             </form>
             <br/>
-            <form action="loadProducts">
-                <input type="hidden" name="action" value="displayProducts"/>
-                <input type="submit" value="View Products"/>
-            </form>
         </div>
     </body>
 </html>

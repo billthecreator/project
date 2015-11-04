@@ -1,15 +1,16 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900,100|Droid+Sans);
 /* The styles for the elements */
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 85%;
   margin: 0;
+  background-color: #f5f5f5;
   padding: 0; }
 
 h1 {
   font-size: 1.5em;
-  color: teal;
-  margin-bottom: .5em; }
+  color: black; }
 
 br {
   clear: both; }
@@ -20,20 +21,43 @@ br {
 .pad_top {
   padding-top: 1em; }
 
+.header {
+  display: block;
+  position: relative;
+  width: 100%; }
+  .header .block {
+    line-height: 80px;
+    display: inline-block;
+    float: left;
+    padding: 0 12px; }
+    .header .block h1 {
+      padding: 0;
+      margin: 0; }
+    .header .block:nth-of-type(2) {
+      float: right; }
+
 /* The styles for the tables */
 table {
   border: 0px solid rgba(0, 0, 0, 0.25);
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 16px; }
+  table.card {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    padding-bottom: 4px;
+    background-color: white; }
   table th, table td {
     border-bottom: 1px solid #888;
     text-align: left;
     padding: 16px 8px; }
   table th {
     border-bottom-width: 0;
-    font-size: .9em;
+    font-size: 12px;
     text-transform: uppercase; }
+  table .description {
+    font-size: 1.1em;
+    font-weight: 500; }
 
 tr:hover td {
   background-color: rgba(0, 0, 0, 0.06); }
@@ -51,6 +75,9 @@ tr td {
 .right {
   text-align: right; }
 
+.center {
+  text-align: center; }
+
 .noBorder {
   border-width: 0; }
   .noBorder th, .noBorder td {
@@ -67,15 +94,28 @@ form input[name="productCode"] {
   width: calc(100%);
   max-width: 100px; }
 form input[name="productDesc"] {
-  width: calc(100%); }
+  width: calc(100% - 24px); }
 form input[name="productPrice"] {
   width: calc(100%);
   max-width: 100px; }
 form input[type="submit"] {
-  float: left;
-  margin-right: 4px;
+  display: inline;
+  margin: 0;
   padding: 8px;
-  min-width: 150px; }
+  min-width: 125px;
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: white;
+  background-color: #ef6c00;
+  border-radius: 3px;
+  border: 0; }
+  form input[type="submit"].neutral {
+    background-color: #bbb;
+    margin-left: 4px; }
+
+.fLeft {
+  float: left; }
 
 a, a:visited, a:active {
   color: #0033ee;
@@ -98,7 +138,7 @@ a:hover {
   margin-top: 24px; }
   @media (max-width: 800px) {
     .container {
-      padding: 0 16px;
-      width: calc(100% - 32px); } }
+      padding: 0 4px;
+      width: calc(100% - 8px); } }
 
 /*# sourceMappingURL=main.css.map */
