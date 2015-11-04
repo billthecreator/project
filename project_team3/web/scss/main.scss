@@ -25,11 +25,12 @@ table {
     border: 0px solid rgba(0,0,0,.25);
     border-collapse: collapse;
     width: 100%;
-}
-th, td {
-    border-bottom: 1px solid #888;
-    text-align: left;
-    padding: .75em;
+    
+    th, td {
+        border-bottom: 1px solid #888;
+        text-align: left;
+        padding: .75em;
+    }
 }
 th {
     border-bottom-width: 2px;
@@ -88,8 +89,8 @@ a:hover {
     max-width: 800px;
     margin: 0 auto;
     margin-top: 24px;
+    h1, input[type="submit"] {
+        margin-left: 24px;
+    }
     
-}
-.container h1, .container input[type="submit"] {
-    margin-left: 24px;
 }

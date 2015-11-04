@@ -12,32 +12,34 @@
         <c:import url='includes/header.html' />
     </head>
     <body>
-        <h1>Are you sure you want to delete this product?</h1>
-        <table class="noBorder noColor">
-            <tr>
-                <td><b>Code:</b></td>
-                <td>${productCode}</td>
-            </tr>
-            <tr>
-                <td><b>Description</b></td>
-                <td>${productDesc}</td>
-            </tr>
-            <tr>
-                <td><b>Price:</b></td>
-                <td>${productPrice}</td>
-            </tr>
-            
-        </table>
-        <form action="deleteProduct" method="post">
-            <input type="hidden" name="productCode" value="${productCode}"/>
-            <input type="hidden" name="productDesc" value="${productDesc}"/>
-            <input type="hidden" name="productPrice" value="${productPrice}"/>
-            <input type="hidden" name="action" value="confirmDeletion"/>
-            <input type="submit" value="Yes"/>
-        </form>
-        <form action="loadProducts" method="get">
-            <input type="hidden" name="action" value="displayProducts"/>
-            <input type="submit" value="No" />
-        </form>
+        <div class="container">
+            <h1>Are you sure you want to delete this product?</h1>
+            <table class="noBorder noColor">
+                <tr>
+                    <td><b>Code:</b></td>
+                    <td>${productCode}</td>
+                </tr>
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>${productDesc}</td>
+                </tr>
+                <tr>
+                    <td><b>Price:</b></td>
+                    <td>${productPrice}</td>
+                </tr>
+
+            </table>
+            <form action="deleteProduct" method="post">
+                <input type="hidden" name="productCode" value="${productCode}"/>
+                <input type="hidden" name="productDesc" value="${productDesc}"/>
+                <input type="hidden" name="productPrice" value="${productPrice}"/>
+                <input type="hidden" name="action" value="confirmDeletion"/>
+                <input type="submit" value="Yes"/>
+            </form>
+            <form action="loadProducts" method="get">
+                <input type="hidden" name="action" value="displayProducts"/>
+                <input type="submit" value="No" />
+            </form>
+        </div>
     </body>
 </html>
