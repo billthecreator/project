@@ -54,8 +54,7 @@ public class DeleteProductServlet extends HttpServlet {
             //default action
             action = "confirmDeletion"; 
         }
-        if (action.equals("confirmDeletion")) {
-            
+        if (action.equals("confirmDeletion")) {         
             
             //remove the product from the list
             String productCode = request.getParameter("productCode");
@@ -64,10 +63,10 @@ public class DeleteProductServlet extends HttpServlet {
                 Product productToDelete = prodIO.selectProduct(productCode);
                                 
                 if (prodIO.exists(productToDelete.getCode())){
-                    // if this product exists in the list, then update it
+                    // if this product exists in the list, then delete it
                     prodIO.deleteProduct(productToDelete);
-                } else {
                 }
+                //return to the list of products after deletion or cancelation 
                 url = "/loadProducts";    
             }
             

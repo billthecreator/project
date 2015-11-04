@@ -60,10 +60,9 @@ public class ProductsServlet extends HttpServlet {
                 session.setAttribute("productDesc", "");
                 session.setAttribute("productPrice", "");
             }
-            
         }
         else if (action.equals("removeProduct")) {
-            
+            //clicking delete will grab the infomation and send it to the delete jsp
             String productCode = request.getParameter("productCode");
                 session.setAttribute("productCode", productCode);
                 session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
