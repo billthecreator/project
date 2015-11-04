@@ -29,6 +29,8 @@ table {
     border: 0px solid rgba(black,.25);
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 16px;
+    
     th, td {
         border-bottom: 1px solid #888;
         text-align: left;
@@ -59,23 +61,40 @@ tr:last-of-type td {
         border-width: 0;
     }
     td:first-of-type{
-        width:150px;
+        width:100px;
     }
 }
 
 form {
     input[type="text"] {
         padding: $formPadding/2;
+        
+        @media (max-width: (800px)) {
+            padding: 8px ($formPadding/2);
+        }
     }
+    
+    input[name="productCode"] {
+        width: calc(100%);
+        max-width: 100px;
+    }
+    
     input[name="productDesc"] {
-        width: calc(100% - 16px);
+        width: calc(100%);
     }
+    
+    input[name="productPrice"] {
+        width: calc(100%);      
+        max-width: 100px;
+    }
+    
     input[type="submit"] {
         float:left;
         margin-right: 4px;
-        padding: 4px;
-        min-width: 80px;
+        padding: 8px;
+        min-width: 150px;
     }
+    
 }
 
 
@@ -100,11 +119,10 @@ a:hover {
     max-width: 800px;
     margin: 0 auto;
     margin-top: 24px;
-    h1, input[type="submit"] {
-        margin-left: 0px;
-        @media (max-width: (800px)) {
-            margin-left: 4px;
+    
+    @media (max-width: (800px)) {
+           padding: 0 16px;
+           width: calc(100% - 32px);
         }
-    }
     
 }

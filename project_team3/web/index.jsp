@@ -12,8 +12,10 @@
         <c:import url='includes/header.html' />
     </head>
     <body>
-        <h1>Product Maintenance</h1>
-        <a href="<c:url value='/loadProducts' />">View Products</a>
+        <div class="container">
+            <h1>Product Maintenance</h1>
+            <a href="<c:url value='/loadProducts' />">View Products</a>
+        </div>
     </body>
 </html>
 <%--
