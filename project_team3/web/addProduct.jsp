@@ -37,18 +37,15 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <c:if test="${productCode == null}">
-                        <td>
-                            <input type="hidden" name="action" value="updateProduct"/>
-                            <input type="submit" value="Add Product"/>
-                        </td>
-                    </c:if>
-                    <c:if test="${productCode != null}">
-                        <td>
-                            <input type="hidden" name="action" value="updateProduct"/>
-                            <input type="submit" value="Update Product"/>
-                        </td>
-                    </c:if>
+                    <td>
+                        <input type="hidden" name="action" value="updateProduct"/>
+                        <c:if test="${productCode == null}">
+                        <input type="submit" value="Add Product"/>
+                        </c:if>
+                        <c:if test="${productCode != null}">
+                        <input type="submit" value="Update Product"/>
+                        </c:if>
+                    </td>
                 </tr>
             </table>
         </form>

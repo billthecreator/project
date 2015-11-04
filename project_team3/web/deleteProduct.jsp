@@ -26,22 +26,18 @@
                 <td><b>Price:</b></td>
                 <td>${productPrice}</td>
             </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <form action="deleteProduct" method="post">
-                        <input type="hidden" name="productCode" value="${productCode}"/>
-                        <input type="hidden" name="productDesc" value="${productDesc}"/>
-                        <input type="hidden" name="productPrice" value="${productPrice}"/>
-                        <input type="hidden" name="action" value="confirmDeletion"/>
-                        <input type="submit" value="Yes"/>
-                    </form>
-                    <form action="loadProducts" method="get">
-                        <input type="hidden" name="action" value="displayProducts"/>
-                        <input type="submit" value="No" />
-                    </form>
-                </td>
-            </tr>
+            
         </table>
+        <form action="deleteProduct" method="post">
+            <input type="hidden" name="productCode" value="${productCode}"/>
+            <input type="hidden" name="productDesc" value="${productDesc}"/>
+            <input type="hidden" name="productPrice" value="${productPrice}"/>
+            <input type="hidden" name="action" value="confirmDeletion"/>
+            <input type="submit" value="Yes"/>
+        </form>
+        <form action="loadProducts" method="get">
+            <input type="hidden" name="action" value="displayProducts"/>
+            <input type="submit" value="No" />
+        </form>
     </body>
 </html>
