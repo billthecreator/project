@@ -16,3 +16,6 @@
         <a href="<c:url value='/loadProducts' />">View Products</a>
     </body>
 </html>
+<%--
+Adding this comment to test commit
+--%>
