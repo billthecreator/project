@@ -13,7 +13,10 @@
     </head>
     <body>
         <div class="container">
-            <h1>Product Maintenance</h1>
+            <div class="header">
+                <div class="block"><h1>Product Maintenance</h1></div>
+            </div>
+            <br>
             <a href="<c:url value='/loadProducts' />">View Products</a>
         </div>
     </body>

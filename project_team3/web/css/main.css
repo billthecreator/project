@@ -59,12 +59,18 @@ table {
   table .description {
     font-size: 1.1em;
     font-weight: 500; }
-    table .description .ellipsis {
-      overflow: hidden;
-      text-overflow: ellipsis; }
+
+tr td a {
+  opacity: 0; }
+  @media (max-width: 800px) {
+    tr td a {
+      opacity: 100; } }
 
 tr:hover td {
   background-color: rgba(0, 0, 0, 0.06); }
+  tr:hover td a {
+    opacity: 100;
+    transition: .05s opacity ease; }
 
 .noColor td {
   background-color: transparent; }
@@ -89,8 +95,14 @@ tr td {
   .noBorder td:first-of-type {
     width: 100px; }
 
+form .noInput {
+  padding: 6px 8px;
+  font-size: 14px; }
 form input[type="text"] {
-  padding: 4px; }
+  padding: 6px 8px;
+  border-width: 0 0 1px 0;
+  border-color: rgba(0, 0, 0, 0.2);
+  font-size: 14px; }
   @media (max-width: 800px) {
     form input[type="text"] {
       padding: 8px 4px; } }
@@ -98,7 +110,7 @@ form input[name="productCode"] {
   width: calc(100%);
   max-width: 100px; }
 form input[name="productDesc"] {
-  width: calc(100% - 24px); }
+  width: calc(100% - (8px*4)); }
 form input[name="productPrice"] {
   width: calc(100%);
   max-width: 100px; }
@@ -122,15 +134,15 @@ form input[type="submit"] {
   float: left; }
 
 a, a:visited, a:active {
-  color: #0033ee;
+  color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
+  padding: 2px;
   transition: .2s all ease; }
 
 a:hover {
-  color: #3366aa;
-  border-bottom: 2px solid #3366aa;
+  color: rgba(0, 0, 0, 0.6);
+  border-bottom: 0px solid rgba(0, 0, 0, 0.6);
   transition: .2s all ease; }
 
 /* container */

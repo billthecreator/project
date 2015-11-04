@@ -36,7 +36,7 @@
                 <mma:product>        
                     <tr>
                         <td class="right">${productCode}</td>
-                        <td class="description"><div class="ellipsis">${productDescription}</div></td>
+                        <td class="description">${productDescription}</td>
                         <td class="right">${productPrice}</td>
                         <td class="center"><a href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='addProduct'/>

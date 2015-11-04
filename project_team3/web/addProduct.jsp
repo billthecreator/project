@@ -29,21 +29,21 @@
                         <td class="right"><b>Code:</b></td>
                         <td>
                             <c:if test="${product.code == null}">
-                                <input type="text" name="productCode" value=""/>
+                                <input required="yes" placeholder="ab01" type="text" name="productCode" value=""/>
                             </c:if>
                             <c:if test="${product.code != null}">
                                 <input type="hidden" name="productCode" value="${product.code}"/>
-                                ${product.code}
+                                <div class="noInput">${product.code}</div>
                             </c:if>
                         </td>
                     </tr>
                     <tr>
                         <td class="right"><b>Description:</b></td>
-                        <td><input type="text" name="productDesc" value="${product.description}"/></td>
+                        <td><input required="yes" placeholder="Short description of product" type="text" name="productDesc" value="${product.description}"/></td>
                     </tr>
                     <tr>
                         <td class="right"><b>Price:</b></td>
-                        <td><input type="text" name="productPrice" value="${product.price}"/></td>
+                        <td><input required="yes" placeholder="10.00" type="text" name="productPrice" value="${product.price}"/></td>
                     </tr>
                     <tr>
                         <td></td>
