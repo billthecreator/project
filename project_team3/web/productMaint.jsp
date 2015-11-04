@@ -17,16 +17,16 @@
         
             <table>
                 <tr>
-                    <th>Code</th>
+                    <th class="right">Code</th>
                     <th>Description</th>
                     <th class="right">Price</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                 <mma:product>        
                     <tr>
-                        <td>${productCode}</td>
+                        <td class="right">${productCode}</td>
                         <td>${productDescription}</td>
                         <td class="right">${productPrice}</td>
                         <td><a href="<c:url value='/loadProducts' >

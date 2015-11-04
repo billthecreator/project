@@ -17,7 +17,7 @@
             <form action="updateProduct" method="post">
                 <table class="noBorder noColor">
                     <tr>
-                        <td><b>Code:</b></td>
+                        <td class="right"><b>Code:</b></td>
                         <td>
                             <c:if test="${product.code == null}">
                                 <input type="text" name="productCode" value=""/>
@@ -29,11 +29,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Description:</b></td>
+                        <td class="right"><b>Description:</b></td>
                         <td><input type="text" name="productDesc" value="${product.description}"/></td>
                     </tr>
                     <tr>
-                        <td><b>Price:</b></td>
+                        <td class="right"><b>Price:</b></td>
                         <td><input type="text" name="productPrice" value="${product.price}"/></td>
                     </tr>
                     <tr>

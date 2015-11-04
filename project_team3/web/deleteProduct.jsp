@@ -16,15 +16,15 @@
             <h1>Are you sure you want to delete this product?</h1>
             <table class="noBorder noColor">
                 <tr>
-                    <td><b>Code:</b></td>
+                    <td class="right"><b>Code:</b></td>
                     <td>${product.code}</td>
                 </tr>
                 <tr>
-                    <td><b>Description:</b></td>
+                    <td class="right"><b>Description:</b></td>
                     <td>${product.description}</td>
                 </tr>
                 <tr>
-                    <td><b>Price:</b></td>
+                    <td class="right"><b>Price:</b></td>
                     <td>${product.getPriceCurrencyFormat() }</td>
                 </tr>
 
