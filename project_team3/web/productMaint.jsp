@@ -42,6 +42,7 @@
             </table>
             <br/>
             <form action="loadProducts">
+                <input type="hidden" name="productCode" value=""/>
                 <input type="hidden" name="action" value="addProduct"/>
                 <input type="submit" value="Add Product"/>
             </form>

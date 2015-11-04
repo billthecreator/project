@@ -18,32 +18,32 @@
                 <table class="noBorder noColor">
                     <tr>
                         <td><b>Code:</b></td>
-                        <c:if test="${productCode == null}">
-                            <td><input type="text" name="productCode" value=""/></td>
-                        </c:if>
-                        <c:if test="${productCode != null}">
-                            <td>
-                                <input type="hidden" name="productCode" value="${productCode}"/>
-                                ${productCode}
-                            </td>
-                        </c:if>
+                        <td>
+                            <c:if test="${product.code == null}">
+                                <input type="text" name="productCode" value=""/>
+                            </c:if>
+                            <c:if test="${product.code != null}">
+                                <input type="hidden" name="productCode" value="${product.code}"/>
+                                ${product.code}
+                            </c:if>
+                        </td>
                     </tr>
                     <tr>
-                        <td><b>Description</b></td>
-                        <td><input type="text" name="productDesc" value="${productDesc}"/></td>
+                        <td><b>Description:</b></td>
+                        <td><input type="text" name="productDesc" value="${product.description}"/></td>
                     </tr>
                     <tr>
                         <td><b>Price:</b></td>
-                        <td><input type="text" name="productPrice" value="${productPrice}"/></td>
+                        <td><input type="text" name="productPrice" value="${product.price}"/></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <input type="hidden" name="action" value="updateProduct"/>
-                            <c:if test="${productCode == null}">
+                            <c:if test="${product.code == null}">
                             <input type="submit" value="Add Product"/>
                             </c:if>
-                            <c:if test="${productCode != null}">
+                            <c:if test="${product.code != null}">
                             <input type="submit" value="Update Product"/>
                             </c:if>
                         </td>

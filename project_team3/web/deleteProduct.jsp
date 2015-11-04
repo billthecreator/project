@@ -17,22 +17,22 @@
             <table class="noBorder noColor">
                 <tr>
                     <td><b>Code:</b></td>
-                    <td>${productCode}</td>
+                    <td>${product.code}</td>
                 </tr>
                 <tr>
-                    <td><b>Description</b></td>
-                    <td>${productDesc}</td>
+                    <td><b>Description:</b></td>
+                    <td>${product.description}</td>
                 </tr>
                 <tr>
                     <td><b>Price:</b></td>
-                    <td>${productPrice}</td>
+                    <td>${product.getPriceCurrencyFormat() }</td>
                 </tr>
 
             </table>
             <form action="deleteProduct" method="post">
-                <input type="hidden" name="productCode" value="${productCode}"/>
-                <input type="hidden" name="productDesc" value="${productDesc}"/>
-                <input type="hidden" name="productPrice" value="${productPrice}"/>
+                <input type="hidden" name="productCode" value="${product.code}"/>
+                <input type="hidden" name="productDesc" value="${product.description}"/>
+                <input type="hidden" name="productPrice" value="${product.price}"/>
                 <input type="hidden" name="action" value="confirmDeletion"/>
                 <input type="submit" value="Yes"/>
             </form>

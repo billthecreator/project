@@ -48,9 +48,10 @@ public class ProductsServlet extends HttpServlet {
             if (productCode != null) {
                 //if the product code not not a null value,
                 //grab the details from the product code
-                session.setAttribute("productCode", productCode);
-                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
-                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
+                session.setAttribute("product",  prodIO.selectProduct(productCode));
+//                session.setAttribute("productCode", productCode);
+//                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
+//                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
             }
             else {
                 //if the product code is null, set everything blank
@@ -63,9 +64,10 @@ public class ProductsServlet extends HttpServlet {
         else if (action.equals("removeProduct")) {
             //clicking delete will grab the infomation and send it to the delete jsp
             String productCode = request.getParameter("productCode");
-                session.setAttribute("productCode", productCode);
-                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
-                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
+                session.setAttribute("product",  prodIO.selectProduct(productCode));
+//                session.setAttribute("productCode", productCode);
+//                session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
+//                session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
             url = "/deleteProduct.jsp";
         }
         getServletContext()
