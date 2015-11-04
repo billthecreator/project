@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Product</h1>
-        <form action="loadProducts" method="post">
+        <form action="updateProduct" method="post">
             <table class="noBorder">
                 <tr>
                     <td><b>Code:</b></td>

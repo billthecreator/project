@@ -10,7 +10,11 @@
     </servlet>
     <servlet>
         <servlet-name>deleteProduct</servlet-name>
-        <servlet-class>music.cart.deleteProduct</servlet-class>
+        <servlet-class>music.cart.DeleteProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>music.cart.UpdateProductServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>deleteProduct</servlet-name>
         <url-pattern>/deleteProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/updateProduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

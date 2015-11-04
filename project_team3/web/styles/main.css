@@ -38,15 +38,15 @@ th, td {
     border-width: 0;
 }
 
-table input[type="text"] {
+form input[type="text"] {
     padding: 4px;
 }
 
-table input[name="productDesc"] {
+form input[name="productDesc"] {
     width: 200%;
 }
 
-table input[type="submit"] {
+form input[type="submit"] {
     float:left;
     margin-right: 4px;
     padding: 4px;

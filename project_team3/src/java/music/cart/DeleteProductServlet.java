@@ -20,7 +20,7 @@ import music.data.ProductIO;
  *
  * @author William
  */
-public class deleteProduct extends HttpServlet {
+public class DeleteProductServlet extends HttpServlet {
 
 
     @Override
@@ -68,10 +68,11 @@ public class deleteProduct extends HttpServlet {
                     prodIO.deleteProduct(productToDelete);
                 } else {
                 }
-                url = "/productMaint.jsp";    
+                url = "/loadProducts";    
             }
             
         }
+        
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);

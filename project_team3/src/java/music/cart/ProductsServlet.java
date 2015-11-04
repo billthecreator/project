@@ -62,34 +62,6 @@ public class ProductsServlet extends HttpServlet {
             }
             
         }
-        else if (action.equals("updateProduct")) {
-            //create or update the product based on the product code.
-            String productCode = request.getParameter("productCode");
-            String productDesc = request.getParameter("productDesc");
-            String productPrice= request.getParameter("productPrice");
-            
-            //if the product code has any value 
-            if (productCode != null){
-                Product newProduct = new Product();
-                newProduct.setCode(productCode);
-                newProduct.setDescription(productDesc);
-                newProduct.setPrice(Double.parseDouble(productPrice));
-                
-                if (prodIO.exists(newProduct.getCode())){
-                    // if this product exists in the list, then update it
-                    prodIO.updateProduct(newProduct);
-                } else {
-                    // if this product doesn't exist, create a new one
-                    prodIO.insertProduct(newProduct);
-                }
-                url = "/productMaint.jsp?action=displayProducts";
-                //#####
-                //change this to make it work. manual refresh at the moment
-            } else {
-                url = "/addProduct.jsp";
-            }
-            
-        }
         else if (action.equals("removeProduct")) {
             
             String productCode = request.getParameter("productCode");
@@ -97,23 +69,6 @@ public class ProductsServlet extends HttpServlet {
                 session.setAttribute("productDesc", prodIO.selectProduct(productCode).getDescription());
                 session.setAttribute("productPrice", prodIO.selectProduct(productCode).getPrice());
             url = "/deleteProduct.jsp";
-            
-            //remove the product from the list
-//            String productCode = request.getParameter("productCode");
-//            
-//            if (productCode != null || !productCode.isEmpty()){
-//                Product productToDelete = prodIO.selectProduct(productCode);
-//                                
-//                if (prodIO.exists(productToDelete.getCode())){
-//                    // if this product exists in the list, then update it
-//                    prodIO.deleteProduct(productToDelete);
-//                } else {
-//                }
-//                url = "/productMaint.jsp";    
-//            } else {
-//                url = "/addProduct.jsp";
-//            }
-            
         }
         getServletContext()
                 .getRequestDispatcher(url)
