@@ -136,7 +136,7 @@ form input[type="submit"] {
 a, a:visited, a:active {
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 0px solid transparent;
   padding: 2px;
   transition: .2s all ease; }
 
