@@ -46,6 +46,19 @@
                         <td><input required="yes" placeholder="10.00" type="text" name="productPrice" value="${product.price}"/></td>
                     </tr>
                     <tr>
+                        <td>
+<!--                          ): -->
+                        </td>
+                        <td>
+                            
+                            <c:if test="${e !=null}">
+                                Error
+                            </c:if>
+                        </td>
+                     
+                    </tr>
+                    
+                    <tr>
                         <td></td>
                         <td>
                             <input type="hidden" name="action" value="updateProduct"/>

@@ -8,6 +8,7 @@ package music.cart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,16 +67,29 @@ public class UpdateProductServlet extends HttpServlet {
                 Product newProduct = new Product();
                 newProduct.setCode(productCode);
                 newProduct.setDescription(productDesc);
-                newProduct.setPrice(Double.parseDouble(productPrice));
                 
-                if (prodIO.exists(newProduct.getCode())){
-                    // if this product exists in the list, then update it
-                    prodIO.updateProduct(newProduct);
-                } else {
-                    // if this product doesn't exist, create a new one
-                    prodIO.insertProduct(newProduct);
+                url = "/loadProducts";   
+                try {
+                     newProduct.setPrice(Double.parseDouble(productPrice));
+                     
+                    if (prodIO.exists(newProduct.getCode())){
+                        // if this product exists in the list, then update it
+                        prodIO.updateProduct(newProduct);
+                    } else {
+                        // if this product doesn't exist, create a new one
+                        prodIO.insertProduct(newProduct);
+                    }
+                 
+                     
+                } catch(NumberFormatException e){
+                    session.setAttribute("product", newProduct);
+                    session.setAttribute("e", e);
+                    
+                    
+                    url = "/addProduct.jsp";   
                 }
-                url = "/loadProducts";    
+                
+          
             } else {
                 url = "/addProduct.jsp";
             }
