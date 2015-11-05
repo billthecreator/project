@@ -61,7 +61,7 @@ public class ProductsServlet extends HttpServlet {
         else if (action.equals("removeProduct")) {
             //clicking delete will grab the infomation and send it to the delete jsp
             String productCode = request.getParameter("productCode");
-                session.setAttribute("product",  prodIO.selectProduct(productCode));
+            session.setAttribute("product",  prodIO.selectProduct(productCode));
             url = "/deleteProduct.jsp";
         }
         getServletContext()
