@@ -176,6 +176,9 @@ form {
         &.neutral {
             background-color: #bbb;
             margin-left: 4px;
+            &:active {
+                background-color: rgba(#bbb, .75);
+            }
         }
     }
     input:focus,
