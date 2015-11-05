@@ -132,6 +132,10 @@ form {
         border-color: rgba(black, .2);
         font-size: 14px;
         
+        &:focus{
+            border-color: rgba(#ef6c00, .7);
+        }
+        
         @media (max-width: (800px)) {
             padding: 8px ($formPadding/2);
         }
@@ -165,10 +169,20 @@ form {
         border-radius: 3px;
         border:0;
         
+        &:active {
+            background-color: rgba(#ef6c00, .75);
+        }
+        
         &.neutral {
             background-color: #bbb;
             margin-left: 4px;
         }
+    }
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus {
+        outline: none;
     }
     
 }
