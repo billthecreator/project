@@ -45,9 +45,11 @@ table {
   margin-bottom: 16px; }
   table.card {
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    padding-bottom: 4px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    padding: 16px 0;
     background-color: white; }
+    table.card tr:last-of-type {
+      margin-bottom: 4px; }
   table th, table td {
     border-bottom: 1px solid #888;
     text-align: left;
