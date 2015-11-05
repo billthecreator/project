@@ -52,7 +52,7 @@
                         <td>
                             
                             <c:if test="${e !=null}">
-                                Error
+                                <div class="errorMessage">Price must be numeric.</div>
                             </c:if>
                         </td>
                      

@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.ArrayList;
-
+import java.lang.NumberFormatException;
 import music.data.*;
 import music.business.*;
 
@@ -60,8 +60,8 @@ public class ProductsServlet extends HttpServlet {
                 session.setAttribute("productDesc", "");
                 session.setAttribute("productPrice", "");
             }
-            
-            session.setAttribute("e", NumberFormatException e);
+            NumberFormatException e = null;
+            session.setAttribute("e", e);
             
         }
         else if (action.equals("removeProduct")) {
