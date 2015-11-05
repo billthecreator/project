@@ -26,7 +26,7 @@
         
             <table class="card" >
                 <tr>
-                    <th class="right">Code</th>
+                    <th class="center">Code</th>
                     <th>Description</th>
                     <th class="right">Price</th>
                     <th></th>
@@ -35,9 +35,9 @@
                 <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                 <mma:product>        
                     <tr>
-                        <td class="right">${productCode}</td>
+                        <td class="code center">${productCode}</td>
                         <td class="description">${productDescription}</td>
-                        <td class="right">${productPrice}</td>
+                        <td class="price right">${productPrice}</td>
                         <td class="center"><a href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='addProduct'/>
                                    <c:param name='productCode' value='${productCode}'/>
