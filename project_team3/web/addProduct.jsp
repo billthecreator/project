@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td class="right"><b>Description:</b></td>
-                        <td><input required="yes" placeholder="Short description of product" type="text" name="productDesc" value="${product.description}"/>*</td>
+                        <td><input required="yes" placeholder="Short description of product" type="text" name="productDesc" value="${product.description}"/></td>
                     </tr>
                     <tr>
                         <td class="right"><b>Price:</b></td>
