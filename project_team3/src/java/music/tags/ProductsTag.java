@@ -40,6 +40,10 @@ public class ProductsTag extends BodyTagSupport {
         pageContext.setAttribute(
                 "productDescription", p.getDescription());
         pageContext.setAttribute(
+                "productArtist", p.getArtistName());
+        pageContext.setAttribute(
+                "productAlbum", p.getAlbumName());
+        pageContext.setAttribute(
                 "productPrice", p.getPriceCurrencyFormat());
     }
 

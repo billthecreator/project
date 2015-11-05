@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900,100|Droid+Sans);
 /* The styles for the elements */
+*{font-family: "Roboto", "Open Sans";}
 body { 
-    font-family: "Roboto", "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", "Open Sans";
     font-size: 85%;
     margin:0;
     background-color: #f5f5f5;
@@ -27,6 +28,7 @@ br {
     display: block;
     position: relative;
     width: 100%;
+    height: 50px;
     
     .block {    
         height: 50px;
@@ -51,23 +53,18 @@ br {
 $formPadding: 8px;
 $cardMaxWidth: 900px;
 
+.card {
+    border: 1px solid rgba(black, .1);
+    box-shadow: 0 2px 3px rgba(black, .2);
+    padding:16px 0;
+    display: block;
+    background-color: white;
+    border-radius: 3px; 
+}
 table {
     border: 0px solid rgba(black,.25);
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 16px;
-    &.card {
-        border: 1px solid rgba(black, .1);
-        box-shadow: 0 2px 3px rgba(black, .2);
-        padding: 16px 0;
-        background-color: white;
-        border-radius: 3px;
-        overflow:hidden;
-        
-        tr:last-of-type{
-           margin-bottom: 4px;
-        }
-    }
     
     th, td {
         border-bottom: 1px solid #888;
@@ -88,6 +85,12 @@ table {
         color: #212121;  
         font-weight: 400; 
         font-size: 15px;
+        line-height:20px;
+        
+        .album {
+            font-size: 13px;
+            line-height: 16px;
+        }
     }
     .price {
         color: #616161;       
@@ -99,6 +102,7 @@ table {
 tr td a {
     opacity: 0;
         transition: 0s opacity ease;
+        
     @media (max-width: ($cardMaxWidth)) {
         opacity:100;
     }
@@ -112,6 +116,10 @@ tr:hover td {
     }
 }
 .noColor {
+    tr td a {
+        opacity: 110;
+        transition: 0s opacity ease;
+    }
     td {
         background-color: transparent;
     } 
@@ -167,8 +175,8 @@ form {
         max-width: 100px;
     }
     
-    input[name="productDesc"] {
-        width: calc(100% - (#{$formPadding}*4));
+    input[name*="productA"] {
+        width: calc(100% - (#{$formPadding}*8));
     }
     
     input[name="productPrice"] {
@@ -176,19 +184,21 @@ form {
         max-width: 100px;
     }
     
-    input[type="submit"] {
+    input[type="submit"], a.button {
         display: inline;
         margin: 0;
         padding: 8px;
         min-width: 125px;
         cursor: pointer;
         font-size: 13px;
-        
+        white-space: nowrap;
         text-transform: uppercase;
         color: white;
         background-color: #ef6c00;
         border-radius: 3px;
         border:0;
+        margin-right: 4px;
+        margin-bottom: 16px;
         
         &:active {
             background-color: rgba(#ef6c00, .75);
@@ -196,7 +206,6 @@ form {
         
         &.neutral {
             background-color: #bbb;
-            margin-left: 4px;
             &:active {
                 background-color: rgba(#bbb, .75);
             }

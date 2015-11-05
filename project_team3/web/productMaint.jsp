@@ -23,32 +23,35 @@
                     </form>
                 </div>
             </div>
-        
-            <table class="card" >
-                <tr>
-                    <th class="center">Code</th>
-                    <th>Description</th>
-                    <th class="right">Price</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
-                <mma:product>        
+            <div class="card">
+                <table class="">
                     <tr>
-                        <td class="code center">${productCode}</td>
-                        <td class="description">${productDescription}</td>
-                        <td class="price right">${productPrice}</td>
-                        <td class="center"><a href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='addProduct'/>
-                                   <c:param name='productCode' value='${productCode}'/>
-                               </c:url>">Edit</a></td>
-                        <td class="center"><a href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='removeProduct'/>
-                                   <c:param name='productCode' value='${productCode}'/>
-                               </c:url>">Delete</a></td>
+                        <th class="center">Code</th>
+                        <th>Description</th>
+                        <th class="right">Price</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                </mma:product>
-            </table>
+                    <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
+                    <mma:product>        
+                        <tr>
+                            <td class="code center">${productCode}</td>
+                            <td class="description">
+                                <div class="artist">${productArtist}</div>
+                                <div class="album">${productAlbum}</div></td>
+                            <td class="price right">${productPrice}</td>
+                            <td class="center"><a href="<c:url value='/loadProducts' >
+                                       <c:param name='action' value='addProduct'/>
+                                       <c:param name='productCode' value='${productCode}'/>
+                                   </c:url>">Edit</a></td>
+                            <td class="center"><a href="<c:url value='/loadProducts' >
+                                       <c:param name='action' value='removeProduct'/>
+                                       <c:param name='productCode' value='${productCode}'/>
+                                   </c:url>">Delete</a></td>
+                        </tr>
+                    </mma:product>
+                </table>
+            </div>
             <br/>
         </div>
     </body>

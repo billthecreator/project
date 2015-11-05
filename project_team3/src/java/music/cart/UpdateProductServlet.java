@@ -59,14 +59,15 @@ public class UpdateProductServlet extends HttpServlet {
         if (action.equals("updateProduct")) {
             //create or update the product based on the product code.
             String productCode = request.getParameter("productCode");
-            String productDesc = request.getParameter("productDesc");
+            String productArtist = request.getParameter("productArtist");
+            String productAlbum = request.getParameter("productAlbum");
             String productPrice= request.getParameter("productPrice");
             
             //if the product code has any value 
             if (productCode != null){
                 Product newProduct = new Product();
                 newProduct.setCode(productCode);
-                newProduct.setDescription(productDesc);
+                newProduct.setDescription(productArtist + " - " + productAlbum);
                 
                 url = "/loadProducts";   
                 try {

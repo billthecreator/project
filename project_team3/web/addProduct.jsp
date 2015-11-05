@@ -23,55 +23,65 @@
                 </div>
             </div>
             
-            <form action="updateProduct" method="post">
-                <table class="noBorder noColor card">
-                    <tr>
-                        <td class="right"><b>Code:</b></td>
-                        <td>
-                            <c:if test="${product.code == null}">
-                                <input required="yes" placeholder="ab01" type="text" name="productCode" value=""/>
-                            </c:if>
-                            <c:if test="${product.code != null}">
-                                <input type="hidden" name="productCode" value="${product.code}"/>
-                                <div class="noInput">${product.code}</div>
-                            </c:if>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="right"><b>Description:</b></td>
-                        <td><input required="yes" placeholder="Short description of product" type="text" name="productDesc" value="${product.description}"/></td>
-                    </tr>
-                    <tr>
-                        <td class="right"><b>Price:</b></td>
-                        <td><input required="yes" placeholder="10.00" type="text" name="productPrice" value="${product.price}"/></td>
-                    </tr>
-                    <tr>
-                        <td>
-<!--                          ): -->
-                        </td>
-                        <td>
-                            
-                            <c:if test="${e !=null}">
-                                <div class="errorMessage">Price must be numeric.</div>
-                            </c:if>
-                        </td>
-                     
-                    </tr>
-                    
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="hidden" name="action" value="updateProduct"/>
-                            <c:if test="${product.code == null}">
-                            <input type="submit" value="Add Product"/>
-                            </c:if>
-                            <c:if test="${product.code != null}">
-                            <input type="submit" value="Update Product"/>
-                            </c:if>
-                        </td>
-                    </tr>
-                </table>
-            </form>
+            <div class="card">
+                <form action="updateProduct" method="post">
+                    <table class="noBorder noColor">
+                        <tr>
+                            <td class="right"><b>Code:</b></td>
+                            <td>
+                                <c:if test="${product.code == null}">
+                                    <input required="yes" placeholder="ab01" type="text" name="productCode" value=""/>
+                                </c:if>
+                                <c:if test="${product.code != null}">
+                                    <input type="hidden" name="productCode" value="${product.code}"/>
+                                    <div class="noInput">${product.code}</div>
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right"><b>Artist:</b></td>
+                            <td><input required="yes" placeholder="86 (the band)" type="text" name="productArtist" value="${product.getArtistName()}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="right"><b>Album:</b></td>
+                            <td><input required="yes" placeholder="True Life Songs and Pictures" type="text" name="productAlbum" value="${product.getAlbumName()}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="right"><b>Price:</b></td>
+                            <td><input required="yes" placeholder="10.00" type="text" name="productPrice" value="${product.price}"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+    <!--                          ): -->
+                            </td>
+                            <td>
+
+                                <c:if test="${e !=null}">
+                                    <div class="errorMessage">Price must be numeric.</div>
+                                </c:if>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="hidden" name="action" value="updateProduct"/>
+                                <c:if test="${product.code == null}">
+                                <input type="submit" value="Add Product"/>
+                                </c:if>
+                                <c:if test="${product.code != null}">
+                                <input type="submit" value="Update Product"/>
+                                <a href="<c:url value='/loadProducts' >
+                                       <c:param name='action' value='removeProduct'/>
+                                       <c:param name='productCode' value='${product.code}'/>
+                                   </c:url>" class="button neutral">Delete Product</a>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
             <br/>
         </div>
     </body>

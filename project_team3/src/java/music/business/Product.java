@@ -44,15 +44,24 @@ public class Product implements Serializable {
     }
 
     public String getArtistName() {
-        String artistName = 
-                description.substring(0, description.indexOf(" - "));
-        return artistName;
+        try {
+            String artistName = 
+                    description.substring(0, description.indexOf(" - "));
+            return artistName;
+        
+        } catch(StringIndexOutOfBoundsException e)  {
+                return "";
+        }
     }
 
     public String getAlbumName() {
-        String albumName = 
+        try {
+            String albumName = 
                 description.substring(description.indexOf(" - ") + 3);
-        return albumName;
+            return albumName;
+        } catch(StringIndexOutOfBoundsException e)  {
+                return "";
+        }
     }
 
     public void setPrice(double price) {

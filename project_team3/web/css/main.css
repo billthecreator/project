@@ -1,8 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900,100|Droid+Sans);
 /* The styles for the elements */
+* {
+  font-family: "Roboto", "Open Sans"; }
+
 body {
-  font-family: "Roboto", "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Roboto", "Open Sans";
   font-size: 85%;
   margin: 0;
   background-color: #f5f5f5;
@@ -24,7 +27,8 @@ br {
 .header {
   display: block;
   position: relative;
-  width: 100%; }
+  width: 100%;
+  height: 50px; }
   .header .block {
     height: 50px;
     display: inline-block;
@@ -38,20 +42,18 @@ br {
       float: right; }
 
 /* The styles for the tables */
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  padding: 16px 0;
+  display: block;
+  background-color: white;
+  border-radius: 3px; }
+
 table {
   border: 0px solid rgba(0, 0, 0, 0.25);
   border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 16px; }
-  table.card {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-    padding: 16px 0;
-    background-color: white;
-    border-radius: 3px;
-    overflow: hidden; }
-    table.card tr:last-of-type {
-      margin-bottom: 4px; }
+  width: 100%; }
   table th, table td {
     border-bottom: 1px solid #888;
     text-align: left;
@@ -67,7 +69,11 @@ table {
   table .description {
     color: #212121;
     font-weight: 400;
-    font-size: 15px; }
+    font-size: 15px;
+    line-height: 20px; }
+    table .description .album {
+      font-size: 13px;
+      line-height: 16px; }
   table .price {
     color: #616161;
     font-weight: 400;
@@ -86,6 +92,9 @@ tr:hover td {
     opacity: 100;
     transition: 0s opacity ease; }
 
+.noColor tr td a {
+  opacity: 110;
+  transition: 0s opacity ease; }
 .noColor td {
   background-color: transparent; }
 .noColor tr:hover td {
@@ -125,29 +134,31 @@ form input[type="text"] {
 form input[name="productCode"] {
   width: calc(100%);
   max-width: 100px; }
-form input[name="productDesc"] {
-  width: calc(100% - (8px*4)); }
+form input[name*="productA"] {
+  width: calc(100% - (8px*8)); }
 form input[name="productPrice"] {
   width: calc(100%);
   max-width: 100px; }
-form input[type="submit"] {
+form input[type="submit"], form a.button {
   display: inline;
   margin: 0;
   padding: 8px;
   min-width: 125px;
   cursor: pointer;
   font-size: 13px;
+  white-space: nowrap;
   text-transform: uppercase;
   color: white;
   background-color: #ef6c00;
   border-radius: 3px;
-  border: 0; }
-  form input[type="submit"]:active {
+  border: 0;
+  margin-right: 4px;
+  margin-bottom: 16px; }
+  form input[type="submit"]:active, form a.button:active {
     background-color: rgba(239, 108, 0, 0.75); }
-  form input[type="submit"].neutral {
-    background-color: #bbb;
-    margin-left: 4px; }
-    form input[type="submit"].neutral:active {
+  form input[type="submit"].neutral, form a.button.neutral {
+    background-color: #bbb; }
+    form input[type="submit"].neutral:active, form a.button.neutral:active {
       background-color: rgba(187, 187, 187, 0.75); }
 form input:focus,
 form select:focus,
