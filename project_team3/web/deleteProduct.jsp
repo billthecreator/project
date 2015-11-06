@@ -19,29 +19,28 @@
             <div class="card">
                 <table class="noBorder noColor">
                     <tr>
-                        <td class="right"><b>Code:</b></td>
-                        <td class="price">${product.code}</td>
+                        <td class="code right"><b>Code:</b></td>
+                        <td class="description">${product.code}</td>
                     </tr>
                     <tr>
-                        <td class="right"><b>Description:</b></td>
-                        <td class="price">${product.description}</td>
+                        <td class="code right"><b>Description:</b></td>
+                        <td class="description">${product.description}</td>
                     </tr>
                     <tr>
-                        <td class="right"><b>Price:</b></td>
-                        <td class="price">${product.getPriceCurrencyFormat() }</td>
+                        <td class="code right"><b>Price:</b></td>
+                        <td class="description">${product.getPriceCurrencyFormat() }</td>
                     </tr>
-                    <td></td>
-                    <td>
+                    <td colspan="2">
                         <form action="deleteProduct" method="post">
                             <input type="hidden" name="productCode" value="${product.code}"/>
                             <input type="hidden" name="productDesc" value="${product.description}"/>
                             <input type="hidden" name="productPrice" value="${product.price}"/>
                             <input type="hidden" name="action" value="confirmDeletion"/>
-                            <input type="submit" class="fLeft" value="Yes"/>
+                            <input type="submit" class="mL10 fLeft" value="Yes"/>
                         </form>
                         <form action="loadProducts" method="get">
                             <input type="hidden" name="action" value="displayProducts"/>
-                            <input type="submit" class="neutral fRight" value="No" />
+                            <input type="submit" class="neutral fLeft" value="No" />
                         </form>
                     </td>
 

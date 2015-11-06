@@ -17,7 +17,7 @@ import java.io.*;
 public class IfEmptyMarkTag extends TagSupport {
 
     private String field;
-    private String color = "#00529B";
+    private String color = "#006064";
     
     public void setField(String field) {
         this.field = field;

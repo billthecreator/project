@@ -37,7 +37,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="right"><b>Code:</b></td>
+                            <td class="right" width="20"><b>Code:</b></td>
                             <td>
                                 <c:if test="${product.code == null}">
                                     <input placeholder="ab01" type="text" name="productCode" value=""/>
@@ -93,20 +93,16 @@
                         </tr>
 
                         <tr>
-                            <td></td>
-                            <td>
+                            <td colspan="2">
                                 <input type="hidden" name="action" value="updateProduct"/>
                                 <c:if test="${product.code == null}">
-                                <input type="submit" value="Add Product"/>
+                                    <input class="mL10" type="submit" value="Add"/>
                                 </c:if>
                                 <c:if test="${product.code != null}">
-                                <input type="submit" value="Update Product"/>
-                                <c:if test="${e == null}">
-                                <a href="<c:url value='/loadProducts' >
-                                       <c:param name='action' value='removeProduct'/>
-                                       <c:param name='productCode' value='${product.code}'/>
-                                   </c:url>" class="button neutral">Delete Product</a>
-                                </c:if>
+                                    <input class="mL10" type="submit" value="Update"/>
+                                    <c:if test="${e == null}">
+                                        <a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a>
+                                    </c:if>
                                 </c:if>
                             </td>
                         </tr>

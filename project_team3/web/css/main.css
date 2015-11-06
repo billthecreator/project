@@ -71,20 +71,44 @@ table {
     font-weight: 400;
     font-size: 15px;
     line-height: 20px; }
+    @media (max-width: 900px) {
+      table .description {
+        font-size: 13px; } }
     table .description .album {
       font-size: 13px;
       line-height: 16px; }
+      @media (max-width: 900px) {
+        table .description .album {
+          font-size: 12px; } }
   table .price {
     color: #616161;
     font-weight: 400;
     font-size: 16px; }
+    @media (max-width: 900px) {
+      table .price {
+        font-size: 13px; } }
+  table .colRes {
+    width: 50px; }
+    @media (max-width: 900px) {
+      table .colRes {
+        width: 20px; } }
 
 tr td a {
   opacity: 0;
-  transition: 0s opacity ease; }
+  transition: 0s opacity ease;
+  text-transform: uppercase; }
   @media (max-width: 900px) {
     tr td a {
-      opacity: 100; } }
+      opacity: 100;
+      font-size: 13px;
+      padding: 4px; } }
+  @media (max-width: 600px) {
+    tr td a {
+      opacity: 100;
+      padding: 4px;
+      font-size: 12px;
+      border-radius: 2px;
+      background-color: #e0e0e0; } }
 
 tr:hover td {
   background-color: #eeeeee; }
@@ -124,17 +148,16 @@ tr td {
 
 .message {
   margin: 10px 0px;
-  padding: 12px;
-  font-size: 16px; }
+  padding: 10px;
+  font-size: 14px; }
   .message.info {
-    color: #00529B;
-    background-color: #4BCFFF; }
+    color: #006064;
+    background-color: #00bcd4; }
   .message.error {
-    color: #fff;
-    background-color: #FF1744; }
+    background-color: #e0e0e0;
+    color: #f44336; }
   .message i {
     margin: 10px 22px;
-    font-size: 1.5em;
     vertical-align: middle; }
 
 .noInput {
@@ -166,26 +189,37 @@ input[name="productPrice"] {
 input[type="submit"], a.button {
   display: inline;
   margin: 0;
-  padding: 8px;
-  min-width: 125px;
+  padding: 8px 16px;
+  min-width: 88px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
   text-transform: uppercase;
   color: white;
-  background-color: #ef6c00;
-  border-radius: 3px;
+  background-color: #ff5722;
+  border-radius: 2px;
   border: 0;
   margin-right: 4px;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+  input[type="submit"].mL10, a.button.mL10 {
+    margin-left: 20px; }
+  input[type="submit"]:hover, a.button:hover {
+    background-color: #f4511e;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
   input[type="submit"]:active, a.button:active {
-    background-color: rgba(239, 108, 0, 0.75); }
+    background-color: #e64a19;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); }
   input[type="submit"].neutral, a.button.neutral {
-    background-color: #bbb;
-    color: white; }
+    background-color: #e0e0e0;
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+    input[type="submit"].neutral:hover, a.button.neutral:hover {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
     input[type="submit"].neutral:active, a.button.neutral:active {
-      background-color: rgba(187, 187, 187, 0.75);
-      padding: 8px; }
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      padding: 8px 16px; }
 
 input:focus,
 select:focus,
@@ -219,5 +253,9 @@ a:hover {
     .container {
       padding: 0 4px;
       width: calc(100% - 8px); } }
+
+@media (max-width: 600px) {
+  .mobHide {
+    display: none; } }
 
 /*# sourceMappingURL=main.css.map */
