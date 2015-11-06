@@ -35,16 +35,16 @@
                     <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                     <mma:product>        
                         <tr>
-                            <td class="code center">${productCode}</td>
+                            <td width="50" class="code center">${productCode}</td>
                             <td class="description">
                                 <div class="artist">${productArtist}</div>
                                 <div class="album">${productAlbum}</div></td>
                             <td class="price right">${productPrice}</td>
-                            <td class="center"><a href="<c:url value='/loadProducts' >
+                            <td width="50" class="center"><a href="<c:url value='/loadProducts' >
                                        <c:param name='action' value='addProduct'/>
                                        <c:param name='productCode' value='${productCode}'/>
                                    </c:url>">Edit</a></td>
-                            <td class="center"><a href="<c:url value='/loadProducts' >
+                            <td width="50" class="center"><a href="<c:url value='/loadProducts' >
                                        <c:param name='action' value='removeProduct'/>
                                        <c:param name='productCode' value='${productCode}'/>
                                    </c:url>">Delete</a></td>
