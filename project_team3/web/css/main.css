@@ -128,10 +128,10 @@ tr td {
   font-size: 16px; }
   .message.info {
     color: #00529B;
-    background-color: #BDE5F8; }
+    background-color: #4BCFFF; }
   .message.error {
-    color: #D8000C;
-    background-color: #FFBABA; }
+    color: #fff;
+    background-color: #FF1744; }
   .message i {
     margin: 10px 22px;
     font-size: 1.5em;
@@ -181,9 +181,11 @@ input[type="submit"], a.button {
   input[type="submit"]:active, a.button:active {
     background-color: rgba(239, 108, 0, 0.75); }
   input[type="submit"].neutral, a.button.neutral {
-    background-color: #bbb; }
+    background-color: #bbb;
+    color: white; }
     input[type="submit"].neutral:active, a.button.neutral:active {
-      background-color: rgba(187, 187, 187, 0.75); }
+      background-color: rgba(187, 187, 187, 0.75);
+      padding: 8px; }
 
 input:focus,
 select:focus,

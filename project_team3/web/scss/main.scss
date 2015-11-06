@@ -159,11 +159,11 @@ tr td {
     
     &.info {
         color: #00529B;
-        background-color: #BDE5F8;
+        background-color: #4BCFFF;
     }
     &.error{
-        color: #D8000C;
-        background-color: #FFBABA;
+        color: #fff;
+        background-color: #FF1744;
     }
     i {
         margin:10px 22px;
@@ -227,8 +227,10 @@ input[type="submit"], a.button {
 
     &.neutral {
         background-color: #bbb;
+        color: white;
         &:active {
             background-color: rgba(#bbb, .75);
+            padding: 8px;
         }
     }
 }
