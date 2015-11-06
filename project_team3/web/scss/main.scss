@@ -69,12 +69,17 @@ table {
     th, td {
         border-bottom: 1px solid #888;
         text-align: left;
-        padding: 16px $formPadding;
+        padding: 16px;
     }
     th {
         border-bottom-width: 0;
         font-size: 12px;
         text-transform: uppercase;
+        padding: 16px 0;
+        
+        i{
+            font-size: 16px !important;
+        }
     }
     .code {
         color: #616161;  
@@ -85,14 +90,22 @@ table {
         color: #212121;  
         font-weight: 400; 
         font-size: 15px;
-        line-height:20px;
+        line-height:20px;        
+        padding: 16px 0;
+        
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
         }
         
+        .artist{
+            font-size: 16px;
+            @media (max-width: ($cardMaxWidth)) {
+                font-size: 13px;
+            }
+        }
+        
         .album {
-            font-size: 13px;
-            line-height: 16px;
+            font-size: 14px;
             @media (max-width: ($cardMaxWidth)) {
                 font-size: 12px;
             }
@@ -102,6 +115,8 @@ table {
         color: #616161;       
         font-weight: 400;
         font-size: 16px;
+        padding: 8px 16px;
+        padding-right: 0;
         
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
@@ -120,6 +135,10 @@ tr td a {
     opacity: 0;
     transition: 0s opacity ease;
     text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 16px;
+    color: rgba(black, .87);
         
     @media (max-width: ($cardMaxWidth)) {
         opacity:100;
@@ -247,11 +266,9 @@ input[type="submit"], a.button {
     background-color: #ff5722;
     border-radius: 2px;
     border:0;
-    margin-right: 4px;
-    margin-bottom: 16px;
     box-shadow:0 1px 2px rgba(black, .3);
     
-    &.mL10 {margin-left: 20px;}
+    &.mL10 {margin-left: 26px;}
     
     &:hover{
         background-color: rgba(244,81,30,1);
@@ -260,19 +277,19 @@ input[type="submit"], a.button {
     
     &:active {
         background-color: rgba(230,74,25,1);
-        box-shadow:0 5px 10px rgba(black, .5);
+        box-shadow:0 5px 10px rgba(black, .25);
     }
-
     &.neutral {
         background-color: rgba(224,224,224,1);
         color: rgba(#000, .87);
         box-shadow:0 1px 2px rgba(black, .3);
-        
+        margin-left: 8px;
+                
         &:hover{
             box-shadow:0 1px 2px rgba(black, .5);
         }
         &:active {
-            box-shadow:0 5px 10px rgba(black, .5);
+            box-shadow:0 5px 10px rgba(black, .25);
             padding: 8px 16px;
         }
     }

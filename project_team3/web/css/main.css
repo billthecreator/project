@@ -57,11 +57,14 @@ table {
   table th, table td {
     border-bottom: 1px solid #888;
     text-align: left;
-    padding: 16px 8px; }
+    padding: 16px; }
   table th {
     border-bottom-width: 0;
     font-size: 12px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    padding: 16px 0; }
+    table th i {
+      font-size: 16px !important; }
   table .code {
     color: #616161;
     font-weight: 400;
@@ -70,20 +73,27 @@ table {
     color: #212121;
     font-weight: 400;
     font-size: 15px;
-    line-height: 20px; }
+    line-height: 20px;
+    padding: 16px 0; }
     @media (max-width: 900px) {
       table .description {
         font-size: 13px; } }
+    table .description .artist {
+      font-size: 16px; }
+      @media (max-width: 900px) {
+        table .description .artist {
+          font-size: 13px; } }
     table .description .album {
-      font-size: 13px;
-      line-height: 16px; }
+      font-size: 14px; }
       @media (max-width: 900px) {
         table .description .album {
           font-size: 12px; } }
   table .price {
     color: #616161;
     font-weight: 400;
-    font-size: 16px; }
+    font-size: 16px;
+    padding: 8px 16px;
+    padding-right: 0; }
     @media (max-width: 900px) {
       table .price {
         font-size: 13px; } }
@@ -96,7 +106,11 @@ table {
 tr td a {
   opacity: 0;
   transition: 0s opacity ease;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.87); }
   @media (max-width: 900px) {
     tr td a {
       opacity: 100;
@@ -200,25 +214,24 @@ input[type="submit"], a.button {
   background-color: #ff5722;
   border-radius: 2px;
   border: 0;
-  margin-right: 4px;
-  margin-bottom: 16px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
   input[type="submit"].mL10, a.button.mL10 {
-    margin-left: 20px; }
+    margin-left: 26px; }
   input[type="submit"]:hover, a.button:hover {
     background-color: #f4511e;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
   input[type="submit"]:active, a.button:active {
     background-color: #e64a19;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); }
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); }
   input[type="submit"].neutral, a.button.neutral {
     background-color: #e0e0e0;
     color: rgba(0, 0, 0, 0.87);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    margin-left: 8px; }
     input[type="submit"].neutral:hover, a.button.neutral:hover {
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
     input[type="submit"].neutral:active, a.button.neutral:active {
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
       padding: 8px 16px; }
 
 input:focus,

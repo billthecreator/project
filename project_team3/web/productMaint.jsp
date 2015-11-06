@@ -28,9 +28,9 @@
                     <tr>
                         <th class="center">Code</th>
                         <th>Description</th>
-                        <th class="right">Price</th>
-                        <th></th>
-                        <th class="mobHide"></th>
+                        <th class="right"><i class="fa fa-usd"></i></th>
+                        <th class="center"><i class="fa fa-pencil"></i></th>
+                        <th class="center mobHide"><i class="fa fa-ban"></i></th>
                     </tr>
                     <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                     <mma:product>        

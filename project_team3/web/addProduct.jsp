@@ -99,10 +99,7 @@
                                     <input class="mL10" type="submit" value="Add"/>
                                 </c:if>
                                 <c:if test="${product.code != null}">
-                                    <input class="mL10" type="submit" value="Update"/>
-                                    <c:if test="${e == null}">
-                                        <a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a>
-                                    </c:if>
+                                    <input class="mL10" type="submit" value="Update"/><c:if test="${e == null}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
                                 </c:if>
                             </td>
                         </tr>
