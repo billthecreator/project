@@ -101,6 +101,10 @@ tr:hover td {
   background-color: transparent; }
 .noColor th, .noColor td {
   padding: 8px; }
+  .noColor th:first-of-type, .noColor td:first-of-type {
+    padding-left: 0; }
+  .noColor th:last-of-type, .noColor td:last-of-type {
+    padding-right: 0; }
 
 tr td {
   border-bottom: none; }
@@ -118,28 +122,48 @@ tr td {
   .noBorder td:first-of-type {
     width: 100px; }
 
-form .noInput {
+.message {
+  margin: 10px 0px;
+  padding: 12px;
+  font-size: 16px; }
+  .message.info {
+    color: #00529B;
+    background-color: #BDE5F8; }
+  .message.error {
+    color: #D8000C;
+    background-color: #FFBABA; }
+  .message i {
+    margin: 10px 22px;
+    font-size: 1.5em;
+    vertical-align: middle; }
+
+.noInput {
   padding: 6px 8px;
   font-size: 14px; }
-form input[type="text"] {
+
+input[type="text"] {
   padding: 6px 8px;
   border-width: 0 0 1px 0;
   border-color: rgba(0, 0, 0, 0.2);
   font-size: 14px; }
-  form input[type="text"]:focus {
+  input[type="text"]:focus {
     border-color: rgba(239, 108, 0, 0.7); }
   @media (max-width: 900px) {
-    form input[type="text"] {
+    input[type="text"] {
       padding: 8px 4px; } }
-form input[name="productCode"] {
+
+input[name="productCode"] {
   width: calc(100%);
   max-width: 100px; }
-form input[name*="productA"] {
+
+input[name*="productA"] {
   width: calc(100% - (8px*8)); }
-form input[name="productPrice"] {
+
+input[name="productPrice"] {
   width: calc(100%);
   max-width: 100px; }
-form input[type="submit"], form a.button {
+
+input[type="submit"], a.button {
   display: inline;
   margin: 0;
   padding: 8px;
@@ -154,16 +178,17 @@ form input[type="submit"], form a.button {
   border: 0;
   margin-right: 4px;
   margin-bottom: 16px; }
-  form input[type="submit"]:active, form a.button:active {
+  input[type="submit"]:active, a.button:active {
     background-color: rgba(239, 108, 0, 0.75); }
-  form input[type="submit"].neutral, form a.button.neutral {
+  input[type="submit"].neutral, a.button.neutral {
     background-color: #bbb; }
-    form input[type="submit"].neutral:active, form a.button.neutral:active {
+    input[type="submit"].neutral:active, a.button.neutral:active {
       background-color: rgba(187, 187, 187, 0.75); }
-form input:focus,
-form select:focus,
-form textarea:focus,
-form button:focus {
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
   outline: none; }
 
 .fLeft {

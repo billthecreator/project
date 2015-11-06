@@ -13,4 +13,19 @@
     <tag-class>music.tags.ProductsTag</tag-class>
     <body-content>JSP</body-content>
   </tag>
+  
+  <tag>
+    <name>ifEmptyMark</name>
+    <tag-class>music.tags.IfEmptyMarkTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+        <name>color</name>
+        <required>false</required>
+    </attribute>
+    <attribute>
+        <name>field</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
 </taglib>

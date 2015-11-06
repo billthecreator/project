@@ -62,37 +62,90 @@ public class UpdateProductServlet extends HttpServlet {
             String productArtist = request.getParameter("productArtist");
             String productAlbum = request.getParameter("productAlbum");
             String productPrice= request.getParameter("productPrice");
+            String message = "";
+            int errorCode = 0;
             
             //if the product code has any value 
             if (productCode != null){
-                Product newProduct = new Product();
-                newProduct.setCode(productCode);
-                newProduct.setDescription(productArtist + " - " + productAlbum);
-                
-                url = "/loadProducts";   
-                try {
-                     newProduct.setPrice(Double.parseDouble(productPrice));
-                     
-                    if (prodIO.exists(newProduct.getCode())){
-                        // if this product exists in the list, then update it
-                        prodIO.updateProduct(newProduct);
-                    } else {
-                        // if this product doesn't exist, create a new one
-                        prodIO.insertProduct(newProduct);
+                if(productCode == null || productCode.length() == 0) {
+                    message += "<i class=\"fa fa-warning\"></i>Please enter a code<br/>";
+                    errorCode += 2;
+                }
+                if(productArtist == null || productArtist.length() == 0) {
+                    message += "<i class=\"fa fa-warning\"></i>Please enter an artist name<br/>";
+                    errorCode += 4;
+                }
+                if(productAlbum == null || productAlbum.length() == 0) {
+                    message += "<i class=\"fa fa-warning\"></i>Please enter an album name<br/>";
+                    errorCode += 8;
+                }
+                if(productPrice == null || productPrice.length() == 0) {
+                    message += "<i class=\"fa fa-warning\"></i>Please enter a price<br/>";
+                    errorCode += 1;
+                }else{
+                    try{
+                        Double.parseDouble(productPrice);
+                    }catch(NumberFormatException e){
+                        message += "<i class=\"fa fa-warning\"></i>The price must be numeric<br/>";
+                        errorCode += 16;
                     }
-                 
-                     
-                } catch(NumberFormatException e){
-                    session.setAttribute("product", newProduct);
-                    session.setAttribute("e", e);
-                    
-                    
-                    url = "/addProduct.jsp";   
                 }
                 
-          
-            } else {
-                url = "/addProduct.jsp";
+                
+                
+                
+                if(errorCode >= 1){
+                    // all fields blank
+                    session.setAttribute("e", errorCode);
+                    session.setAttribute("message", message);
+                    
+                    Product newProduct = new Product();
+                    newProduct.setCode(productCode);
+                    newProduct.setDescription(productArtist + " - " + productAlbum);
+                    
+                    try{
+                        double newPrice = Double.parseDouble(productPrice);
+                        newProduct.setPrice(newPrice);
+                    }catch(NumberFormatException e){
+                    }
+                    
+                    session.setAttribute("product", newProduct);
+                    
+                }
+                    
+                if(errorCode == 0){
+                                       
+                    Product newProduct = new Product();
+                    newProduct.setCode(productCode);
+                    newProduct.setDescription(productArtist + " - " + productAlbum);
+                    
+                    url = "/loadProducts";   
+                    try {
+                        //test to see if price is double
+                         newProduct.setPrice(Double.parseDouble(productPrice));
+                        //cleared - update, or insert
+                        if (prodIO.exists(newProduct.getCode())){
+                            // if this product exists in the list, then update it
+                            prodIO.updateProduct(newProduct);
+                        } else {
+                            // if this product doesn't exist, create a new one
+                            prodIO.insertProduct(newProduct);
+                        }
+                    } catch(NumberFormatException e){
+                        //the price is not a double
+                        
+                      
+                        session.setAttribute("product", newProduct);
+                        message += "<i class=\"fa fa-warning\"></i>Price must be numeric<br/>";
+                                
+                        session.setAttribute("e", e);
+                        session.setAttribute("message", message);
+
+                        url = "/addProduct.jsp";   
+                    }          
+                } else {
+                    url = "/addProduct.jsp";
+                }
             }
             
         }

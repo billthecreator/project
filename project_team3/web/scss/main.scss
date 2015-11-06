@@ -128,6 +128,8 @@ tr:hover td {
     }
     th, td {
         padding: $formPadding;
+        &:first-of-type{padding-left: 0;}
+        &:last-of-type{padding-right: 0;}
     }
 }
 tr td {
@@ -150,75 +152,94 @@ tr td {
     }
 }
 
-form {
-    .noInput{
-        padding: 6px $formPadding;
-        font-size: 14px;
-    }
-    input[type="text"] {
-        padding: 6px $formPadding;
-        border-width: 0 0 1px 0;
-        border-color: rgba(black, .2);
-        font-size: 14px;
-        
-        &:focus{
-            border-color: rgba(#ef6c00, .7);
-        }
-        
-        @media (max-width: ($cardMaxWidth)) {
-            padding: 8px ($formPadding/2);
-        }
-    }
+.message{
+    margin: 10px 0px;
+    padding:12px;
+    font-size:16px;
     
-    input[name="productCode"] {
-        width: calc(100%);
-        max-width: 100px;
+    &.info {
+        color: #00529B;
+        background-color: #BDE5F8;
     }
-    
-    input[name*="productA"] {
-        width: calc(100% - (#{$formPadding}*8));
+    &.error{
+        color: #D8000C;
+        background-color: #FFBABA;
     }
-    
-    input[name="productPrice"] {
-        width: calc(100%);      
-        max-width: 100px;
+    i {
+        margin:10px 22px;
+        font-size:1.5em;
+        vertical-align:middle;
     }
-    
-    input[type="submit"], a.button {
-        display: inline;
-        margin: 0;
-        padding: 8px;
-        min-width: 125px;
-        cursor: pointer;
-        font-size: 13px;
-        white-space: nowrap;
-        text-transform: uppercase;
-        color: white;
-        background-color: #ef6c00;
-        border-radius: 3px;
-        border:0;
-        margin-right: 4px;
-        margin-bottom: 16px;
-        
-        &:active {
-            background-color: rgba(#ef6c00, .75);
-        }
-        
-        &.neutral {
-            background-color: #bbb;
-            &:active {
-                background-color: rgba(#bbb, .75);
-            }
-        }
-    }
-    input:focus,
-    select:focus,
-    textarea:focus,
-    button:focus {
-        outline: none;
-    }
-    
 }
+
+.noInput{
+    padding: 6px $formPadding;
+    font-size: 14px;
+}
+input[type="text"] {
+    padding: 6px $formPadding;
+    border-width: 0 0 1px 0;
+    border-color: rgba(black, .2);
+    font-size: 14px;
+
+    &:focus{
+        border-color: rgba(#ef6c00, .7);
+    }
+
+    @media (max-width: ($cardMaxWidth)) {
+        padding: 8px ($formPadding/2);
+    }
+}
+
+input[name="productCode"] {
+    width: calc(100%);
+    max-width: 100px;
+}
+
+input[name*="productA"] {
+    width: calc(100% - (#{$formPadding}*8));
+}
+
+input[name="productPrice"] {
+    width: calc(100%);      
+    max-width: 100px;
+}
+
+input[type="submit"], a.button {
+    display: inline;
+    margin: 0;
+    padding: 8px;
+    min-width: 125px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: white;
+    background-color: #ef6c00;
+    border-radius: 3px;
+    border:0;
+    margin-right: 4px;
+    margin-bottom: 16px;
+
+    &:active {
+        background-color: rgba(#ef6c00, .75);
+    }
+
+    &.neutral {
+        background-color: #bbb;
+        &:active {
+            background-color: rgba(#bbb, .75);
+        }
+    }
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+    
+
 .fLeft{float:  left;}
 
 

@@ -6,6 +6,9 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="mma" uri="/WEB-INF/murach.tld" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,37 +30,63 @@
                 <form action="updateProduct" method="post">
                     <table class="noBorder noColor">
                         <tr>
+                            <td colspan="2">                                    
+                                <c:if test="${product.code == null || product.getCode().length() == 0 || product.price <= 0 || product.price == null || product.getArtistName().length() == 0 || product.getAlbumName().length() == 0}">
+                                    <div class="message info"><i class="fa fa-info-circle"></i><mma:ifEmptyMark  field=""/> Marks required fields.</div>
+                                </c:if>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="right"><b>Code:</b></td>
                             <td>
                                 <c:if test="${product.code == null}">
-                                    <input required="yes" placeholder="ab01" type="text" name="productCode" value=""/>
+                                    <input placeholder="ab01" type="text" name="productCode" value=""/>
+                                    <mma:ifEmptyMark  field=""/>
                                 </c:if>
                                 <c:if test="${product.code != null}">
-                                    <input type="hidden" name="productCode" value="${product.code}"/>
-                                    <div class="noInput">${product.code}</div>
+                                    <c:if test="${product.getCode().length() == 0}">
+                                        <input placeholder="ab01" type="text" name="productCode" value=""/>
+                                        <mma:ifEmptyMark  field=""/>
+                                    </c:if>
+                                    <c:if test="${product.getCode().length() > 0}">
+                                        <input type="hidden" name="productCode" value="${product.code}"/>
+                                        <div class="noInput">${product.code}</div>
+                                    </c:if>
                                 </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td class="right"><b>Artist:</b></td>
-                            <td><input required="yes" placeholder="86 (the band)" type="text" name="productArtist" value="${product.getArtistName()}"/></td>
+                            <td>
+                                <input placeholder="86 (the band)" type="text" name="productArtist" value="${product.getArtistName()}"/>
+                                <mma:ifEmptyMark  field="${product.getArtistName()}"/>
+                            </td>
                         </tr>
                         <tr>
                             <td class="right"><b>Album:</b></td>
-                            <td><input required="yes" placeholder="True Life Songs and Pictures" type="text" name="productAlbum" value="${product.getAlbumName()}"/></td>
+                            <td>
+                                <input placeholder="True Life Songs and Pictures" type="text" name="productAlbum" value="${product.getAlbumName()}"/>
+                                <mma:ifEmptyMark  field="${product.getAlbumName()}"/>
+                            </td>
                         </tr>
                         <tr>
                             <td class="right"><b>Price:</b></td>
-                            <td><input required="yes" placeholder="10.00" type="text" name="productPrice" value="${product.price}"/></td>
+                            <td>
+                                <c:if test="${product.price <= 0 || product.price == null}">
+                                    <input placeholder="10.00" type="text" name="productPrice" value=""/>
+                                    <mma:ifEmptyMark  field=""/>
+                                </c:if>
+                                <c:if test="${product.price > 0}">
+                                    <input placeholder="10.00" type="text" name="productPrice" value="${product.price}"/>
+                                    <mma:ifEmptyMark  field="${product.price}"/>
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
-                            <td>
-    <!--                          ): -->
-                            </td>
-                            <td>
+                            <td colspan="2">
 
-                                <c:if test="${e !=null}">
-                                    <div class="errorMessage">Price must be numeric.</div>
+                                <c:if test="${e != null}">
+                                    <div class="error message">${message}</div>
                                 </c:if>
                             </td>
 
@@ -72,10 +101,12 @@
                                 </c:if>
                                 <c:if test="${product.code != null}">
                                 <input type="submit" value="Update Product"/>
+                                <c:if test="${e == null}">
                                 <a href="<c:url value='/loadProducts' >
                                        <c:param name='action' value='removeProduct'/>
                                        <c:param name='productCode' value='${product.code}'/>
                                    </c:url>" class="button neutral">Delete Product</a>
+                                </c:if>
                                 </c:if>
                             </td>
                         </tr>

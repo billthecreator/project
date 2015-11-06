@@ -32,6 +32,7 @@ public class Product implements Serializable {
     }
 
     public String getCode() {
+        if(code == null) return "";
         return code;
     }
 
@@ -40,6 +41,7 @@ public class Product implements Serializable {
     }
 
     public String getDescription() {
+        if(description == null) return "";
         return description;
     }
 
