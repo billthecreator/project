@@ -75,7 +75,7 @@ table {
     padding: 16px 0; }
     table th i {
       font-size: 16px !important; }
-    table th:first-of-type {
+    table th[data-name="album"] {
       padding-left: 16px; }
   table .code {
     color: #616161;

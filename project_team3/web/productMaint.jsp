@@ -26,8 +26,8 @@
             <div class="card">
                 <table class="">
                     <tr>
-                        <!--<th class="center">Code</th>-->
-                        <th colspan="2" >Album</th>
+                        <th class="mobHide center">Code</th>
+                        <th colspan="2" data-name="album">Album</th>
                         <!--<th>Description</th>-->
                         <th class="right"><span class="iconWord">Price</span><i class="fa fa-usd"></i></th>
                         <th class="center"><span class="iconWord"></span><i class="fa fa-pencil"></i></th>
@@ -36,7 +36,7 @@
                     <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                     <mma:product>        
                         <tr>
-                            <!--<td class="code center colRes">${productCode}</td>-->
+                            <td class="code center colRes mobHide">${productCode}</td>
                             <td class="colRes"><img class="coverArt" src="http://i40.photobucket.com/albums/e217/sextonseven/blankart.jpg"/></td>
                             <td class="description">
                                 <div class="artist">${productArtist}</div>
