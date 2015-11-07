@@ -62,14 +62,14 @@ $cardMaxWidth: 900px;
     border-radius: 3px; 
 }
 table {
-    border: 0px solid rgba(black,.25);
+    border: 0px solid rgba(black,.25);    
     border-collapse: collapse;
     width: 100%;
     
     th, td {
         border-bottom: 1px solid #888;
         text-align: left;
-        padding: 16px;
+        padding: 8px 16px;
     }
     th {
         border-bottom-width: 0;
@@ -79,6 +79,9 @@ table {
         
         i{
             font-size: 16px !important;
+        }
+        &:first-of-type {
+            padding-left: 16px;
         }
     }
     .code {
@@ -96,11 +99,10 @@ table {
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
         }
-        
         .artist{
             font-size: 16px;
             @media (max-width: ($cardMaxWidth)) {
-                font-size: 13px;
+                font-size: 14px;
             }
         }
         
@@ -123,8 +125,23 @@ table {
         }
     }
     
+    .coverArt {
+        $coverArtSize:48px;
+        width: $coverArtSize;
+        height: $coverArtSize;
+        padding: 0;
+        margin: 0;
+        opacity: .25;
+        
+        @media (max-width: ($cardMaxWidth)) {
+            $coverArtSize:48px;
+            width: $coverArtSize;
+            height: $coverArtSize;
+        }
+    }
+    
     .colRes{
-       width:50px;
+       width:20px;
        @media (max-width: ($cardMaxWidth)) {
             width:20px;
         }

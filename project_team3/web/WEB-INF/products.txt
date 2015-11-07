@@ -2,3 +2,11 @@
 pf01|Paddlefoot - The first CD|12.95
 pf02|Paddlefoot - The second CD|14.95
 jr01|Joe Rut - Genuine Wood Grained Finish|14.95
+me01|Metallica - ...And Justice For All|15.99
+if01|In Flames - Come Clarity|18.99
+cd|Chaos Divine - Colliding Skies|19.99
+sy01|Sylosis - Conclusion Of An Age|14.5
+ac01|Alice In Chains - Dirt|10.0
+pt01|Pomegranate Tigers - Entities|21.99
+pa01|Pantera - The Great Southern Trendkill|9.99
+al01|Animals As Leaders - The Joy of Motion|9.99
