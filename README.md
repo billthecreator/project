@@ -15,3 +15,6 @@ Summary:<code>Project [x] v [y]</code>
 <br>
 Look up the last update in the history tab to see the last number used.
 ![alt tag](http://i.imgur.com/Mj2IX6V.png)
+
+What the app looks like as of <code>Project 3 Final v 1</code>
+![alt tag](http://i.imgur.com/jqmqeaU.jpg)
