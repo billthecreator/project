@@ -29,9 +29,9 @@
                         <!--<th class="center">Code</th>-->
                         <th colspan="2" >Album</th>
                         <!--<th>Description</th>-->
-                        <th class="right"><i class="fa fa-usd"></i></th>
-                        <th class="center"><i class="fa fa-pencil"></i></th>
-                        <th class="center mobHide"><i class="fa fa-ban"></i></th>
+                        <th class="right"><span class="iconWord">Price</span><i class="fa fa-usd"></i></th>
+                        <th class="center"><span class="iconWord"></span><i class="fa fa-pencil"></i></th>
+                        <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-ban"></i></th>
                     </tr>
                     <%@ taglib uri="/WEB-INF/murach.tld" prefix="mma" %>
                     <mma:product>        
@@ -45,7 +45,7 @@
                             <td class="center colRes"><a href="<c:url value='/loadProducts' >
                                        <c:param name='action' value='addProduct'/>
                                        <c:param name='productCode' value='${productCode}'/>
-                                   </c:url>">Edit</a></td>
+                                                         </c:url>"><span class="iconWord">Edit</span><i class="fa fa-ellipsis-v" title="Edit or delete this item"></i></a></td>
                             <td class="center colRes mobHide">
                                 <a href="<c:url value='/loadProducts' >
                                        <c:param name='action' value='removeProduct'/>
