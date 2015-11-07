@@ -44,6 +44,8 @@ public class ProductsTag extends BodyTagSupport {
         pageContext.setAttribute(
                 "productAlbum", p.getAlbumName());
         pageContext.setAttribute(
+                "productCover", p.getImageURL());
+        pageContext.setAttribute(
                 "productPrice", p.getPriceCurrencyFormat());
     }
 

@@ -1,6 +1,5 @@
 package music.data;
 
-import music.data.ConnectionPool;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -14,13 +13,14 @@ public class ProductDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO Product (Code, Description, Price) "
-                + "VALUES (?, ?, ?)";
+                = "INSERT INTO Product (Code, Description, Price, CoverURL) "
+                + "VALUES (?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, product.getCode());
             ps.setString(2, product.getDescription());
             ps.setDouble(3, product.getPrice());
+            ps.setString(4, product.getCoverURL());
             return ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -38,13 +38,15 @@ public class ProductDB {
 
         String query = "UPDATE Product SET "
                 + "Price = ?, "
-                + "Description= ? "
+                + "Description= ?, "
+                + "CoverURL= ? "
                 + "WHERE Code = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setDouble(1, product.getPrice());
             ps.setString(2, product.getDescription());
-            ps.setString(3, product.getCode());
+            ps.setString(3, product.getCoverURL());
+            ps.setString(4, product.getCode());
 
             return ps.executeUpdate();
         } catch (SQLException e) {
@@ -118,6 +120,7 @@ public class ProductDB {
                 product.setDescription(rs.getString("Description"));
                 product.setPrice(rs.getDouble("Price"));
                 product.setCode(rs.getString("Code"));
+                product.setCoverURL(rs.getString("CoverURL"));
             }
             return product;
         } catch (SQLException e) {
@@ -147,6 +150,7 @@ public class ProductDB {
                 product.setDescription(rs.getString("Description"));
                 product.setPrice(rs.getDouble("Price"));
                 product.setCode(rs.getString("Code"));
+                product.setCoverURL(rs.getString("CoverURL"));
                 products.add(product);
             }
             return products;

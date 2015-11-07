@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import music.business.Product;
+import music.data.ProductCover;
 import music.data.ProductIO;
 import music.data.ProductDB;
 
@@ -55,10 +56,13 @@ public class UpdateProductServlet extends HttpServlet {
         
         if (action.equals("updateProduct")) {
             //create or update the product based on the product code.
-            String productCode = request.getParameter("productCode");
-            String productArtist = request.getParameter("productArtist");
-            String productAlbum = request.getParameter("productAlbum");
-            String productPrice= request.getParameter("productPrice");
+            String productCode      = request.getParameter("productCode");
+            String productArtist    = request.getParameter("productArtist");
+            String productAlbum     = request.getParameter("productAlbum");
+            String productPrice     = request.getParameter("productPrice");
+            String productCoverURL  = request.getParameter("productCoverURL");
+            
+            
             String message = "";
             int errorCode = 0;
             
@@ -99,6 +103,7 @@ public class UpdateProductServlet extends HttpServlet {
                     Product newProduct = new Product();
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
+                    newProduct.setCoverURL(productCoverURL);
                     
                     try{
                         double newPrice = Double.parseDouble(productPrice);
@@ -115,6 +120,7 @@ public class UpdateProductServlet extends HttpServlet {
                     Product newProduct = new Product();
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
+                    newProduct.setCoverURL(productCoverURL);
                     
                     url = "/loadProducts";   
                     try {
@@ -128,6 +134,12 @@ public class UpdateProductServlet extends HttpServlet {
                             // if this product doesn't exist, create a new one
                             ProductDB.insert(newProduct);
                         }
+                        try {
+                            String dest = getServletContext().getRealPath("musicStore/images/");
+                            ProductCover.getProductCover(newProduct, dest);
+                        } catch (Exception e) {
+                        }
+                        
                     } catch(NumberFormatException e){
                         //the price is not a double
                         

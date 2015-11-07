@@ -70,6 +70,10 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="colRes right"><b>Cover Art:</b></td>
+                            <td><input placeholder="http://" type="text" name="productCoverURL" value="${product.coverURL}"/></td>
+                        </tr>
+                        <tr>
                             <td class="colRes right"><b>Price:</b></td>
                             <td>
                                 <c:if test="${product.price <= 0 || product.price == null}">

@@ -16,6 +16,7 @@ public class Product implements Serializable {
     private String code;
     private String description;
     private double price;
+    private String coverURL = "";
 
     public Product() {}
 
@@ -77,9 +78,16 @@ public class Product implements Serializable {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         return currency.format(price);
     }
+    
+    public void setCoverURL(String coverURL) {
+        this.coverURL = coverURL;
+    }
+    public String getCoverURL() {
+        return coverURL;
+    }
 
     public String getImageURL() {
-        String imageURL = "/musicStore/images/" + code + "_cover.jpg";
+        String imageURL = "musicStore/images/" + code + "_cover.jpg";
         return imageURL;
     }
 

@@ -24,10 +24,11 @@
                 </div>
             </div>
             <div class="card">
-                <table class="">
+                <table cellspacing="0">
                     <tr>
                         <th class="mobHide center">Code</th>
-                        <th colspan="2" data-name="album">Album</th>
+                        <th></th>
+                        <th colspan="1" data-name="album">Album</th>
                         <!--<th>Description</th>-->
                         <th class="right"><span class="iconWord">Price</span><i class="fa fa-usd wordIcon"></i></th>
                         <th class="center"><span class="iconWord"></span><i class="fa fa-pencil wordIcon"></i></th>
@@ -37,7 +38,7 @@
                     <mma:product>        
                         <tr>
                             <td class="code center colRes mobHide">${productCode}</td>
-                            <td class="colRes"><img class="coverArt" src="http://i40.photobucket.com/albums/e217/sextonseven/blankart.jpg"/></td>
+                            <td class="colRes"><img class="coverArt" src="${productCover}"/></td>
                             <td class="description">
                                 <div class="artist">${productArtist}</div>
                                 <div class="album">${productAlbum}</div></td>

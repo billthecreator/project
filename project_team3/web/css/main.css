@@ -51,14 +51,14 @@ br {
   border-radius: 3px; }
 
 table {
-  border: 0px solid rgba(0, 0, 0, 0.25);
+  border: none;
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 0 !important;
+  vertical-align: baseline;
   width: 100%; }
   table th, table td {
-    border-bottom: 1px solid #888;
     text-align: left;
-    padding: 8px 16px; }
+    padding: 0px 16px; }
     table th i.wordIcon, table td i.wordIcon {
       display: none !important; }
       @media (max-width: 600px) {
@@ -69,14 +69,13 @@ table {
       table th .iconWord, table td .iconWord {
         display: none; } }
   table th {
-    border-bottom-width: 0;
     font-size: 12px;
     text-transform: uppercase;
     padding: 16px 0; }
     table th i {
       font-size: 16px !important; }
     table th[data-name="album"] {
-      padding-left: 16px; }
+      padding-left: 8px; }
   table .code {
     color: #616161;
     font-weight: 400;
@@ -86,7 +85,7 @@ table {
     font-weight: 400;
     font-size: 15px;
     line-height: 20px;
-    padding: 16px 0; }
+    padding: 0 8px; }
     @media (max-width: 900px) {
       table .description {
         font-size: 13px; } }
@@ -104,19 +103,21 @@ table {
     color: #616161;
     font-weight: 400;
     font-size: 16px;
-    padding: 8px 16px;
+    padding: 0 8px;
     padding-right: 0; }
     @media (max-width: 900px) {
       table .price {
         font-size: 13px; } }
   table .coverArt {
-    width: 48px;
-    height: 48px;
+    width: 48px !important;
+    height: 48px !important;
     padding: 0;
     margin: 0;
-    opacity: .25; }
+    padding: 8px 0;
+    display: block; }
   table .colRes {
-    width: 20px; }
+    width: 20px;
+    padding: 0 8px; }
     @media (max-width: 900px) {
       table .colRes {
         width: 20px; } }
@@ -127,13 +128,13 @@ tr td a {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
-  padding: 16px;
+  padding: 16px 8px;
   color: rgba(0, 0, 0, 0.87); }
   @media (max-width: 900px) {
     tr td a {
       opacity: 100;
       font-size: 13px;
-      padding: 4px; } }
+      padding: 16px 8px; } }
   @media (max-width: 600px) {
     tr td a {
       opacity: 100;
@@ -212,7 +213,7 @@ input[name="productCode"] {
   width: calc(100%);
   max-width: 100px; }
 
-input[name*="productA"] {
+input[name*="productA"], input[name*="productCover"] {
   width: calc(100% - (8px*8)); }
 
 input[name="productPrice"] {
