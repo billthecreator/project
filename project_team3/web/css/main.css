@@ -59,10 +59,10 @@ table {
     border-bottom: 1px solid #888;
     text-align: left;
     padding: 8px 16px; }
-    table th i, table td i {
+    table th i.wordIcon, table td i.wordIcon {
       display: none !important; }
       @media (max-width: 600px) {
-        table th i, table td i {
+        table th i.wordIcon, table td i.wordIcon {
           display: inline-block !important;
           font-size: 16px !important; } }
     @media (max-width: 600px) {
