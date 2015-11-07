@@ -19,7 +19,7 @@
             <div class="card">
                 <table class="noBorder noColor">
                     <tr>
-                        <td class="code right"><b>Code:</b></td>
+                        <td class="colRes code right"><b>Code:</b></td>
                         <td class="description">${product.code}</td>
                     </tr>
                     <tr>

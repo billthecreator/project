@@ -43,7 +43,7 @@ br {
 
 /* The styles for the tables */
 .card {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  /*border: 1px solid rgba(black, .1);*/
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
   padding: 16px 0;
   display: block;
@@ -53,6 +53,7 @@ br {
 table {
   border: 0px solid rgba(0, 0, 0, 0.25);
   border-collapse: collapse;
+  border-spacing: 0;
   width: 100%; }
   table th, table td {
     border-bottom: 1px solid #888;
@@ -105,10 +106,6 @@ table {
     padding: 0;
     margin: 0;
     opacity: .25; }
-    @media (max-width: 900px) {
-      table .coverArt {
-        width: 48px;
-        height: 48px; } }
   table .colRes {
     width: 20px; }
     @media (max-width: 900px) {
@@ -180,6 +177,7 @@ tr td {
     color: #006064;
     background-color: #00bcd4; }
   .message.error {
+    box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.2);
     background-color: #e0e0e0;
     color: #f44336; }
   .message i {
@@ -218,22 +216,22 @@ input[type="submit"], a.button {
   padding: 8px 16px;
   min-width: 88px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
   text-transform: uppercase;
   color: white;
-  background-color: #ff5722;
+  background-color: #ff9800;
   border-radius: 2px;
   border: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
   input[type="submit"].mL10, a.button.mL10 {
     margin-left: 26px; }
   input[type="submit"]:hover, a.button:hover {
-    background-color: #f4511e;
+    background-color: #fb8c00;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
   input[type="submit"]:active, a.button:active {
-    background-color: #e64a19;
+    background-color: #f57c00;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25); }
   input[type="submit"].neutral, a.button.neutral {
     background-color: #e0e0e0;

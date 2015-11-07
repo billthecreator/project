@@ -37,7 +37,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="right" width="20"><b>Code:</b></td>
+                            <td class="colRes right" width="20"><b>Code:</b></td>
                             <td>
                                 <c:if test="${product.code == null}">
                                     <input placeholder="ab01" type="text" name="productCode" value=""/>
@@ -56,21 +56,21 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="right"><b>Artist:</b></td>
+                            <td class="colRes right"><b>Artist:</b></td>
                             <td>
                                 <input placeholder="86 (the band)" type="text" name="productArtist" value="${product.getArtistName()}"/>
                                 <mma:ifEmptyMark  field="${product.getArtistName()}"/>
                             </td>
                         </tr>
                         <tr>
-                            <td class="right"><b>Album:</b></td>
+                            <td class="colRes right"><b>Album:</b></td>
                             <td>
                                 <input placeholder="True Life Songs and Pictures" type="text" name="productAlbum" value="${product.getAlbumName()}"/>
                                 <mma:ifEmptyMark  field="${product.getAlbumName()}"/>
                             </td>
                         </tr>
                         <tr>
-                            <td class="right"><b>Price:</b></td>
+                            <td class="colRes right"><b>Price:</b></td>
                             <td>
                                 <c:if test="${product.price <= 0 || product.price == null}">
                                     <input placeholder="10.00" type="text" name="productPrice" value=""/>
