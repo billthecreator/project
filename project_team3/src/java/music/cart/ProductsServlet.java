@@ -14,15 +14,11 @@ public class ProductsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        
-        //get the path of the file containing the products
-        String path = getServletContext().getRealPath("/WEB-INF/products.txt");
-        //create a product list holder
-        ProductIO prodIO = new ProductIO();
-        prodIO.init(path);
+        HttpSession session = request.getSession();        
+                
         //put the list of products in a List
-        ArrayList<Product> products = prodIO.selectProducts();
+        ArrayList<Product> products = ProductDB.selectProducts();
+        
         //set the List to the "products" attribute
         session.setAttribute("products", products);
         
@@ -47,7 +43,7 @@ public class ProductsServlet extends HttpServlet {
             url = "/addProduct.jsp";
             if (productCode != null) {
                 //if the product code not not a null value
-                session.setAttribute("product",  prodIO.selectProduct(productCode));
+                session.setAttribute("product",  ProductDB.selectProduct(productCode));
             }
             else {
                 //if the product code is null, set everything blank
@@ -61,7 +57,7 @@ public class ProductsServlet extends HttpServlet {
         else if (action.equals("removeProduct")) {
             //clicking delete will grab the infomation and send it to the delete jsp
             String productCode = request.getParameter("productCode");
-            session.setAttribute("product",  prodIO.selectProduct(productCode));
+            session.setAttribute("product",  ProductDB.selectProduct(productCode));
             url = "/deleteProduct.jsp";
         }
         getServletContext()

@@ -15,7 +15,7 @@ public class ProductsTag extends BodyTagSupport {
 
     @Override
     public int doStartTag() {
-        List<Product> products = (ArrayList) pageContext.findAttribute("products");
+        ArrayList<Product> products = (ArrayList) pageContext.findAttribute("products");
         lineItems = products;
         if (lineItems.size() <= 0) {
             return SKIP_BODY;

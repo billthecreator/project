@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import music.business.Product;
+import music.data.ProductDB;
 import music.data.ProductIO;
 
 /**
@@ -35,14 +36,10 @@ public class DeleteProductServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        
-        //get the path of the file containing the products
-        String path = getServletContext().getRealPath("/WEB-INF/products.txt");
-        //create a product list holder
-        ProductIO prodIO = new ProductIO();
-        prodIO.init(path);
+                
         //put the list of products in a List
-        ArrayList<Product> products = prodIO.selectProducts();
+        ArrayList<Product> products = ProductDB.selectProducts();
+        
         //set the List to the "products" attribute
         session.setAttribute("products", products);
         
@@ -60,11 +57,11 @@ public class DeleteProductServlet extends HttpServlet {
             String productCode = request.getParameter("productCode");
             
             if (productCode != null || !productCode.isEmpty()){
-                Product productToDelete = prodIO.selectProduct(productCode);
+                Product productToDelete = ProductDB.selectProduct(productCode);
                                 
-                if (prodIO.exists(productToDelete.getCode())){
+                if (ProductDB.codeExists(productToDelete.getCode())){
                     // if this product exists in the list, then delete it
-                    prodIO.deleteProduct(productToDelete);
+                    ProductDB.delete(productToDelete);
                 }
                 //return to the list of products after deletion or cancelation 
                 url = "/loadProducts";    

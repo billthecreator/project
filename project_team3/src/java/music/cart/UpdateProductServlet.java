@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import music.business.Product;
 import music.data.ProductIO;
+import music.data.ProductDB;
 
 /**
  *
@@ -36,14 +37,10 @@ public class UpdateProductServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        
-        //get the path of the file containing the products
-        String path = getServletContext().getRealPath("/WEB-INF/products.txt");
-        //create a product list holder
-        ProductIO prodIO = new ProductIO();
-        prodIO.init(path);
+                
         //put the list of products in a List
-        ArrayList<Product> products = prodIO.selectProducts();
+        ArrayList<Product> products = ProductDB.selectProducts();
+        
         //set the List to the "products" attribute
         session.setAttribute("products", products);
         
@@ -124,12 +121,12 @@ public class UpdateProductServlet extends HttpServlet {
                         //test to see if price is double
                          newProduct.setPrice(Double.parseDouble(productPrice));
                         //cleared - update, or insert
-                        if (prodIO.exists(newProduct.getCode())){
+                        if (ProductDB.codeExists(newProduct.getCode())){
                             // if this product exists in the list, then update it
-                            prodIO.updateProduct(newProduct);
+                            ProductDB.update(newProduct);
                         } else {
                             // if this product doesn't exist, create a new one
-                            prodIO.insertProduct(newProduct);
+                            ProductDB.insert(newProduct);
                         }
                     } catch(NumberFormatException e){
                         //the price is not a double
