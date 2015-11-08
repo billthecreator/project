@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import music.business.Product;
+import music.business.ProductError;
+import music.color.ColorPalette;
 import music.data.ProductCover;
 import music.data.ProductIO;
 import music.data.ProductDB;
@@ -62,6 +64,8 @@ public class UpdateProductServlet extends HttpServlet {
             String productPrice     = request.getParameter("productPrice");
             String productCoverURL  = request.getParameter("productCoverURL");
             
+            ProductError prodError = new ProductError();
+            
             
             String message = "";
             int errorCode = 0;
@@ -69,26 +73,33 @@ public class UpdateProductServlet extends HttpServlet {
             //if the product code has any value 
             if (productCode != null){
                 if(productCode == null || productCode.length() == 0) {
-                    message += "<i class=\"fa fa-warning\"></i>Please enter a code<br/>";
-                    errorCode += 2;
+//                    message += "<i class=\"fa fa-warning\"></i>Please enter a code<br/>";
+                    prodError.setCodeError(true);
+                    errorCode = 1;
+                    
                 }
                 if(productArtist == null || productArtist.length() == 0) {
-                    message += "<i class=\"fa fa-warning\"></i>Please enter an artist name<br/>";
-                    errorCode += 4;
+//                    message += "<i class=\"fa fa-warning\"></i>Please enter an artist name<br/>";
+                    prodError.setArtistError(true);
+                    errorCode = 1;
                 }
                 if(productAlbum == null || productAlbum.length() == 0) {
-                    message += "<i class=\"fa fa-warning\"></i>Please enter an album name<br/>";
-                    errorCode += 8;
+//                    message += "<i class=\"fa fa-warning\"></i>Please enter an album name<br/>";
+                    prodError.setAlbumError(true);
+                    errorCode = 1;
                 }
                 if(productPrice == null || productPrice.length() == 0) {
-                    message += "<i class=\"fa fa-warning\"></i>Please enter a price<br/>";
-                    errorCode += 1;
+//                    message += "<i class=\"fa fa-warning\"></i>Please enter a price<br/>";
+                    prodError.setPriceError(true);
+                    errorCode = 1;
                 }else{
                     try{
                         Double.parseDouble(productPrice);
                     }catch(NumberFormatException e){
-                        message += "<i class=\"fa fa-warning\"></i>The price must be numeric<br/>";
-                        errorCode += 16;
+//                        message += "<i class=\"fa fa-warning\"></i>The price must be numeric<br/>";
+                        prodError.setPriceError2(true);
+                    errorCode = 1;
+                        
                     }
                 }
                 
@@ -97,8 +108,8 @@ public class UpdateProductServlet extends HttpServlet {
                 
                 if(errorCode >= 1){
                     // all fields blank
-                    session.setAttribute("e", errorCode);
-                    session.setAttribute("message", message);
+//                    session.setAttribute("e", errorCode);
+//                    session.setAttribute("message", message);
                     
                     Product newProduct = new Product();
                     newProduct.setCode(productCode);
@@ -112,6 +123,7 @@ public class UpdateProductServlet extends HttpServlet {
                     }
                     
                     session.setAttribute("product", newProduct);
+                    session.setAttribute("prodError", prodError);
                     
                 }
                     
@@ -122,6 +134,9 @@ public class UpdateProductServlet extends HttpServlet {
                     newProduct.setDescription(productArtist + " - " + productAlbum);
                     newProduct.setCoverURL(productCoverURL);
                     
+                    ColorPalette palette = new ColorPalette();
+                    session.setAttribute("pageColor", palette.updatePrimary500);
+                    session.setAttribute("pageAccentColor", palette.updateSecondary500);
                     url = "/loadProducts";   
                     try {
                         //test to see if price is double
@@ -139,16 +154,20 @@ public class UpdateProductServlet extends HttpServlet {
                             ProductCover.getProductCover(newProduct, dest);
                         } catch (Exception e) {
                         }
+                        session.setAttribute("pageColor", palette.defaultPrimary500);
+                        session.setAttribute("pageAccentColor", palette.defaultSecondary500);
                         
                     } catch(NumberFormatException e){
                         //the price is not a double
                         
                       
                         session.setAttribute("product", newProduct);
-                        message += "<i class=\"fa fa-warning\"></i>Price must be numeric<br/>";
+                        prodError.setPriceError2(true);
+//                        message += "<i class=\"fa fa-warning\"></i>Price must be numeric<br/>";
                                 
-                        session.setAttribute("e", e);
-                        session.setAttribute("message", message);
+//                        session.setAttribute("e", e);
+//                        session.setAttribute("message", message);
+                        session.setAttribute("prodError", prodError);
 
                         url = "/addProduct.jsp";   
                     }          

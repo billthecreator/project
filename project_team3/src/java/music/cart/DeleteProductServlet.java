@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import music.business.Product;
+import music.color.ColorPalette;
 import music.data.ProductDB;
 import music.data.ProductIO;
 
@@ -46,6 +47,10 @@ public class DeleteProductServlet extends HttpServlet {
         //default landing page
         String url = "/productMaint.jsp";
         
+        ColorPalette palette = new ColorPalette();
+        session.setAttribute("pageColor", palette.defaultPrimary500);
+        session.setAttribute("pageAccentColor", palette.defaultSecondary500);
+
         String action = request.getParameter("action");
         if (action == null) {
             //default action

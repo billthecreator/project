@@ -5,6 +5,7 @@
  */
 package music.business;
 
+import java.io.File;
 import java.text.NumberFormat;
 import java.io.Serializable;
 /**
@@ -86,6 +87,8 @@ public class Product implements Serializable {
         return coverURL;
     }
 
+    
+    
     public String getImageURL() {
         String imageURL = "musicStore/images/" + code + "_cover.jpg";
         return imageURL;

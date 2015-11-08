@@ -7,14 +7,19 @@ import java.util.ArrayList;
 import java.lang.NumberFormatException;
 import music.data.*;
 import music.business.*;
+import music.color.ColorPalette;
 
 public class ProductsServlet extends HttpServlet {
+    
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();        
+        HttpSession session = request.getSession();  
+        
+        ColorPalette palette = new ColorPalette();
                 
         //put the list of products in a List
         ArrayList<Product> products = ProductDB.selectProducts();
@@ -34,6 +39,8 @@ public class ProductsServlet extends HttpServlet {
         //actions:
         if (action.equals("displayProducts")) {
             //default action, just show the list of products
+            session.setAttribute("pageColor", palette.defaultPrimary500);
+            session.setAttribute("pageAccentColor", palette.defaultSecondary500);
             url = "/productMaint.jsp";    
         } 
         else if (action.equals("addProduct")) {
@@ -48,16 +55,21 @@ public class ProductsServlet extends HttpServlet {
             else {
                 //if the product code is null, set everything blank
                 //so the the product is new
-                session.setAttribute("product",  null);
+                session.setAttribute("product",  new Product());
             }
-            NumberFormatException e = null;
-            session.setAttribute("e", e);
+            ProductError prodError = new ProductError();
+//            NumberFormatException e = null;
+            session.setAttribute("prodError", prodError);
+            session.setAttribute("pageColor", palette.updatePrimary500);
+            session.setAttribute("pageAccentColor", palette.updateSecondary500);
             
         }
         else if (action.equals("removeProduct")) {
             //clicking delete will grab the infomation and send it to the delete jsp
             String productCode = request.getParameter("productCode");
             session.setAttribute("product",  ProductDB.selectProduct(productCode));
+            session.setAttribute("pageColor", palette.deletePrimary500);
+            session.setAttribute("pageAccentColor", palette.deleteSecondary500);
             url = "/deleteProduct.jsp";
         }
         getServletContext()

@@ -12,11 +12,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url='includes/header.html' />
+        <c:import url='includes/header.jsp' />
+        <style>
+            .bar:before, .bar:after {
+                background-color: ${pageAccentColor};z-index: 10;
+            }
+            .errorBar:before, .errorBar:after {
+                    background: red; 
+                    width:50%;
+                    z-index: 100;
+            }
+            @-webkit-keyframes inputHighlighter {
+                from { background:${pageAccentColor}; }
+                to   { width:0; background:transparent; }
+            }
+            @-moz-keyframes inputHighlighter {
+                from { background:${pageAccentColor}; }
+                to   { width:0; background:transparent; }
+            }
+            @keyframes inputHighlighter {
+                from { background:${pageAccentColor}; }
+                to   { width:0; background:transparent; }
+            }
+        </style>
     </head>
     <body>
         <div class="container">
-            <div class="header">
+<!--            <div class="header">
                 <div class="block"><h1>Product</h1></div>
                 <div class="block">
                     <form action="loadProducts">
@@ -24,86 +46,139 @@
                         <input type="submit" value="View Products"/>
                     </form>
                 </div>
-            </div>
+            </div>-->
             
-            <div class="card">
+            <div class="card withTitle">
                 <form action="updateProduct" method="post">
                     <table class="noBorder noColor">
-                        <tr>
-                            <td colspan="2">                                    
-                                <c:if test="${product.code == null || product.getCode().length() == 0 || product.price <= 0 || product.price == null || product.getArtistName().length() == 0 || product.getAlbumName().length() == 0}">
-                                    <div class="message info"><i class="fa fa-info-circle"></i><mma:ifEmptyMark  field=""/> Marks required fields.</div>
-                                </c:if>
+<!--                        <tr>
+                            <td colspan="2">                                    -->
+                                <%--<c:if test="${product.code == null || product.getCode().length() == 0 || product.price <= 0 || product.price == null || product.getArtistName().length() == 0 || product.getAlbumName().length() == 0}">--%>
+                                    <!--<div class="message info"><i class="fa fa-info-circle"></i><mma:ifEmptyMark  field=""/> Marks required fields.</div>-->
+                                <%--</c:if>--%>
+<!--                            </td>
+                        </tr>-->
+
+                        <tr class="cardTitle" style="background-color: ${pageColor};">
+                            <td colspan="1">
+                                <div class="title">    
+                                    <h1>Product creation</h1>
+                                    <h2>Add or update an existing product</h2>
+                                    <a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="button" >View All Products</a><c:if test="${product.code != null && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
+                                </div>
+                                    <div class="albumCoverArt">
+                                        <img class="coverArt" src="${product.getImageURL()}"/>
+                                    </div>
+                                
                             </td>
                         </tr>
                         <tr>
-                            <td class="colRes right" width="20"><b>Code:</b></td>
                             <td>
-                                <c:if test="${product.code == null}">
-                                    <input placeholder="ab01" type="text" name="productCode" value=""/>
-                                    <mma:ifEmptyMark  field=""/>
+                                <c:if test="${product.code == null || product.getCode().length() == 0}">
+                                    
+                                    <div class="group short">      
+                                        <input id="materialInput" type="text" name="productCode" value="">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Code</label>
+                                        <c:if test="${prodError.codeError}">
+                                            <span class="bar errorBar"></span>
+                                            <span class="errorLabel">Code is required</span>
+                                        </c:if>
+                                    </div>
+                                    
+                                    <%--<mma:ifEmptyMark  field=""/>--%>
                                 </c:if>
                                 <c:if test="${product.code != null}">
-                                    <c:if test="${product.getCode().length() == 0}">
-                                        <input placeholder="ab01" type="text" name="productCode" value=""/>
-                                        <mma:ifEmptyMark  field=""/>
-                                    </c:if>
                                     <c:if test="${product.getCode().length() > 0}">
                                         <input type="hidden" name="productCode" value="${product.code}"/>
-                                        <div class="noInput">${product.code}</div>
+                                        
+                                        <div class="group short">      
+                                            <input id="materialInput" type="text" name="productCode" value="${product.code}" disabled="true">
+                                            <span class="highlight"></span>
+                                            <span class="bar"></span>
+                                            <label>Code</label>
+                                            <c:if test="${prodError.codeError}">
+                                                <span class="bar errorBar"></span>
+                                                <span class="errorLabel">Code is required</span>
+                                            </c:if>
+                                        </div>
                                     </c:if>
                                 </c:if>
                             </td>
                         </tr>
                         <tr>
-                            <td class="colRes right"><b>Artist:</b></td>
                             <td>
-                                <input placeholder="86 (the band)" type="text" name="productArtist" value="${product.getArtistName()}"/>
-                                <mma:ifEmptyMark  field="${product.getArtistName()}"/>
+                                <div class="group short">      
+                                    <input id="materialInput" type="text" name="productArtist" value="${product.getArtistName()}">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Artist</label>
+                                    <c:if test="${prodError.artistError}">
+                                        <span class="bar errorBar"></span>
+                                        <span class="errorLabel">An Artist name is required</span>
+                                    </c:if>
+                                </div>
+                                    
+                                <div class="group short">      
+                                    <input id="materialInput" type="text" name="productAlbum" value="${product.getAlbumName()}">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Album</label>
+                                    <c:if test="${prodError.albumError}">
+                                        <span class="bar errorBar"></span>
+                                        <span class="errorLabel">An Album name is required</span>
+                                    </c:if>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="colRes right"><b>Album:</b></td>
                             <td>
-                                <input placeholder="True Life Songs and Pictures" type="text" name="productAlbum" value="${product.getAlbumName()}"/>
-                                <mma:ifEmptyMark  field="${product.getAlbumName()}"/>
+                                <div class="group">      
+                                    <input id="materialInput" type="text" name="productCoverURL" value="${product.coverURL}">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Cover Art URL</label>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="colRes right"><b>Cover Art:</b></td>
-                            <td><input placeholder="http://" type="text" name="productCoverURL" value="${product.coverURL}"/></td>
-                        </tr>
-                        <tr>
-                            <td class="colRes right"><b>Price:</b></td>
                             <td>
                                 <c:if test="${product.price <= 0 || product.price == null}">
-                                    <input placeholder="10.00" type="text" name="productPrice" value=""/>
-                                    <mma:ifEmptyMark  field=""/>
+                                    <div class="group short">      
+                                        <input id="materialInput" type="text" name="productPrice" value="">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Price</label>
+                                        <c:if test="${prodError.priceError}">
+                                        <span class="bar errorBar"></span>
+                                            <span class="errorLabel">A Price amount is required</span>
+                                        </c:if>
+                                            
+                                        <c:if test="${prodError.priceError2}">
+                                            <span class="bar errorBar"></span>
+                                            <span class="errorLabel">A price amount must be numeric and can include 1 decimal</span>
+                                        </c:if>
+                                    </div>
                                 </c:if>
                                 <c:if test="${product.price > 0}">
-                                    <input placeholder="10.00" type="text" name="productPrice" value="${product.price}"/>
-                                    <mma:ifEmptyMark  field="${product.price}"/>
+                                    <div class="group short">      
+                                        <input id="materialInput" type="text" name="productPrice" value="${product.price}">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Price</label>
+                                    </div>
                                 </c:if>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="2">
-
-                                <c:if test="${e != null}">
-                                    <div class="error message">${message}</div>
-                                </c:if>
-                            </td>
-
-                        </tr>
-
-                        <tr>
+                        <tr class="actionBar">
                             <td colspan="2">
                                 <input type="hidden" name="action" value="updateProduct"/>
                                 <c:if test="${product.code == null}">
-                                    <input class="mL10" type="submit" value="Add"/>
+                                    <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Add"/>
                                 </c:if>
                                 <c:if test="${product.code != null}">
-                                    <input class="mL10" type="submit" value="Update"/><c:if test="${e == null}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
+                                    <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Update Product"/>
                                 </c:if>
                             </td>
                         </tr>
