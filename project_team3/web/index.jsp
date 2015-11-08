@@ -4,6 +4,7 @@
     Author     : William
 --%>
 
+<%@page import="music.color.ColorPalette"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +12,13 @@
 <html>
     <head>        
         <c:import url='includes/header.jsp' />
-        <meta name="theme-color" content="rgba(63,81,181,1)" />
+        
+        <%
+           ColorPalette palette = new ColorPalette();
+        %>
+        
+        <meta name="theme-color" content="<%= palette.defaultPrimary500 %>" />
+        
     </head>
     <body>
         <div class="container">
@@ -19,7 +26,7 @@
                 
                 <div class="card withTitle">
                      <table cellspacing="0">
-                        <tr class="cardTitle" style="background-color: rgba(63,81,181,1);">
+                        <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
                             <td colspan="1">
                                 <div class="title">    
                                     <h1>Product Maintenance</h1>
@@ -36,7 +43,7 @@
                             <th class="left" data-name="album">
                                 <form action="loadProducts">
                                     <input type="hidden" name="action" value="displayProducts"/>
-                                    <input style="background-color: rgba(255,64,129,1);" type="submit" value="Log in"/>
+                                    <input style="background-color:<%= palette.defaultSecondary500 %>;" type="submit" value="Log in"/>
                                 </form>
                             </th>
                         </tr>

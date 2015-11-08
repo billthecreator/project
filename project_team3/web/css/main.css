@@ -399,9 +399,9 @@ tr td {
     pointer-events: none;
     opacity: 0.5; }
   .group input:focus ~ .highlight {
-    -webkit-animation: inputHighlighter 0.3s ease;
-    -moz-animation: inputHighlighter 0.3s ease;
-    animation: inputHighlighter 0.3s ease; }
+    -webkit-animation: inputHighlighter 0.65s ease;
+    -moz-animation: inputHighlighter 0.65s ease;
+    animation: inputHighlighter 0.65s ease; }
 @-webkit-keyframes inputHighlighter {
   from {
     background: #03a9f4; }
