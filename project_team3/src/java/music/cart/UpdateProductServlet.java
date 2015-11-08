@@ -153,6 +153,7 @@ public class UpdateProductServlet extends HttpServlet {
                             String dest = getServletContext().getRealPath("musicStore/images/");
                             ProductCover.getProductCover(newProduct, dest);
                         } catch (Exception e) {
+                            prodError.setCoverURLError(true);
                         }
                         session.setAttribute("pageColor", palette.defaultPrimary500);
                         session.setAttribute("pageAccentColor", palette.defaultSecondary500);

@@ -16,13 +16,16 @@ public class ProductError {
     private boolean albumError = false;
     private boolean priceError = false;
     private boolean priceError2 = false;
+    private boolean coverURLError = false;
+
     
     public boolean anyErrors(){
         if(codeError ||
                 artistError ||
                 albumError ||
                 priceError ||
-                priceError2) {
+                priceError2 ||
+                coverURLError) {
             return true;
         }
         return false;
@@ -68,4 +71,11 @@ public class ProductError {
         this.priceError2 = priceError2;
     }
     
+    public boolean isCoverURLError() {
+        return coverURLError;
+    }
+
+    public void setCoverURLError(boolean coverURLError) {
+        this.coverURLError = coverURLError;
+    }
 }

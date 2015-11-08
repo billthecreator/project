@@ -139,6 +139,11 @@
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Cover Art URL</label>
+                                    
+                                    <c:if test="${prodError.coverURLError}">
+                                        <span class="bar errorBar"></span>
+                                        <span class="errorLabel">Unable to download image</span>
+                                    </c:if>
                                 </div>
                             </td>
                         </tr>

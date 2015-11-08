@@ -39,11 +39,11 @@
                         <tr>
                             <td> </td>
                         </tr>
-                        <tr>
-                            <th class="left" data-name="album">
+                        <tr class="actionBar">
+                            <th>
                                 <form action="loadProducts">
                                     <input type="hidden" name="action" value="displayProducts"/>
-                                    <input style="background-color:<%= palette.defaultSecondary500 %>;" type="submit" value="Log in"/>
+                                    <input style="background-color:<%= palette.defaultSecondary500 %>;" class="mL10" type="submit" value="Log in"/>
                                 </form>
                             </th>
                         </tr>
@@ -54,6 +54,3 @@
         </div>
     </body>
 </html>
-<%--
-Adding this comment to test commit
---%>
