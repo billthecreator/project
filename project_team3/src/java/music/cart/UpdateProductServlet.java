@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package music.cart;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +12,6 @@ import music.business.Product;
 import music.business.ProductError;
 import music.color.ColorPalette;
 import music.data.ProductCover;
-import music.data.ProductIO;
 import music.data.ProductDB;
 
 /**
@@ -107,10 +99,7 @@ public class UpdateProductServlet extends HttpServlet {
                 
                 
                 if(errorCode >= 1){
-                    // all fields blank
-//                    session.setAttribute("e", errorCode);
-//                    session.setAttribute("message", message);
-                    
+                    // all fields blank                    
                     Product newProduct = new Product();
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
@@ -164,10 +153,6 @@ public class UpdateProductServlet extends HttpServlet {
                       
                         session.setAttribute("product", newProduct);
                         prodError.setPriceError2(true);
-//                        message += "<i class=\"fa fa-warning\"></i>Price must be numeric<br/>";
-                                
-//                        session.setAttribute("e", e);
-//                        session.setAttribute("message", message);
                         session.setAttribute("prodError", prodError);
 
                         url = "/addProduct.jsp";   

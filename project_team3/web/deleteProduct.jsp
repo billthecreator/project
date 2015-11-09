@@ -13,9 +13,6 @@
     </head>
     <body>
         <div class="container">
-<!--            <div class="header">
-                <div class="block"><h1>Are you sure you want to delete this product?</h1></div>
-            </div>-->
             <div class="card withTitle w50">
                 <table class="noBorder noColor">
                     <tr class="cardTitle" style="background-color: ${pageColor};">

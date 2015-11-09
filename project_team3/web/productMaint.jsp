@@ -13,16 +13,6 @@
     </head>
     <body>
         <div class="container">
-<!--            <div class="header">
-                <div class="block"><h1>Products</h1></div>
-                <div class="block" style="text-align: right;">
-                    <form action="loadProducts">
-                        <input type="hidden" name="productCode" value=""/>
-                        <input type="hidden" name="action" value="addProduct"/>
-                        <input type="submit" value="Add Product"/>
-                    </form>
-                </div>
-            </div>-->
             <div class="card withTitle">
                 <table cellspacing="0">
                     <tr class="cardTitle" style="background-color: ${pageColor};">
@@ -42,7 +32,6 @@
                         <th class="mobHide center">Code</th>
                         <th></th>
                         <th colspan="1" data-name="album">Album</th>
-                        <!--<th>Description</th>-->
                         <th class="right" data-name="price"><span class="iconWord">Price</span><i class="fa fa-usd wordIcon"></i></th>
                         <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-pencil wordIcon"></i></th>
                         <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-ban wordIcon"></i></th>

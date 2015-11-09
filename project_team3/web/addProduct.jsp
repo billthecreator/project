@@ -38,38 +38,20 @@
     </head>
     <body>
         <div class="container">
-<!--            <div class="header">
-                <div class="block"><h1>Product</h1></div>
-                <div class="block">
-                    <form action="loadProducts">
-                        <input type="hidden" name="action" value="displayProducts"/>
-                        <input type="submit" value="View Products"/>
-                    </form>
-                </div>
-            </div>-->
             
             <div class="card withTitle">
                 <form action="updateProduct" method="post">
                     <table class="noBorder noColor">
-<!--                        <tr>
-                            <td colspan="2">                                    -->
-                                <%--<c:if test="${product.code == null || product.getCode().length() == 0 || product.price <= 0 || product.price == null || product.getArtistName().length() == 0 || product.getAlbumName().length() == 0}">--%>
-                                    <!--<div class="message info"><i class="fa fa-info-circle"></i><mma:ifEmptyMark  field=""/> Marks required fields.</div>-->
-                                <%--</c:if>--%>
-<!--                            </td>
-                        </tr>-->
-
                         <tr class="cardTitle" style="background-color: ${pageColor};">
                             <td colspan="1">
                                 <div class="title">    
-                                    <h1>Product creation</h1>
+                                    <h1>Product Editor</h1>
                                     <h2>Add or update an existing product</h2>
                                     <a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="button" >View All Products</a><c:if test="${product.code != null && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
                                 </div>
-                                    <div class="albumCoverArt">
-                                        <img class="coverArt" src="${product.getImageURL()}"/>
-                                    </div>
-                                
+                                <div class="albumCoverArt">
+                                    <img class="coverArt" src="${product.getImageURL()}"/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
