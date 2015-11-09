@@ -85,7 +85,7 @@ public class ProductDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "SELECT Code FROM Product "
+        String query = "SELECT ProductCode FROM Product "
                 + "WHERE ProductCode = ?";
         try {
             ps = connection.prepareStatement(query);
@@ -117,9 +117,9 @@ public class ProductDB {
             Product product = null;
             if (rs.next()) {
                 product = new Product();
-                product.setDescription(rs.getString("Description"));
-                product.setPrice(rs.getDouble("Price"));
-                product.setCode(rs.getString("Code"));
+                product.setDescription(rs.getString("ProductDescription"));
+                product.setPrice(rs.getDouble("ProductPrice"));
+                product.setCode(rs.getString("ProductCode"));
                 product.setCoverURL(rs.getString("CoverURL"));
             }
             return product;
