@@ -13,7 +13,7 @@ public class ProductDB {
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO Product (Code, Description, Price, CoverURL) "
+                = "INSERT INTO Product (ProductCode, ProductDescription, ProductPrice, CoverURL) "
                 + "VALUES (?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
@@ -37,10 +37,10 @@ public class ProductDB {
         PreparedStatement ps = null;
 
         String query = "UPDATE Product SET "
-                + "Price = ?, "
-                + "Description= ?, "
+                + "ProductPrice = ?, "
+                + "ProductDescription= ?, "
                 + "CoverURL= ? "
-                + "WHERE Code = ?";
+                + "WHERE ProductCode = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setDouble(1, product.getPrice());
@@ -64,7 +64,7 @@ public class ProductDB {
         PreparedStatement ps = null;
 
         String query = "DELETE FROM Product "
-                + "WHERE Code = ?";
+                + "WHERE ProductCode = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, product.getCode());
@@ -86,7 +86,7 @@ public class ProductDB {
         ResultSet rs = null;
 
         String query = "SELECT Code FROM Product "
-                + "WHERE Code = ?";
+                + "WHERE ProductCode = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, code);
@@ -109,7 +109,7 @@ public class ProductDB {
         ResultSet rs = null;
 
         String query = "SELECT * FROM Product "
-                + "WHERE Code = ?";
+                + "WHERE ProductCode = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -147,9 +147,9 @@ public class ProductDB {
             while (rs.next())
             {
                 Product product = new Product();
-                product.setDescription(rs.getString("Description"));
-                product.setPrice(rs.getDouble("Price"));
-                product.setCode(rs.getString("Code"));
+                product.setDescription(rs.getString("ProductDescription"));
+                product.setPrice(rs.getDouble("ProductPrice"));
+                product.setCode(rs.getString("ProductCode"));
                 product.setCoverURL(rs.getString("CoverURL"));
                 products.add(product);
             }
