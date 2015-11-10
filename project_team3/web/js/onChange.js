@@ -1,7 +1,7 @@
 
 
 $(document).ready(function(){
-    $('input[name^="product"').on('change keyup foucusout',function(){
+    $('input[name^="product"').on('change foucusout',function(){
         var target = this;
         var $target = $(target);
         

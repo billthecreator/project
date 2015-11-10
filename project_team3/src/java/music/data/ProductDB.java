@@ -62,8 +62,8 @@ public class ProductDB {
         }
     }
 
-    public static boolean codeExists(String code) {
-        Product p = selectProduct(code);
+    public static boolean exists(long id) {
+        Product p = selectProduct(id);
         return p != null;
     }
 

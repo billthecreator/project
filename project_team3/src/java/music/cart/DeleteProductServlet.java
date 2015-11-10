@@ -58,7 +58,7 @@ public class DeleteProductServlet extends HttpServlet {
             if (productCode != null || !productCode.isEmpty()){
                 Product productToDelete = ProductDB.selectProduct(productCode);
                                 
-                if (ProductDB.codeExists(productToDelete.getCode())){
+                if (ProductDB.exists(productToDelete.getId())){
                     // if this product exists in the list, then delete it
                     ProductDB.delete(productToDelete);
                 }

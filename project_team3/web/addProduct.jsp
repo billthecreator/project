@@ -41,6 +41,7 @@
             
             <div class="card withTitle">
                 <form action="updateProduct" method="post">
+                    <input type="hidden" name="productId" value="${product.getId()}">
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">
                             <td colspan="1">
@@ -73,10 +74,9 @@
                                 </c:if>
                                 <c:if test="${product.code != null}">
                                     <c:if test="${product.getCode().length() > 0}">
-                                        <input type="hidden" name="productCode" value="${product.code}"/>
                                         
                                         <div class="group short">      
-                                            <input id="materialInput" type="text" name="productCode" value="${product.code}" disabled="true">
+                                            <input id="materialInput" type="text" name="productCode" value="${product.code}" >
                                             <span class="highlight"></span>
                                             <span class="bar"></span>
                                             <label>Code</label>
@@ -167,6 +167,7 @@
                                 <c:if test="${product.code != null}">
                                     <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Update Product"/>
                                 </c:if>
+                                <a href="<c:url value='/loadProducts' />" class="button neutral" >Cancel</a>
                             </td>
                         </tr>
                     </table>

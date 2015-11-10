@@ -51,6 +51,7 @@ public class UpdateProductServlet extends HttpServlet {
         
         if (action.equals("updateProduct")) {
             //create or update the product based on the product code.
+            long productId          = Long.parseLong(request.getParameter("productId"));
             String productCode      = request.getParameter("productCode");
             String productArtist    = request.getParameter("productArtist");
             String productAlbum     = request.getParameter("productAlbum");
@@ -102,6 +103,7 @@ public class UpdateProductServlet extends HttpServlet {
                 if(errorCode >= 1){
                     // all fields blank                    
                     Product newProduct = new Product();
+                    newProduct.setId(productId);
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
                     newProduct.setCoverURL(productCoverURL);
@@ -120,6 +122,7 @@ public class UpdateProductServlet extends HttpServlet {
                 if(errorCode == 0){
                                        
                     Product newProduct = new Product();
+                    newProduct.setId(productId);
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
                     newProduct.setCoverURL(productCoverURL);
@@ -132,7 +135,7 @@ public class UpdateProductServlet extends HttpServlet {
                         //test to see if price is double
                          newProduct.setPrice(Double.parseDouble(productPrice));
                         //cleared - update, or insert
-                        if (ProductDB.codeExists(newProduct.getCode())){
+                        if (ProductDB.exists(newProduct.getId())){
                             // if this product exists in the list, then update it
                             ProductDB.update(newProduct);
                         } else {
