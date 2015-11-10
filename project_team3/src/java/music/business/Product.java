@@ -7,10 +7,12 @@ package music.business;
 
 import java.text.NumberFormat;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
@@ -18,14 +20,21 @@ import javax.persistence.Id;
  * @author William
  */
 @Entity
+@Table(name = "product")
 public class Product implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "Product_Id")
+    @GeneratedValue
     private Long productId;    
+    
+    @Id
+    @Column (name = "Product_code")
     private String code;
+    @Column (name = "Product_Description")
     private String description;
+    @Column (name = "Product_Price")
     private double price;
+    @Column (name = "Product_CoverURL")
     private String coverURL = "";
 
     public Product() {}

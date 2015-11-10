@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="card withTitle w50">
+            <div class="card withTitle">
                 <table class="noBorder noColor">
                     <tr class="cardTitle" style="background-color: ${pageColor};">
                         <td colspan="5">
