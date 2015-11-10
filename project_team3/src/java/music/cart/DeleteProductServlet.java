@@ -2,6 +2,7 @@ package music.cart;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ public class DeleteProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
                 
         //put the list of products in a List
-        ArrayList<Product> products = ProductDB.selectProducts();
+        List<Product> products = ProductDB.selectProducts();
         
         //set the List to the "products" attribute
         session.setAttribute("products", products);

@@ -5,14 +5,23 @@
  */
 package music.business;
 
-import java.io.File;
 import java.text.NumberFormat;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 /**
  *
  * @author William
  */
+@Entity
 public class Product implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;    
     private String code;
     private String description;

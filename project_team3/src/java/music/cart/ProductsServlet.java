@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.ArrayList;
 import java.lang.NumberFormatException;
+import java.util.List;
 import music.data.*;
 import music.business.*;
 import music.color.ColorPalette;
@@ -22,7 +23,7 @@ public class ProductsServlet extends HttpServlet {
         ColorPalette palette = new ColorPalette();
                 
         //put the list of products in a List
-        ArrayList<Product> products = ProductDB.selectProducts();
+        List<Product> products = ProductDB.selectProducts();
         
         //set the List to the "products" attribute
         session.setAttribute("products", products);
