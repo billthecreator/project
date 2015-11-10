@@ -23,11 +23,11 @@ import javax.persistence.Table;
 @Table(name = "product")
 public class Product implements Serializable {
     
+    @Id
     @Column (name = "Product_Id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;    
     
-    @Id
     @Column (name = "Product_code")
     private String code;
     @Column (name = "Product_Description")
