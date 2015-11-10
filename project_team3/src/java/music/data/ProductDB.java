@@ -15,15 +15,12 @@ public class ProductDB {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            System.out.println("trans.begin()");
             em.persist(product);
             trans.commit();
-            System.out.println("em.persist()");
         } catch (Exception e) {
             System.out.println(e);
         } finally {
             em.close();
-            System.out.println("em.close()");
         }
     }
 
@@ -64,6 +61,10 @@ public class ProductDB {
 
     public static boolean exists(long id) {
         Product p = selectProduct(id);
+        return p != null;
+    }
+    public static boolean exists(String code) {
+        Product p = selectProduct(code);
         return p != null;
     }
 

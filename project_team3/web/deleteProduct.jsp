@@ -19,7 +19,7 @@
                         <td colspan="5">
                             <div class="title">    
                                 <h1>Product deletion</h1>
-                                <h2>Are you sure you want to delete this product?</h2>
+                                <h2>Delete this product from this page?</h2>
                             </div>
                         </td>
                     </tr>
@@ -51,11 +51,11 @@
                             <input type="hidden" name="productDesc" value="${product.description}"/>
                             <input type="hidden" name="productPrice" value="${product.price}"/>
                             <input type="hidden" name="action" value="confirmDeletion"/>
-                            <input style="background-color: ${pageAccentColor};" type="submit" class="mL10 fLeft" value="Yes"/>
+                            <input style="background-color: ${pageAccentColor};" type="submit" class="mL10 fLeft" value="Delete"/>
                         </form>
                         <form action="loadProducts" method="get">
                             <input type="hidden" name="action" value="displayProducts"/>
-                            <input type="submit" class="neutral fLeft" value="No" />
+                            <input type="submit" class="neutral fLeft" value="Cancel" />
                         </form>
                     </td>
 

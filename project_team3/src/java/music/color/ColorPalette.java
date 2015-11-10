@@ -15,7 +15,7 @@ public class ColorPalette {
     public String updateSecondary500 = "rgba(27,94,32,1)";
     
     //color palette for delete page
-    public String deletePrimary500 = "rgba(229,57,53,1)";
+    public String deletePrimary500 = "rgba(211,47,47,1)";
     public String deleteSecondary500 = "rgba(183,28,28,1)";
     
 }

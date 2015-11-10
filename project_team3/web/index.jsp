@@ -18,14 +18,35 @@
         %>
         
         <meta name="theme-color" content="<%= palette.defaultPrimary500 %>" />
-        
+        <style>
+            .bar:before, .bar:after {
+                background-color: <%= palette.defaultSecondary500 %>;z-index: 10;
+            }
+            .errorBar:before, .errorBar:after {
+                    background: red; 
+                    width:50%;
+                    z-index: 100;
+            }
+            @-webkit-keyframes inputHighlighter {
+                from { background:<%= palette.defaultSecondary500 %>; }
+                to   { width:0; background:transparent; }
+            }
+            @-moz-keyframes inputHighlighter {
+                from { background:<%= palette.defaultSecondary500 %>; }
+                to   { width:0; background:transparent; }
+            }
+            @keyframes inputHighlighter {
+                from { background:<%= palette.defaultSecondary500 %>; }
+                to   { width:0; background:transparent; }
+            }
+        </style>
     </head>
     <body>
         <div class="container">
                 
                 
                 <div class="card withTitle">
-                     <table cellspacing="0">
+                    <table class="noBorder noColor"cellspacing="0">
                         <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
                             <td colspan="1">
                                 <div class="title">    
@@ -37,7 +58,24 @@
                             </td>
                         </tr>
                         <tr>
-                            <td> </td>
+                            <td>
+                                <div class="group short noLabel">    
+                                    <input id="materialInput" type="text" name="userName" value="admin" placeholder="Username">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <!--<label>Username</label>-->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="group short noLabel">    
+                                    <input id="materialInput" type="password" name="password" value="" placeholder="Password">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <!--<label>Password</label>-->
+                                </div>
+                            </td>
                         </tr>
                         <tr class="actionBar">
                             <th>

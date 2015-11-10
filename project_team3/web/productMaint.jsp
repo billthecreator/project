@@ -20,11 +20,17 @@
                             <div class="title">    
                                 <h1>Product Manager</h1>
                                 <h2>A list of artists' albums</h2>
-                                <form action="loadProducts">
+                                
+                                <a class="button" style="background-color: ${pageAccentColor}; opacity:100;" href="<c:url value='/loadProducts' >
+                                   <c:param name='action' value='addProduct'/>
+                                   <c:param name='productCode' value=''/>
+                                   </c:url>">Add a Product</a>
+                                
+<!--                                <form action="loadProducts">
                                     <input type="hidden" name="productCode" value=""/>
                                     <input type="hidden" name="action" value="addProduct"/>
                                     <input style="background-color: ${pageAccentColor};" type="submit" value="Add a product"/>
-                                </form>
+                                </form>-->
                             </div>
                         </td>
                     </tr>
@@ -52,7 +58,7 @@
                         <td class="description">
                             <div class="artist">${items.getArtistName()}</div>
                             <div class="album">${items.getAlbumName()}</div></td>
-                        <td class="price right" data-name="price">${items.price}</td>
+                        <td class="price right" data-name="price">${items.getPriceCurrencyFormat()}</td>
                         <td class="center colRes mobHide"><a href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='addProduct'/>
                                    <c:param name='productCode' value='${items.code}'/>

@@ -15,23 +15,27 @@
         <c:import url='includes/header.jsp' />
         <style>
             .bar:before, .bar:after {
-                background-color: ${pageAccentColor};z-index: 10;
+                background-color: ${pageColor};z-index: 10;
             }
             .errorBar:before, .errorBar:after {
                     background: red; 
                     width:50%;
                     z-index: 100;
             }
+            
+            .group input:focus ~ label		{
+                color:${pageColor};
+            }
             @-webkit-keyframes inputHighlighter {
-                from { background:${pageAccentColor}; }
+                from { background:${pageColor}; }
                 to   { width:0; background:transparent; }
             }
             @-moz-keyframes inputHighlighter {
-                from { background:${pageAccentColor}; }
+                from { background:${pageColor}; }
                 to   { width:0; background:transparent; }
             }
             @keyframes inputHighlighter {
-                from { background:${pageAccentColor}; }
+                from { background:${pageColor}; }
                 to   { width:0; background:transparent; }
             }
         </style>
@@ -131,31 +135,21 @@
                         </tr>
                         <tr>
                             <td>
-                                <c:if test="${product.price <= 0 || product.price == null}">
-                                    <div class="group short">      
-                                        <input id="materialInput" type="text" name="productPrice" value="">
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Price</label>
-                                        <c:if test="${prodError.priceError}">
+                                <div class="group short">      
+                                    <input id="materialInput" type="text" name="productPrice" value="${product.price}">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Price</label>
+                                    <c:if test="${prodError.priceError}">
+                                    <span class="bar errorBar"></span>
+                                        <span class="errorLabel">A Price amount is required</span>
+                                    </c:if>
+
+                                    <c:if test="${prodError.priceError2}">
                                         <span class="bar errorBar"></span>
-                                            <span class="errorLabel">A Price amount is required</span>
-                                        </c:if>
-                                            
-                                        <c:if test="${prodError.priceError2}">
-                                            <span class="bar errorBar"></span>
-                                            <span class="errorLabel">A price amount must be numeric and can include 1 decimal</span>
-                                        </c:if>
-                                    </div>
-                                </c:if>
-                                <c:if test="${product.price > 0}">
-                                    <div class="group short">      
-                                        <input id="materialInput" type="text" name="productPrice" value="${product.price}">
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Price</label>
-                                    </div>
-                                </c:if>
+                                        <span class="errorLabel">A price amount must be numeric and can include 1 decimal</span>
+                                    </c:if>
+                                </div>
                             </td>
                         </tr>
                         <tr class="actionBar">

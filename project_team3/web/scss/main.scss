@@ -65,7 +65,7 @@ $cardMaxWidth: 900px;
     box-shadow: 0 3px 6px rgba(black, .5);
     padding:8px 0;
     display: block;
-    background-color: white;
+    background-color: #424242;
     border-radius: 3px;
     overflow:hidden;
     
@@ -118,6 +118,7 @@ table {
         font-size: 12px;
         text-transform: uppercase;
         padding: 16px 0;
+        color:rgba(#fff, .57); 
         
         i{
             font-size: 16px !important;
@@ -193,12 +194,12 @@ table {
         }
     }
     .code {
-        color: #616161;  
+        color: rgba(#fff, .7);  
         font-weight: 400; 
         font-size: 13px;
     }
     .description {
-        color: #212121;  
+        color: #fff;  
         font-weight: 400; 
         font-size: 15px;
         line-height:20px;        
@@ -222,7 +223,7 @@ table {
         }
     }
     .price {
-        color: #616161;       
+        color: rgba(#fff, .7);     
         font-weight: 400;
         font-size: 16px;
         padding: 0 8px;
@@ -230,7 +231,7 @@ table {
         
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
-        }
+        } 
     }
     
     .coverArt {
@@ -260,7 +261,7 @@ tr td a {
     font-weight: 500;
     font-size: 14px;
     padding: 16px 8px;
-    color: rgba(black, .87);
+    color: rgba(white, .87);
     
     &.coverArtLink{
         padding: 0;
@@ -308,7 +309,7 @@ tr td a {
 }
 
 tr:not(.cardTitle):hover td {
-    background-color: #eeeeee;
+    background-color: rgba(black, .1);
     a {
         opacity: 100; 
         transition: 0s opacity ease;
@@ -386,7 +387,7 @@ tr td {
     margin: 36px 16px 0px;
     width:calc(100% - 36px);
     
-    @media(max-width: (600px)){margin-top:26px;}
+    @media(max-width: (600px)){margin-top:16px;}
     
     &.short{
         width:calc(50% - 36px);
@@ -395,8 +396,12 @@ tr td {
             width:calc(100% - 36px);
         }
         &:nth-child(2n){
-            @media(max-width: (600px)){margin-top:42px;}
+            @media(max-width: (600px)){margin-top:32px;}
         }
+    }
+    
+    &.noLabel {
+        margin: 8px 16px;
     }
     
     * {box-sizing:border-box;}
@@ -409,11 +414,13 @@ tr td {
       width:100%; 
       border:none;
       border-bottom:1px solid #757575;
+      background-color: transparent;
+      color:rgba(#fff, 1); 
       @media(max-width: (600px)){font-size:16px;}
     }
     /* LABEL ======================================= */
     label{
-      color:#999; 
+      color:rgba(#fff, .3); 
       font-size:18px;
       font-weight:normal;
       position:absolute;
@@ -439,7 +446,7 @@ tr td {
     input:focus ~ label, input:not([value=""]) ~ label 		{
         top:-20px;
         font-size:14px;
-        @media(max-width: (600px)){font-size:12px;}
+        @media(max-width: (600px)){font-size:12px;top:-12px;}
       /*color:$primary500;*/
     }
     input:invalid ~ label{
@@ -496,9 +503,9 @@ tr td {
     /* HIGHLIGHTER ================================== */
     .highlight {
       position:absolute;
-      height:70%; 
+      height:100%; 
       width:100%; 
-      top:25%; 
+      top:0%; 
       left:0;
       pointer-events:none;
       opacity:0.5;
@@ -585,13 +592,13 @@ a:focus{
 
 
 a, a:visited, a:active {
-    color: rgba(black, .8);
+    color: rgba(white, .8);
     text-decoration: none;
     border-bottom: 0px solid transparent;
     transition: .2s all ease;
 }
 a:hover {
-    color:rgba(black, .6);
+    color:rgba(white, .6);
     border-bottom: 0px solid rgba(black, .6);
     transition: .2s all ease;
 }
