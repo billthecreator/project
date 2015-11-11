@@ -51,14 +51,11 @@ public class UpdateProductServlet extends HttpServlet {
         
         if (action.equals("updateProduct")) {
             //create or update the product based on the product code.
-            long productId;
+            long productId = 0;
             try { 
                 productId = Long.parseLong(request.getParameter("productId"));                
-            } catch (Exception e) {
-                
-            }
+            } catch (Exception e) {}
            
-            
             String productCode      = request.getParameter("productCode");
             String productArtist    = request.getParameter("productArtist");
             String productAlbum     = request.getParameter("productAlbum");
@@ -73,24 +70,20 @@ public class UpdateProductServlet extends HttpServlet {
             
             //if the product code has any value 
             if (productCode != null){
-                if(productCode == null || productCode.length() == 0) {
-//                    message += "<i class=\"fa fa-warning\"></i>Please enter a code<br/>";
+                if(productCode.length() == 0) {
                     prodError.setCodeError(true);
                     errorCode = 1;
                     
                 }
                 if(productArtist == null || productArtist.length() == 0) {
-//                    message += "<i class=\"fa fa-warning\"></i>Please enter an artist name<br/>";
                     prodError.setArtistError(true);
                     errorCode = 1;
                 }
                 if(productAlbum == null || productAlbum.length() == 0) {
-//                    message += "<i class=\"fa fa-warning\"></i>Please enter an album name<br/>";
                     prodError.setAlbumError(true);
                     errorCode = 1;
                 }
                 if(productPrice == null || productPrice.length() == 0) {
-//                    message += "<i class=\"fa fa-warning\"></i>Please enter a price<br/>";
                     prodError.setPriceError(true);
                     errorCode = 1;
                 }else{
@@ -99,18 +92,21 @@ public class UpdateProductServlet extends HttpServlet {
                     }catch(NumberFormatException e){
 //                        message += "<i class=\"fa fa-warning\"></i>The price must be numeric<br/>";
                         prodError.setPriceError2(true);
-                    errorCode = 1;
-                        
+                        errorCode = 1;                        
                     }
                 }
                 
-                
-                
+                if (ProductDB.exists(productCode)) {
+                    if (productId != ProductDB.selectProduct(productCode).getId()) {
+                        prodError.setCodeError2(true);
+                        errorCode = 1;
+                    }
+                }
                 
                 if(errorCode >= 1){
                     // all fields blank                    
                     Product newProduct = new Product();
-//                    newProduct.setId(productId);
+                    newProduct.setId(productId);
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
                     newProduct.setCoverURL(productCoverURL);
@@ -129,7 +125,9 @@ public class UpdateProductServlet extends HttpServlet {
                 if(errorCode == 0){
                                        
                     Product newProduct = new Product();
-//                    newProduct.setId(productId);
+                    if(productId > 0) {
+                        newProduct.setId(productId);
+                    }
                     newProduct.setCode(productCode);
                     newProduct.setDescription(productArtist + " - " + productAlbum);
                     newProduct.setCoverURL(productCoverURL);
@@ -142,9 +140,16 @@ public class UpdateProductServlet extends HttpServlet {
                         //test to see if price is double
                          newProduct.setPrice(Double.parseDouble(productPrice));
                         //cleared - update, or insert
-                        if (ProductDB.exists(newProduct.getCode())){
+                        
+                        if (ProductDB.exists(productId)){
+                            if (ProductDB.selectProduct(productId).getId() == productId) {
+                                // if a product already exists using the given code, AND
+                                // that product's ID matches the same as the pages, THEN
+                                // UPDATE
+                                ProductDB.update(newProduct);
+                            }
+                            
                             // if this product exists in the list, then update it
-                            ProductDB.update(newProduct);
                         } else {
                             // if this product doesn't exist, create a new one
                             ProductDB.insert(newProduct);

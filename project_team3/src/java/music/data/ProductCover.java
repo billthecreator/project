@@ -27,7 +27,7 @@ public class ProductCover {
     public static void getProductCover(Product product, String dest) throws IOException {
         try{
             
-            String destName = dest + "\\" + product.getCode() + "_cover.jpg";
+            String destName = dest + "\\" + product.getId().toString() + "_cover.jpg";
             
             if (!new File(destName).exists()) {           
                 if(product.getCoverURL().length() > 0){

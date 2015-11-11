@@ -18,7 +18,7 @@
                     <tr class="cardTitle" style="background-color: ${pageColor};">
                         <td colspan="5">
                             <div class="title">    
-                                <h1>Product deletion</h1>
+                                <h1>Product Deletion</h1>
                                 <h2>Delete this product from this page?</h2>
                             </div>
                         </td>

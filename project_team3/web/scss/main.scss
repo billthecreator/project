@@ -77,6 +77,12 @@ $cardMaxWidth: 900px;
         
     }
 }
+.space50{
+    display: block;
+    position: relative;
+    height: 50px;
+    width: 100%;
+}
 table {
     border: none;    
     border-collapse: collapse;
@@ -99,7 +105,7 @@ table {
             width:calc(100% - 32px);
             margin-left:  16px;
             height: 1px;
-            background-color: #ddd;
+            background-color: rgba(white, .3);
         }
         & .iconWord {
             @media (max-width: (600px)) {
@@ -162,26 +168,33 @@ table {
             padding-left: 16px;
             padding-top: 24px;
             padding-bottom: 16px;
-            width: calc(100% - (152px + 48px));
+            width: calc(100% - (32px));
             
-            
-            @media (max-width: (600px)) {
-            width: calc(100% - (112px + 48px));
+            &.withImage{
+                width: calc(100% - (152px + 48px));
+                @media (max-width: (600px)) {
+                    width: calc(100% - (112px + 48px));
+                }
             }
+            
+            
             
             h1,h2 {
                 color:white;
                 font-weight: 300;
             }
             h1 {
-                line-height: 24px;
-                font-size: 24px;
+                line-height: 34px;
+                font-size: 34px;
+                
+                @media(max-width: (600px)){font-size:20px; font-weight:500;line-height: 21px;}
                 
             }
             h2 {
                 line-height: 18px;
-                font-size: 14px;
+                font-size: 16px;
                 opacity: .87;
+                /*@media(max-width: (600px)){font-size:17px;}*/
             }
             a.button{
                 display: inline-block;
@@ -384,7 +397,7 @@ tr td {
 /* form starting stylings ------------------------------- */
 .group 			  { 
     position:relative; 
-    margin: 36px 16px 0px;
+    margin: 16px 16px 8px;
     width:calc(100% - 36px);
     
     @media(max-width: (600px)){margin-top:16px;}
@@ -408,43 +421,37 @@ tr td {
     
     
     input{
-      font-size:18px;
-      padding:10px 10px 10px 5px;
+      font-size:16px;
+      padding:8px 0 8px;
       display:block;
       width:100%; 
       border:none;
       border-bottom:1px solid #757575;
       background-color: transparent;
       color:rgba(#fff, 1); 
-      @media(max-width: (600px)){font-size:16px;}
+      @media(max-width: (600px)){
+          font-size:13px;
+          padding: 4px 0 8px;
+      }
     }
     /* LABEL ======================================= */
     label{
       color:rgba(#fff, .3); 
-      font-size:18px;
+      font-size:16px;
       font-weight:normal;
       position:absolute;
       pointer-events:none;
-      left:5px;
-      top:10px;
+      left:px;
+      top:8px;
       transition:0.2s ease all; 
       -moz-transition:0.2s ease all; 
       -webkit-transition:0.2s ease all;
-      @media(max-width: (600px)){font-size:16px;}
+      @media(max-width: (600px)){font-size:13px;top:4px;}
     }
-/*    input[value=""] ~ label 		{
-      color:#999; 
-      font-size:18px;
-      font-weight:normal;
-      position:absolute;
-      pointer-events:none;
-      left:5px;
-      top:10px;
-    }*/
-
+    
     /* active state */
     input:focus ~ label, input:not([value=""]) ~ label 		{
-        top:-20px;
+        top:-16px;
         font-size:14px;
         @media(max-width: (600px)){font-size:12px;top:-12px;}
       /*color:$primary500;*/
@@ -489,11 +496,12 @@ tr td {
     }
     .errorLabel {
         font-size:13px;
-        left:5px;
-        bottom: -5px;
+        left:0;
+        bottom: -8px;
         position:relative;
         color:rgba(244,67,54,1);
-    }
+        @media(max-width: (600px)){bottom: -4px;}
+    } 
 
     /* active state */
     input:focus ~ .bar:before, input:focus ~ .bar:after {

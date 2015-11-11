@@ -12,6 +12,8 @@ package music.business;
 public class ProductError {
     
     private boolean codeError = false;
+    private boolean codeError2 = false;
+
     private boolean artistError = false;
     private boolean albumError = false;
     private boolean priceError = false;
@@ -39,6 +41,14 @@ public class ProductError {
         this.codeError = codeError;
     }
 
+    public boolean isCodeError2() {
+        return codeError2;
+    }
+
+    public void setCodeError2(boolean codeError2) {
+        this.codeError2 = codeError2;
+    }
+    
     public boolean isArtistError() {
         return artistError;
     }

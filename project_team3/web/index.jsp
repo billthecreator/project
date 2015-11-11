@@ -20,23 +20,27 @@
         <meta name="theme-color" content="<%= palette.defaultPrimary500 %>" />
         <style>
             .bar:before, .bar:after {
-                background-color: <%= palette.defaultSecondary500 %>;z-index: 10;
+                background-color: <%= palette.defaultPrimary500 %>;z-index: 10;
             }
             .errorBar:before, .errorBar:after {
                     background: red; 
                     width:50%;
                     z-index: 100;
             }
+            
+            .group input:focus ~ label		{
+                color:<%= palette.defaultPrimary500 %>;
+            }
             @-webkit-keyframes inputHighlighter {
-                from { background:<%= palette.defaultSecondary500 %>; }
+                from { background:<%= palette.defaultPrimary500 %>; }
                 to   { width:0; background:transparent; }
             }
             @-moz-keyframes inputHighlighter {
-                from { background:<%= palette.defaultSecondary500 %>; }
+                from { background:<%= palette.defaultPrimary500 %>; }
                 to   { width:0; background:transparent; }
             }
             @keyframes inputHighlighter {
-                from { background:<%= palette.defaultSecondary500 %>; }
+                from { background:<%= palette.defaultPrimary500 %>; }
                 to   { width:0; background:transparent; }
             }
         </style>
@@ -60,7 +64,7 @@
                         <tr>
                             <td>
                                 <div class="group short noLabel">    
-                                    <input id="materialInput" type="text" name="userName" value="admin" placeholder="Username">
+                                    <input id="materialInput" type="text" name="userName" value="" placeholder="Username">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <!--<label>Username</label>-->

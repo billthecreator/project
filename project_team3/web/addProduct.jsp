@@ -4,6 +4,7 @@
     Author     : William
 --%>
 
+<%@page import="music.data.ProductDB"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -49,20 +50,22 @@
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">
                             <td colspan="1">
-                                <div class="title">    
+                                <div class="title withImage">    
                                     <h1>Product Editor</h1>
                                     <h2>Add or update an existing product</h2>
-                                    <a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="button" >View All Products</a><c:if test="${product.code != null && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
+                                    <a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="button" >View All Products</a><c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
                                 </div>
+                                <c:if test="${product.getId() > 0 }">
                                 <div class="albumCoverArt">
                                     <img class="coverArt" src="${product.getImageURL()}"/>
                                 </div>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td>
+                                <div class="space50"></div>
                                 <c:if test="${product.code == null || product.getCode().length() == 0}">
-                                    
                                     <div class="group short">      
                                         <input id="materialInput" type="text" name="productCode" value="">
                                         <span class="highlight"></span>
@@ -71,6 +74,10 @@
                                         <c:if test="${prodError.codeError}">
                                             <span class="bar errorBar"></span>
                                             <span class="errorLabel">Code is required</span>
+                                        </c:if>
+                                        <c:if test="${prodError.codeError2}">
+                                            <span class="bar errorBar"></span>
+                                            <span class="errorLabel">This code already exists for another product/span>
                                         </c:if>
                                     </div>
                                     
@@ -87,6 +94,10 @@
                                             <c:if test="${prodError.codeError}">
                                                 <span class="bar errorBar"></span>
                                                 <span class="errorLabel">Code is required</span>
+                                            </c:if>
+                                            <c:if test="${prodError.codeError2}">
+                                                <span class="bar errorBar"></span>
+                                                <span class="errorLabel">This code already exists for another product</span>
                                             </c:if>
                                         </div>
                                     </c:if>
@@ -155,10 +166,10 @@
                         <tr class="actionBar">
                             <td colspan="2">
                                 <input type="hidden" name="action" value="updateProduct"/>
-                                <c:if test="${product.code == null}">
+                                <c:if test="${product.getId() == 0 || product.getId() == null}">
                                     <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Add"/>
                                 </c:if>
-                                <c:if test="${product.code != null}">
+                                <c:if test="${product.getId() > 0}">
                                     <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Update Product"/>
                                 </c:if>
                                 <a href="<c:url value='/loadProducts' />" class="button neutral" >Cancel</a>

@@ -101,14 +101,13 @@ public class Product implements Serializable {
     public void setCoverURL(String coverURL) {
         this.coverURL = coverURL;
     }
+    
     public String getCoverURL() {
         return coverURL;
     }
-
-    
     
     public String getImageURL() {
-        String imageURL = "musicStore/images/" + code + "_cover.jpg";
+        String imageURL = "musicStore/images/" + productId.toString() + "_cover.jpg";
         return imageURL;
     }
 

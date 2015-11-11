@@ -58,6 +58,12 @@ br {
       padding: 8px 0;
       margin-bottom: 32px; } }
 
+.space50 {
+  display: block;
+  position: relative;
+  height: 50px;
+  width: 100%; }
+
 table {
   border: none;
   border-collapse: collapse;
@@ -78,7 +84,7 @@ table {
       width: calc(100% - 32px);
       margin-left: 16px;
       height: 1px;
-      background-color: #ddd; }
+      background-color: rgba(255, 255, 255, 0.3); }
     @media (max-width: 600px) {
       table th .iconWord, table td .iconWord {
         display: none; } }
@@ -120,20 +126,28 @@ table {
       padding-left: 16px;
       padding-top: 24px;
       padding-bottom: 16px;
-      width: calc(100% - (152px + 48px)); }
-      @media (max-width: 600px) {
-        table .cardTitle .title {
-          width: calc(100% - (112px + 48px)); } }
+      width: calc(100% - (32px)); }
+      table .cardTitle .title.withImage {
+        width: calc(100% - (152px + 48px)); }
+        @media (max-width: 600px) {
+          table .cardTitle .title.withImage {
+            width: calc(100% - (112px + 48px)); } }
       table .cardTitle .title h1, table .cardTitle .title h2 {
         color: white;
         font-weight: 300; }
       table .cardTitle .title h1 {
-        line-height: 24px;
-        font-size: 24px; }
+        line-height: 34px;
+        font-size: 34px; }
+        @media (max-width: 600px) {
+          table .cardTitle .title h1 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 21px; } }
       table .cardTitle .title h2 {
         line-height: 18px;
-        font-size: 14px;
-        opacity: .87; }
+        font-size: 16px;
+        opacity: .87;
+        /*@media(max-width: (600px)){font-size:17px;}*/ }
       table .cardTitle .title a.button {
         display: inline-block;
         text-align: center;
@@ -294,18 +308,9 @@ tr td {
 /* form starting stylings ------------------------------- */
 .group {
   position: relative;
-  margin: 36px 16px 0px;
+  margin: 16px 16px 8px;
   width: calc(100% - 36px);
   /* LABEL ======================================= */
-  /*    input[value=""] ~ label 		{
-        color:#999; 
-        font-size:18px;
-        font-weight:normal;
-        position:absolute;
-        pointer-events:none;
-        left:5px;
-        top:10px;
-      }*/
   /* active state */
   /* BOTTOM BARS ================================= */
   /* active state */
@@ -329,8 +334,8 @@ tr td {
   .group * {
     box-sizing: border-box; }
   .group input {
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
+    font-size: 16px;
+    padding: 8px 0 8px;
     display: block;
     width: 100%;
     border: none;
@@ -339,23 +344,25 @@ tr td {
     color: white; }
     @media (max-width: 600px) {
       .group input {
-        font-size: 16px; } }
+        font-size: 13px;
+        padding: 4px 0 8px; } }
   .group label {
     color: rgba(255, 255, 255, 0.3);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
-    left: 5px;
-    top: 10px;
+    left: px;
+    top: 8px;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all; }
     @media (max-width: 600px) {
       .group label {
-        font-size: 16px; } }
+        font-size: 13px;
+        top: 4px; } }
   .group input:focus ~ label, .group input:not([value=""]) ~ label {
-    top: -20px;
+    top: -16px;
     font-size: 14px;
     /*color:$primary500;*/ }
     @media (max-width: 600px) {
@@ -390,10 +397,13 @@ tr td {
     z-index: 100; }
   .group .errorLabel {
     font-size: 13px;
-    left: 5px;
-    bottom: -5px;
+    left: 0;
+    bottom: -8px;
     position: relative;
     color: #f44336; }
+    @media (max-width: 600px) {
+      .group .errorLabel {
+        bottom: -4px; } }
   .group input:focus ~ .bar:before, .group input:focus ~ .bar:after {
     width: 50%; }
   .group .highlight {
