@@ -63,6 +63,9 @@ br {
   position: relative;
   height: 50px;
   width: 100%; }
+  @media (max-width: 600px) {
+    .space50 {
+      height: 10px; } }
 
 table {
   border: none;
@@ -341,7 +344,9 @@ tr td {
     border: none;
     border-bottom: 1px solid #757575;
     background-color: transparent;
-    color: white; }
+    color: rgba(255, 255, 255, 0.7); }
+    .group input:focus {
+      color: white; }
     @media (max-width: 600px) {
       .group input {
         font-size: 13px;
@@ -533,5 +538,15 @@ a:hover {
 @media (max-width: 600px) {
   .mobHide {
     display: none; } }
+
+input[type='number'] {
+  -moz-appearance: textfield; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */ }
 
 /*# sourceMappingURL=main.css.map */

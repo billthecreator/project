@@ -82,6 +82,9 @@ $cardMaxWidth: 900px;
     position: relative;
     height: 50px;
     width: 100%;
+    @media(max-width: (600px)){
+        height: 10px;
+    }
 }
 table {
     border: none;    
@@ -428,7 +431,8 @@ tr td {
       border:none;
       border-bottom:1px solid #757575;
       background-color: transparent;
-      color:rgba(#fff, 1); 
+      color:rgba(#fff, .7);
+      &:focus {color: white;}
       @media(max-width: (600px)){
           font-size:13px;
           padding: 4px 0 8px;
@@ -651,4 +655,14 @@ a:hover {
     @media (max-width: (600px)) {
             display:none;
     }
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

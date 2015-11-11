@@ -147,7 +147,7 @@
                         <tr>
                             <td>
                                 <div class="group short">      
-                                    <input id="materialInput" type="text" name="productPrice" value="${product.price}">
+                                    <input id="materialInput" type="number" name="productPrice" value="${product.price}">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                     <label>Price</label>
