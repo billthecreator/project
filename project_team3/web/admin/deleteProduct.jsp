@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url='includes/header.jsp' />
+        <c:import url='/includes/header.jsp' />
     </head>
     <body>
         <div class="container">
@@ -17,6 +17,9 @@
                 <table class="noBorder noColor">
                     <tr class="cardTitle" style="background-color: ${pageColor};">
                         <td colspan="5">
+                            <div class="topActionBar">
+                                <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                            </div>
                             <div class="title">    
                                 <h1>Product Deletion</h1>
                                 <h2>Delete this product from this page?</h2>

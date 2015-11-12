@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url='includes/header.jsp' />
+        <c:import url='/includes/header.jsp' />
         <style>
             .bar:before, .bar:after {
                 background-color: ${pageColor};z-index: 10;
@@ -49,11 +49,14 @@
                     <input type="hidden" name="productId" value="${product.getId()}">
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">
-                            <td colspan="1">
-                                <div class="title withImage">    
+                            <td>
+                                <div class="topActionBar">
+                                    <!--<a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="fLeft button" >View All Products</a>-->
+                                    <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                                </div>
+                                <div class="title withImage"> 
                                     <h1>Product Editor</h1>
                                     <h2>Add or update an existing product</h2>
-                                    <a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="button" >View All Products</a><c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if>
                                 </div>
                                 <c:if test="${product.getId() > 0 }">
                                 <div class="albumCoverArt">
@@ -62,9 +65,14 @@
                                 </c:if>
                             </td>
                         </tr>
+                        <tr>                            
+                            <td>
+                                <div class="space50"><c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if></div>
+                                
+                            </td>
+                        </tr>
                         <tr>
                             <td>
-                                <div class="space50"></div>
                                 <c:if test="${product.code == null || product.getCode().length() == 0}">
                                     <div class="group short">      
                                         <input id="materialInput" type="text" name="productCode" value="">
@@ -164,7 +172,7 @@
                             </td>
                         </tr>
                         <tr class="actionBar">
-                            <td colspan="2">
+                            <td>
                                 <input type="hidden" name="action" value="updateProduct"/>
                                 <c:if test="${product.getId() == 0 || product.getId() == null}">
                                     <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Add"/>

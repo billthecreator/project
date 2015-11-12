@@ -80,11 +80,8 @@ $cardMaxWidth: 900px;
 .space50{
     display: block;
     position: relative;
-    height: 50px;
-    width: 100%;
-    @media(max-width: (600px)){
-        height: 10px;
-    }
+    padding: 16px 8px;
+    width: calc(100% - 16px);
 }
 table {
     border: none;    
@@ -157,6 +154,7 @@ table {
                 width:152px !important;
                 height:152px !important;
                 padding:0;
+                margin:0;
                 
                 @media (max-width: (600px)) {
                     width:112px !important;
@@ -164,13 +162,22 @@ table {
                 }
             }
         }
+        .topActionBar{
+            padding: 16px;
+            display:block;
+            posistion:relative;
+            width: calc(100% - 32px);
+            height:32px;
+             
+            a {display: block;text-align: center; min-width: 44px;}
+        }
         .title {
             display: inline;
             float:left;
             font-weight: 300;
             padding-left: 16px;
-            padding-top: 24px;
-            padding-bottom: 16px;
+            padding-top: 8px;
+            padding-bottom: 8px;
             width: calc(100% - (32px));
             
             &.withImage{
@@ -255,8 +262,9 @@ table {
         width: $coverArtSize !important;
         height: $coverArtSize !important;
         padding: 0;
+        overflow: hidden;
         margin: 0;
-        padding: 8px 0;
+        margin: 8px 0;
         display: block;
     }
     
@@ -286,6 +294,7 @@ tr td a {
         overflow:hidden;
         border-radius: 0;
         height: 64px;
+        padding: 0px 0;
         & i{
             opacity: 0;
             position: absolute;
@@ -299,11 +308,12 @@ tr td a {
             color: white;
             background-color: rgba(black, .33);
             text-align: center;
+            z-index: 100;
             
             @media (max-width: (600px)) {
                 opacity: 100;
             }
-        }
+        } 
     }
     
         
@@ -601,6 +611,7 @@ a:focus{
     
 
 .fLeft{float:  left;}
+.fRight{float:  right;}
 
 
 a, a:visited, a:active {

@@ -19,8 +19,9 @@ import music.data.ProductDB;
  *
  * @author William
  */
-@WebServlet(name = "updateProductServlet", urlPatterns = {"/update"})
 public class UpdateProductServlet extends HttpServlet {
+    
+    
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -171,10 +172,10 @@ public class UpdateProductServlet extends HttpServlet {
                         prodError.setPriceError2(true);
                         session.setAttribute("prodError", prodError);
 
-                        url = "/addProduct.jsp";   
+                        url = "/admin/addProduct.jsp";   
                     }          
                 } else {
-                    url = "/addProduct.jsp";
+                    url = "/admin/addProduct.jsp";
                 }
             }
             

@@ -12,4 +12,10 @@
               url="jdbc:mysql://localhost:3306/music" 
               username="root"
     />
+  <Realm className="org.apache.catalina.realm.JDBCRealm" 
+         connectionName="root" connectionPassword="" 
+         connectionURL="jdbc:mysql://localhost:3306/murach" 
+         debug="99" driverName="com.mysql.jdbc.Driver" 
+         roleNameCol="Rolename" userCredCol="Password" userNameCol="Username" 
+         userRoleTable="UserRole" userTable="UserPass"/>
 </Context>

@@ -17,8 +17,7 @@ import music.data.ProductDB;
  * @author William
  */
 public class DeleteProductServlet extends HttpServlet {
-
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,7 +38,7 @@ public class DeleteProductServlet extends HttpServlet {
         session.setAttribute("products", products);
         
         //default landing page
-        String url = "/productMaint.jsp";
+        String url = "/admin/index.jsp";
         
         ColorPalette palette = new ColorPalette();
         session.setAttribute("pageColor", palette.defaultPrimary500);

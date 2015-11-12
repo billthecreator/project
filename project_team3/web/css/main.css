@@ -61,11 +61,8 @@ br {
 .space50 {
   display: block;
   position: relative;
-  height: 50px;
-  width: 100%; }
-  @media (max-width: 600px) {
-    .space50 {
-      height: 10px; } }
+  padding: 16px 8px;
+  width: calc(100% - 16px); }
 
 table {
   border: none;
@@ -117,18 +114,29 @@ table {
       table .cardTitle .albumCoverArt .coverArt {
         width: 152px !important;
         height: 152px !important;
-        padding: 0; }
+        padding: 0;
+        margin: 0; }
         @media (max-width: 600px) {
           table .cardTitle .albumCoverArt .coverArt {
             width: 112px !important;
             height: 112px !important; } }
+    table .cardTitle .topActionBar {
+      padding: 16px;
+      display: block;
+      posistion: relative;
+      width: calc(100% - 32px);
+      height: 32px; }
+      table .cardTitle .topActionBar a {
+        display: block;
+        text-align: center;
+        min-width: 44px; }
     table .cardTitle .title {
       display: inline;
       float: left;
       font-weight: 300;
       padding-left: 16px;
-      padding-top: 24px;
-      padding-bottom: 16px;
+      padding-top: 8px;
+      padding-bottom: 8px;
       width: calc(100% - (32px)); }
       table .cardTitle .title.withImage {
         width: calc(100% - (152px + 48px)); }
@@ -196,8 +204,9 @@ table {
     width: 48px !important;
     height: 48px !important;
     padding: 0;
+    overflow: hidden;
     margin: 0;
-    padding: 8px 0;
+    margin: 8px 0;
     display: block; }
   table .colRes {
     width: 20px;
@@ -221,7 +230,8 @@ tr td a {
     position: relative;
     overflow: hidden;
     border-radius: 0;
-    height: 64px; }
+    height: 64px;
+    padding: 0px 0; }
     tr td a.coverArtLink i {
       opacity: 0;
       position: absolute;
@@ -234,7 +244,8 @@ tr td a {
       font-size: 18px;
       color: white;
       background-color: rgba(0, 0, 0, 0.33);
-      text-align: center; }
+      text-align: center;
+      z-index: 100; }
       @media (max-width: 600px) {
         tr td a.coverArtLink i {
           opacity: 100; } }
@@ -489,6 +500,9 @@ a:focus {
 
 .fLeft {
   float: left; }
+
+.fRight {
+  float: right; }
 
 a, a:visited, a:active {
   color: rgba(255, 255, 255, 0.8);

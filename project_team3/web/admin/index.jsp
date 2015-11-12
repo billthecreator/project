@@ -1,17 +1,16 @@
 <%-- 
-    Document   : index
-    Created on : Oct 26, 2015, 4:50:53 PM
+    Document   : deleteProduct
+    Created on : Nov 4, 2015, 11:20:47 AM
     Author     : William
 --%>
 
 <%@page import="music.color.ColorPalette"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>        
-        <c:import url='includes/header.jsp' />
+        <c:import url='/includes/header.jsp' />
         
         <%
            ColorPalette palette = new ColorPalette();
@@ -47,28 +46,24 @@
     </head>
     <body>
         <div class="container">
-                
-                
-                <div class="card withTitle">
-                    <table class="noBorder noColor"cellspacing="0">
-                        <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
-                            <td colspan="1">
-                                <div class="title">    
-                                    <h1>Product Maintenance</h1>
-                                    <h2>Log in to the Product Manager</h2>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="actionBar">
-                            <th>
-                                <div class="space50"></div>
-                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="admin/index.jsp">Log in</a>
-                            </th>
-                        </tr>
-                     </table>
-                </div>
-                
-            
+            <div class="card withTitle">
+                <table class="noBorder noColor">
+                    <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
+                        <td colspan="5">
+                            <div class="title">    
+                                <h1>Product Manager</h1>
+                                <h2>What do you want to do?</h2>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="actionBar">
+                        <td>
+                            <div class="space50"></div>
+                            <a href="<c:url value='/loadProducts?action=displayProducts'/>" class="button neutral" >View All Products</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <c:import url='includes/header.jsp' />
+        <c:import url='../includes/header_nojs.jsp' />
         
         <%
            ColorPalette palette = new ColorPalette();
@@ -47,28 +47,43 @@
     </head>
     <body>
         <div class="container">
-                
-                
+            <form action="j_security_check" method="get">                
                 <div class="card withTitle">
                     <table class="noBorder noColor"cellspacing="0">
                         <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
                             <td colspan="1">
                                 <div class="title">    
-                                    <h1>Product Maintenance</h1>
-                                    <h2>Log in to the Product Manager</h2>
+                                    <h1>Log in</h1>
+                                    <h2>Please enter a username and password to continue</h2>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="group short noLabel">    
+                                    <input id="materialInput" type="text" name="j_username" value="" placeholder="Username">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="group short noLabel">    
+                                    <input id="materialInput" type="password" name="j_password" value="" placeholder="Password">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
                                 </div>
                             </td>
                         </tr>
                         <tr class="actionBar">
-                            <th>
-                                <div class="space50"></div>
-                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="admin/index.jsp">Log in</a>
-                            </th>
+                            <td>
+                                <input class="button neutral" type="submit" value="Log in"/>
+                            </td>
                         </tr>
                      </table>
                 </div>
-                
-            
+            </form>
         </div>
     </body>
 </html>

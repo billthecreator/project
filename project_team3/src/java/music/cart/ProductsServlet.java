@@ -12,8 +12,6 @@ import music.color.ColorPalette;
 
 public class ProductsServlet extends HttpServlet {
     
-    
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,7 +27,7 @@ public class ProductsServlet extends HttpServlet {
         session.setAttribute("products", products);
         
         //default landing page
-        String url = "/productMaint.jsp";
+        String url = "/admin/listProducts.jsp";
         //create the action 
         String action = request.getParameter("action");
         if (action == null) {
@@ -41,14 +39,13 @@ public class ProductsServlet extends HttpServlet {
         if (action.equals("displayProducts")) {
             //default action, just show the list of products
             session.setAttribute("pageColor", palette.defaultPrimary500);
-            session.setAttribute("pageAccentColor", palette.defaultSecondary500);
-            url = "/productMaint.jsp";    
+            session.setAttribute("pageAccentColor", palette.defaultSecondary500);    
         } 
         else if (action.equals("addProduct")) {
             //adding or editing a product
             String productCode = request.getParameter("productCode");
             
-            url = "/addProduct.jsp";
+            url = "/admin/addProduct.jsp";
             if (productCode != null) {
                 //if the product code not not a null value
                 session.setAttribute("product",  ProductDB.selectProduct(productCode));
@@ -71,7 +68,7 @@ public class ProductsServlet extends HttpServlet {
             session.setAttribute("product",  ProductDB.selectProduct(productCode));
             session.setAttribute("pageColor", palette.deletePrimary500);
             session.setAttribute("pageAccentColor", palette.deleteSecondary500);
-            url = "/deleteProduct.jsp";
+            url = "/admin/deleteProduct.jsp";
         }
         getServletContext()
                 .getRequestDispatcher(url)

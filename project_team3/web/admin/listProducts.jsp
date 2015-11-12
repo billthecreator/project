@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <c:import url='includes/header.jsp' />
+        <c:import url='/includes/header.jsp' />
     </head>
     <body>
         <div class="container">
@@ -17,20 +17,13 @@
                 <table cellspacing="0">
                     <tr class="cardTitle" style="background-color: ${pageColor};">
                         <td colspan="6">
-                            <div class="title">    
+                            
+                            <div class="topActionBar">
+                                <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                            </div>
+                            <div class="title">
                                 <h1>Product Manager</h1>
                                 <h2>A list of artists' albums</h2>
-                                
-                                <a class="button" style="background-color: ${pageAccentColor}; opacity:100;" href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='addProduct'/>
-                                   <c:param name='productCode' value=''/>
-                                   </c:url>">Add a Product</a>
-                                
-<!--                                <form action="loadProducts">
-                                    <input type="hidden" name="productCode" value=""/>
-                                    <input type="hidden" name="action" value="addProduct"/>
-                                    <input style="background-color: ${pageAccentColor};" type="submit" value="Add a product"/>
-                                </form>-->
                             </div>
                         </td>
                     </tr>
