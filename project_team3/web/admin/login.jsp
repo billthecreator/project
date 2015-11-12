@@ -47,7 +47,7 @@
     </head>
     <body>
         <div class="container">
-            <form action="j_security_check" method="get">                
+            <form action="j_security_check" method="get" autocomplete="off">                
                 <div class="card withTitle">
                     <table class="noBorder noColor"cellspacing="0">
                         <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">

@@ -45,7 +45,7 @@
         <div class="container">
             
             <div class="card withTitle">
-                <form action="updateProduct" method="post">
+                <form action="updateProduct" method="post" autocomplete="off">
                     <input type="hidden" name="productId" value="${product.getId()}">
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">

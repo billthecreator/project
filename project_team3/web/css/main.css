@@ -563,4 +563,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */ }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #424242 inset;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.7) !important; }
+
 /*# sourceMappingURL=main.css.map */
