@@ -18,8 +18,8 @@
                     <tr class="cardTitle" style="background-color: ${pageColor};">
                         <td colspan="6">
                             
-                            <div class="topActionBar">
-                                <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                            <div class="actionBar">
+                                <c:import url="/includes/welcome.jsp"/>
                             </div>
                             <div class="title">
                                 <h1>Product Manager</h1>
@@ -32,9 +32,10 @@
                         <th class="mobHide center">Code</th>
                         <th></th>
                         <th colspan="1" data-name="album">Album</th>
-                        <th class="right" data-name="price"><span class="iconWord">Price</span><i class="fa fa-usd wordIcon"></i></th>
+                        
                         <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-pencil wordIcon"></i></th>
                         <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-ban wordIcon"></i></th>
+                        <th class="right" data-name="price"><span class="iconWord">Price</span><i class="fa fa-usd wordIcon"></i></th>
                     </tr>
                     <c:forEach var="items" items="${products}">  
                     <tr>
@@ -51,16 +52,18 @@
                         <td class="description">
                             <div class="artist">${items.getArtistName()}</div>
                             <div class="album">${items.getAlbumName()}</div></td>
-                        <td class="price right" data-name="price">${items.getPriceCurrencyFormat()}</td>
-                        <td class="center colRes mobHide"><a href="<c:url value='/loadProducts' >
+                         <td class="center colRes mobHide"><a class="button flat" href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='addProduct'/>
                                    <c:param name='productCode' value='${items.code}'/>
                                                      </c:url>"><span class="iconWord">Edit</span><i class="fa fa-ellipsis-v wordIcon" title="Edit or delete this item"></i></a></td>
                         <td class="center colRes mobHide">
-                            <a href="<c:url value='/loadProducts' >
+                            <a class="button flat" href="<c:url value='/loadProducts' >
                                    <c:param name='action' value='removeProduct'/>
                                    <c:param name='productCode' value='${items.code}'/>
-                               </c:url>">Delete</a></td>
+                               </c:url>">Delete</a>
+                        </td>
+                        <td class="price right" data-name="price">${items.getPriceCurrencyFormat()}</td>
+                       
                     </tr>
                     </c:forEach>
                     </c:if>

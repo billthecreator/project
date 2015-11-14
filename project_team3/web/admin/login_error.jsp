@@ -48,20 +48,21 @@
     <body>
         <div class="container">
             <form action="j_security_check" method="get" autocomplete="off">                
-                <div class="card withTitle">
+                <div class="card withTitle w50">
                     <table class="noBorder noColor"cellspacing="0">
                         <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
                             <td colspan="1">
                                 <div class="title">    
                                     <h1>Log in</h1>
                                     <h2>Please enter a username and password to continue</h2>
-                                    <h2>You did not enter the correct credentials, please try again</h2>
+                                    <h2 style="font-weight:bold;">You did not enter the correct credentials, please try again</h2>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="group short noLabel">    
+                                <div class="space50"></div>
+                                <div class="group noLabel">    
                                     <input id="materialInput" type="text" name="j_username" value="" placeholder="Username">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
@@ -70,17 +71,17 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="group short noLabel">    
+                                <div class="group noLabel">    
                                     <input id="materialInput" type="password" name="j_password" value="" placeholder="Password">
                                     <span class="highlight"></span>
                                     <span class="bar"></span>
                                 </div>
                             </td>
                         </tr>
-                        <tr class="actionBar">
-                            <th>
+                        <tr>
+                            <td class="actionBar">
                                 <input class="button neutral" type="submit" value="Log in"/>
-                            </th>
+                            </td>
                         </tr>
                      </table>
                 </div>

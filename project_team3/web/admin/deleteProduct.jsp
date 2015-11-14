@@ -16,9 +16,9 @@
             <div class="card withTitle">
                 <table class="noBorder noColor">
                     <tr class="cardTitle" style="background-color: ${pageColor};">
-                        <td colspan="5">
-                            <div class="topActionBar">
-                                <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                        <td colspan="6">
+                            <div class="actionBar">
+                                <c:import url="/includes/welcome.jsp"/>
                             </div>
                             <div class="title">    
                                 <h1>Product Deletion</h1>
@@ -27,6 +27,7 @@
                         </td>
                     </tr>
                     <tr>
+                        <th class="mobHide colRes"></th>
                         <th class="colRes center">Code</th>
                         <th></th>
                         <th data-name="album">Album</th>
@@ -34,6 +35,7 @@
                         <th class="mobHide colRes"></th>
                     </tr>
                     <tr>
+                        <td class="mobHide colRes"></td>
                         <td class="code center colRes">${product.code}</td>
                         <td class="colRes" data-name="album">
                             <img class="coverArt" src="${product.getImageURL()}"/>
@@ -46,15 +48,15 @@
                         <td class="mobHide colRes"></td>
                     </tr>
                     <tr>
-                        <td colspan="5"><div class="separator"></div></td>
+                        <td colspan="6"><div class="separator"></div></td>
                     </tr>
-                    <td colspan="5">
+                    <td colspan="6">
                         <form action="deleteProduct" method="post">
                             <input type="hidden" name="productCode" value="${product.code}"/>
                             <input type="hidden" name="productDesc" value="${product.description}"/>
                             <input type="hidden" name="productPrice" value="${product.price}"/>
                             <input type="hidden" name="action" value="confirmDeletion"/>
-                            <input style="background-color: ${pageAccentColor};" type="submit" class="mL10 fLeft" value="Delete"/>
+                            <input style="background-color: ${pageColor};" type="submit" class="mL10 fLeft" value="Delete"/>
                         </form>
                         <form action="loadProducts" method="get">
                             <input type="hidden" name="action" value="displayProducts"/>

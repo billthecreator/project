@@ -9,16 +9,16 @@ $primary700: rgba(245,124,0,1);
 $secondary500:rgba(3,169,244,1);
 
 
-body { 
+body {
     font-family: "Roboto", "Open Sans";
     font-size: 85%;
     margin:0;
     background-color: #303030;
     padding:0;
 }
-h1 {     
+h1 {
     font-size: 1.5em;
-    color: black;  
+    color: black;
 }
 br {
     clear: both;
@@ -36,19 +36,19 @@ br {
     position: relative;
     width: 100%;
     height: 50px;
-    
-    .block {    
+
+    .block {
         height: 50px;
         display: inline-block;
         float: left;
         padding: 0 12px;
-        
+
         h1 {
             line-height: 24px;
             padding: 0;
             margin: 0;
         }
-        
+
         &:nth-of-type(2){
             float: right;
         }
@@ -58,23 +58,24 @@ br {
 /* The styles for the tables */
 
 $formPadding: 8px;
-$cardMaxWidth: 900px;
+$cardMaxWidth: 800px;
+$mobileSize: 600px;
 
 .card {
     /*border: 1px solid rgba(black, .1);*/
-    box-shadow: 0 3px 6px rgba(black, .5);
+    box-shadow: 0 0px 60px rgba(black, .5);
     padding:8px 0;
     display: block;
     background-color: #424242;
-    border-radius: 3px;
+    border-radius: 0px;
     overflow:hidden;
-    
+
     &.withTitle{padding-top: 0 !important;}
-    @media(max-width: (600px)){
+    @media(max-width: ($mobileSize)){
         border-radius: 0px;
         padding:8px 0;
         margin-bottom:32px;
-        
+
     }
 }
 .space50{
@@ -84,21 +85,21 @@ $cardMaxWidth: 900px;
     width: calc(100% - 16px);
 }
 table {
-    border: none;    
+    border: none;
     border-collapse: collapse;
     border-spacing: 0 !important;
     vertical-align: baseline;
     width: 100%;
-    
+
     th, td {
         text-align: left;
         padding: 0px 16px;
         & i.wordIcon {
             display:none !important;
-            @media (max-width: (600px)) {
+            @media (max-width: ($mobileSize)) {
                 display:inline-block !important;
                 font-size: 16px !important;
-            } 
+            }
         }
         .separator{
             display: block;
@@ -108,14 +109,14 @@ table {
             background-color: rgba(white, .3);
         }
         & .iconWord {
-            @media (max-width: (600px)) {
+            @media (max-width: ($mobileSize)) {
                 display:none;
             }
         }
         &[data-name="album"] {
             padding-left: 8px;
         }
-        
+
         &[data-name="price"] {
             padding-right: 16px;
         }
@@ -124,52 +125,39 @@ table {
         font-size: 12px;
         text-transform: uppercase;
         padding: 16px 0;
-        color:rgba(#fff, .57); 
-        
+        color:rgba(#fff, .57);
+
         i{
             font-size: 16px !important;
         }
-        
-    tr {
-        .actionBar td{
-            padding: 16px 0 !important;
-        }
-    }
+
     }
     
+
     .cardTitle{
         background-color: $secondary500;
-        
+
         td{
             padding:0;}
-        
+
         .albumCoverArt {
             float:right;
             display: inline;
             padding: 16px;
-            
+
             & .coverArt[src=""]{display:none;}
-            
+
             .coverArt{
                 width:152px !important;
                 height:152px !important;
                 padding:0;
                 margin:0;
-                
-                @media (max-width: (600px)) {
+
+                @media (max-width: ($mobileSize)) {
                     width:112px !important;
                     height:112px !important;
                 }
             }
-        }
-        .topActionBar{
-            padding: 16px;
-            display:block;
-            posistion:relative;
-            width: calc(100% - 32px);
-            height:32px;
-             
-            a {display: block;text-align: center; min-width: 44px;}
         }
         .title {
             display: inline;
@@ -179,16 +167,16 @@ table {
             padding-top: 8px;
             padding-bottom: 8px;
             width: calc(100% - (32px));
-            
+
             &.withImage{
                 width: calc(100% - (152px + 48px));
-                @media (max-width: (600px)) {
+                @media (max-width: ($mobileSize)) {
                     width: calc(100% - (112px + 48px));
                 }
             }
-            
-            
-            
+
+
+
             h1,h2 {
                 color:white;
                 font-weight: 300;
@@ -196,15 +184,15 @@ table {
             h1 {
                 line-height: 34px;
                 font-size: 34px;
-                
-                @media(max-width: (600px)){font-size:20px; font-weight:500;line-height: 21px;}
-                
+
+                @media(max-width: ($mobileSize)){font-size:20px; font-weight:500;line-height: 21px;}
+
             }
             h2 {
                 line-height: 18px;
                 font-size: 16px;
                 opacity: .87;
-                /*@media(max-width: (600px)){font-size:17px;}*/
+                /*@media(max-width: ($mobileSize)){font-size:17px;}*/
             }
             a.button{
                 display: inline-block;
@@ -217,17 +205,17 @@ table {
         }
     }
     .code {
-        color: rgba(#fff, .7);  
-        font-weight: 400; 
+        color: rgba(#fff, .7);
+        font-weight: 400;
         font-size: 13px;
     }
     .description {
-        color: #fff;  
-        font-weight: 400; 
+        color: #fff;
+        font-weight: 400;
         font-size: 15px;
-        line-height:20px;        
+        line-height:20px;
         padding: 0 8px;
-        
+
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
         }
@@ -237,7 +225,7 @@ table {
                 font-size: 14px;
             }
         }
-        
+
         .album {
             font-size: 14px;
             @media (max-width: ($cardMaxWidth)) {
@@ -246,17 +234,17 @@ table {
         }
     }
     .price {
-        color: rgba(#fff, .7);     
+        color: rgba(#fff, .7);
         font-weight: 400;
         font-size: 16px;
         padding: 0 8px;
         padding-right: 0;
-        
+
         @media (max-width: ($cardMaxWidth)) {
             font-size: 13px;
-        } 
+        }
     }
-    
+
     .coverArt {
         $coverArtSize:48px;
         width: $coverArtSize !important;
@@ -267,7 +255,7 @@ table {
         margin: 8px 0;
         display: block;
     }
-    
+
     .colRes{
        width:20px;
        padding: 0 8px;
@@ -286,7 +274,7 @@ tr td a {
     font-size: 14px;
     padding: 16px 8px;
     color: rgba(white, .87);
-    
+
     &.coverArtLink{
         padding: 0;
         opacity: 100;
@@ -309,35 +297,36 @@ tr td a {
             background-color: rgba(black, .33);
             text-align: center;
             z-index: 100;
-            
-            @media (max-width: (600px)) {
+
+            @media (max-width: ($mobileSize)) {
                 opacity: 100;
             }
-        } 
+        }
     }
-    
-        
+
+
     @media (max-width: ($cardMaxWidth)) {
         opacity:100;
         font-size: 13px;
         padding: 16px 8px;
     }
-    @media (max-width: (600px)) {
+    @media (max-width: ($mobileSize)) {
         opacity:100;
         padding: 4px 8px;
         font-size: 12px;
         border-radius: 2px;
         background-color: rgba(224,224,224,0);
-        
+
     }
-    
-    
+
+
 }
+
 
 tr:not(.cardTitle):hover td {
     background-color: rgba(black, .1);
     a {
-        opacity: 100; 
+        opacity: 100;
         transition: 0s opacity ease;
     }
     .coverArtLink i {opacity: 100;}
@@ -349,8 +338,8 @@ tr:not(.cardTitle):hover td {
     }
     td {
         background-color: transparent;
-        
-    } 
+
+    }
     tr:hover td {
         background-color: transparent;
     }
@@ -358,7 +347,7 @@ tr:not(.cardTitle):hover td {
         padding: $formPadding;
         &:first-of-type{padding-left: 0;}
         &:last-of-type{padding-right: 0;}
-        
+
     }
 }
 tr td {
@@ -376,16 +365,16 @@ tr td {
     th, td {
         border-width: 0;
     }
-    td:first-of-type{
+/*    td:first-of-type{
         width:70px;
-    }
+    }*/
 }
 
 .message{
     margin: 10px 0px;
     padding:10px;
     font-size:14px;
-    
+
     &.info {
         color: rgba(0,96,100,1);
         background-color: rgba(0,188,212,1);
@@ -408,66 +397,66 @@ tr td {
 
 
 /* form starting stylings ------------------------------- */
-.group 			  { 
-    position:relative; 
+.group 			  {
+    position:relative;
     margin: 16px 16px 8px;
     width:calc(100% - 36px);
-    
-    @media(max-width: (600px)){margin-top:16px;}
-    
+
+    @media(max-width: ($mobileSize)){margin-top:16px;}
+
     &.short{
         width:calc(50% - 36px);
         float: left;
-        @media (max-width: (600px)) {
+        @media (max-width: ($mobileSize)) {
             width:calc(100% - 36px);
         }
         &:nth-child(2n){
-            @media(max-width: (600px)){margin-top:32px;}
+            @media(max-width: ($mobileSize)){margin-top:32px;}
         }
     }
-    
+
     &.noLabel {
         margin: 8px 16px;
     }
-    
+
     * {box-sizing:border-box;}
-    
-    
+
+
     input{
       font-size:16px;
       padding:8px 0 8px;
       display:block;
-      width:100%; 
+      width:100%;
       border:none;
       border-bottom:1px solid #757575;
       background-color: transparent;
       color:rgba(#fff, .7);
       &:focus {color: white;}
-      @media(max-width: (600px)){
+      @media(max-width: ($mobileSize)){
           font-size:13px;
           padding: 4px 0 8px;
       }
     }
     /* LABEL ======================================= */
     label{
-      color:rgba(#fff, .3); 
+      color:rgba(#fff, .3);
       font-size:16px;
       font-weight:normal;
       position:absolute;
       pointer-events:none;
       left:px;
       top:8px;
-      transition:0.2s ease all; 
-      -moz-transition:0.2s ease all; 
+      transition:0.2s ease all;
+      -moz-transition:0.2s ease all;
       -webkit-transition:0.2s ease all;
-      @media(max-width: (600px)){font-size:13px;top:4px;}
+      @media(max-width: ($mobileSize)){font-size:13px;top:4px;}
     }
-    
+
     /* active state */
     input:focus ~ label, input:not([value=""]) ~ label 		{
         top:-16px;
         font-size:14px;
-        @media(max-width: (600px)){font-size:12px;top:-12px;}
+        @media(max-width: ($mobileSize)){font-size:12px;top:-12px;}
       /*color:$primary500;*/
     }
     input:invalid ~ label{
@@ -478,32 +467,32 @@ tr td {
     }
 
     /* BOTTOM BARS ================================= */
-    .bar, .errorBar{ 
-        position:relative; 
-        display:block; 
+    .bar, .errorBar{
+        position:relative;
+        display:block;
         width:100%;
-        
+
         &:before, &:after 	{
           content:'';
-          height:2px; 
+          height:2px;
           width:0;
-          bottom:0px; 
+          bottom:0px;
           position:absolute;
-          background-color: none; 
-          transition:0.2s ease all; 
-          -moz-transition:0.2s ease all; 
+          background-color: none;
+          transition:0.2s ease all;
+          -moz-transition:0.2s ease all;
           -webkit-transition:0.2s ease all;
-        }   
+        }
     }
     .bar:before {
       left:50%;
     }
     .bar:after {
-      right:50%; 
+      right:50%;
     }
     .errorBar{
         &:before,&:after {
-            background: red; 
+            background: red;
             width:50%;
             z-index: 100
         }
@@ -514,8 +503,8 @@ tr td {
         bottom: -8px;
         position:relative;
         color:rgba(244,67,54,1);
-        @media(max-width: (600px)){bottom: -4px;}
-    } 
+        @media(max-width: ($mobileSize)){bottom: -4px;}
+    }
 
     /* active state */
     input:focus ~ .bar:before, input:focus ~ .bar:after {
@@ -525,9 +514,9 @@ tr td {
     /* HIGHLIGHTER ================================== */
     .highlight {
       position:absolute;
-      height:100%; 
-      width:100%; 
-      top:0%; 
+      height:100%;
+      width:100%;
+      top:0%;
       left:0;
       pointer-events:none;
       opacity:0.5;
@@ -572,15 +561,16 @@ input[type="submit"], a.button {
     border-radius: 2px;
     border:0;
     box-shadow:0 1px 2px rgba(black, .3);
-    
+    margin: 8px;
+
     &.mL10 {margin-left: 16px;}
     &.mR10 {margin-right: 16px;}
-    
+
     &:hover{
         background-color: $primary600;
         box-shadow:0 1px 2px rgba(black, .5);
     }
-    
+
     &:active {
         background-color: $primary700;
         box-shadow:0 5px 10px rgba(black, .25);
@@ -589,9 +579,8 @@ input[type="submit"], a.button {
         background-color: rgba(white,1);
         color: rgba(#000, .87);
         box-shadow:0 1px 4px rgba(black, .3);
-        margin-left: 8px;
         display: inline;
-                
+
         &:hover{
             box-shadow:0 1px 2px rgba(black, .5);
         }
@@ -599,6 +588,14 @@ input[type="submit"], a.button {
             box-shadow:0 5px 10px rgba(black, .25);
             padding: 8px 16px;
         }
+    }
+    &.flat {
+        background-color: transparent;
+        color: white;
+        box-shadow: none;
+        
+        &:hover {background-color: rgba(black, .3);}
+        
     }
 }
 input:focus,
@@ -608,7 +605,7 @@ button:focus,
 a:focus{
     outline: none;
 }
-    
+
 
 .fLeft{float:  left;}
 .fRight{float:  right;}
@@ -630,7 +627,7 @@ a:hover {
     position: fixed;
     top: calc(100vh - 64px);
     left: calc(100vw - 64px);
-    
+
     input[type="submit"] {
         min-width: 48px;
         border-radius: 50%;
@@ -641,7 +638,23 @@ a:hover {
         font-size: 2em;
     }
 }
-
+.actionBar{
+    padding: 8px 8px 16px 8px !important;
+    display:block;
+    position:relative;
+    width: calc(100% - 16px);
+    height:32px;
+    
+    .user{
+        float:left;
+        color: white;
+        font-size: 18px;
+        line-height: 32px;
+        padding:8px;
+    }
+    a {display: inline-block !important;text-align: center; min-width: 44px;}
+    input[type='submit']{}
+}
 /* container */
 .container {
     width: 100%;
@@ -649,21 +662,21 @@ a:hover {
     max-width: $cardMaxWidth;
     margin: 0 auto;
     margin-top: 64px;
-    
-    .w50 {margin:0 auto;max-width: $cardMaxWidth/1.5;}
-    
+
+    .w50 {margin:0 auto;max-width: $mobileSize;}
+
     @media (max-width: ($cardMaxWidth)) {
         padding: 0 16px;
         width: calc(100% - 32px);
      }
-    @media(max-width: (600px)){
+    @media(max-width: ($mobileSize)){
         margin:0;
         padding: 0;
         width: calc(100%);
      }
 }
 .mobHide{
-    @media (max-width: (600px)) {
+    @media (max-width: ($mobileSize)) {
             display:none;
     }
 }

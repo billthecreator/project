@@ -4,6 +4,7 @@
     Author     : William
 --%>
 
+<%@page import="com.sun.xml.internal.ws.util.StringUtils"%>
 <%@page import="music.color.ColorPalette"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -52,7 +53,7 @@
                         <td colspan="5">
                             <div class="title">    
                                 <h1>Product Manager</h1>
-                                <h2>What do you want to do?</h2>
+                                <h2>What do you want to do, <%=StringUtils.capitalize(request.getRemoteUser())%>?</h2>
                             </div>
                         </td>
                     </tr>

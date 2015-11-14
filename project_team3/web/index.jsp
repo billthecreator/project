@@ -49,7 +49,7 @@
         <div class="container">
                 
                 
-                <div class="card withTitle">
+                <div class="card withTitle w50">
                     <table class="noBorder noColor"cellspacing="0">
                         <tr class="cardTitle" style="background-color: <%= palette.defaultPrimary500 %>;">
                             <td colspan="1">
@@ -59,11 +59,11 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="actionBar">
-                            <th>
-                                <div class="space50"></div>
-                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="admin/index.jsp">Log in</a>
-                            </th>
+                        <tr>
+                            <td class="actionBar">
+                                <!--<div class="space50"></div>-->
+                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="admin/index.jsp">Member Log in</a>
+                            </td>
                         </tr>
                      </table>
                 </div>

@@ -33,8 +33,9 @@
         <url-pattern>/updateProduct</url-pattern>
     </servlet-mapping>
     <session-config>
+        <!--2 weeks-->
         <session-timeout>
-            30
+            20160 
         </session-timeout>
     </session-config>
     <welcome-file-list>

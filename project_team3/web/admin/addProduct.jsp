@@ -50,9 +50,8 @@
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">
                             <td>
-                                <div class="topActionBar">
-                                    <!--<a style="background-color: ${pageAccentColor};" href="<c:url value='/loadProducts?action=displayProducts'/>" class="fLeft button" >View All Products</a>-->
-                                    <a style="opacity:100;" href="admin/logout.jsp" class="fRight button neutral" >Log out</a>
+                                <div class="actionBar">
+                                    <c:import url="/includes/welcome.jsp"/>
                                 </div>
                                 <div class="title withImage"> 
                                     <h1>Product Editor</h1>
@@ -67,7 +66,7 @@
                         </tr>
                         <tr>                            
                             <td>
-                                <div class="space50"><c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral" >Delete</a></c:if></div>
+                                <div class="space50"></div>
                                 
                             </td>
                         </tr>
@@ -171,16 +170,17 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="actionBar">
-                            <td>
+                        <tr>
+                            <td class="actionBar">
                                 <input type="hidden" name="action" value="updateProduct"/>
                                 <c:if test="${product.getId() == 0 || product.getId() == null}">
-                                    <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Add"/>
+                                    <input style="background-color: ${pageColor};" class="fLeft" type="submit" value="Add"/>
                                 </c:if>
                                 <c:if test="${product.getId() > 0}">
-                                    <input style="background-color: ${pageColor};" class="mL10" type="submit" value="Update Product"/>
+                                    <input style="background-color: ${pageColor};" class="fLeft" type="submit" value="Update"/>
                                 </c:if>
-                                <a href="<c:url value='/loadProducts' />" class="button neutral" >Cancel</a>
+                                <a href="<c:url value='/loadProducts' />" class="button neutral fLeft" >Cancel</a>
+                                <c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral fRight flat" >Delete</a></c:if>
                             </td>
                         </tr>
                     </table>
