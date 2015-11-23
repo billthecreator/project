@@ -50,20 +50,20 @@
                     <tr>
                         <td colspan="6"><div class="separator"></div></td>
                     </tr>
-                    <td colspan="6">
-                        <form action="deleteProduct" method="post">
-                            <input type="hidden" name="productCode" value="${product.code}"/>
-                            <input type="hidden" name="productDesc" value="${product.description}"/>
-                            <input type="hidden" name="productPrice" value="${product.price}"/>
-                            <input type="hidden" name="action" value="confirmDeletion"/>
-                            <input style="background-color: ${pageColor};" type="submit" class="mL10 fLeft" value="Delete"/>
-                        </form>
-                        <form action="loadProducts" method="get">
-                            <input type="hidden" name="action" value="displayProducts"/>
-                            <input type="submit" class="neutral fLeft" value="Cancel" />
-                        </form>
-                    </td>
-
+                    <tr>
+                        <td colspan="6">
+                            <div class="actionBar">
+                                <form action="<c:url value='/AdminController/deleteProduct'/>" method="post">
+                                    <input type="hidden" name="productCode" value="${product.code}"/>
+                                    <input type="hidden" name="productDesc" value="${product.description}"/>
+                                    <input type="hidden" name="productPrice" value="${product.price}"/>
+                                    <input type="hidden" name="action" value="confirmDeletion"/>
+                                    <input style="background-color: ${pageColor};" type="submit" class="fLeft" value="Delete"/>
+                                    <a href="<c:url value='/AdminController/displayProducts'/>" class="button neutral fLeft" >Cancel</a>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
                         
             </div>

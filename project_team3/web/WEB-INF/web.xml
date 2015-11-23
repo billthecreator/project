@@ -1,72 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    
     <servlet>
-        <servlet-name>CartServlet</servlet-name>
-        <servlet-class>music.cart.CartServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ProductsServlet</servlet-name>
-        <servlet-class>music.cart.ProductsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>deleteProduct</servlet-name>
-        <servlet-class>music.cart.DeleteProductServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateProductServlet</servlet-name>
-        <servlet-class>music.cart.UpdateProductServlet</servlet-class>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>music.controller.AdminController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CartServlet</servlet-name>
-        <url-pattern>/cart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ProductsServlet</servlet-name>
-        <url-pattern>/loadProducts</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>deleteProduct</servlet-name>
-        <url-pattern>/deleteProduct</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateProductServlet</servlet-name>
-        <url-pattern>/updateProduct</url-pattern>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/AdminController/*</url-pattern>
     </servlet-mapping>
     <session-config>
-        <!--2 weeks-->
-        <session-timeout>
-            20160 
-        </session-timeout>
+        <session-timeout>20160</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
-    
-    
-    
     <security-role>
         <description>programmers</description>
         <role-name>programmer</role-name>
     </security-role>
-    
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
-            <url-pattern>/musicStore/*</url-pattern>
+            <!--<url-pattern>/musicStore/*</url-pattern>-->
         </web-resource-collection>
         <auth-constraint>
             <role-name>programmer</role-name>
             <role-name>service</role-name>
         </auth-constraint>
     </security-constraint>
-    
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
-    
-<!--    <login-config>
+    <!--    <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Admin Login</realm-name>
     </login-config>-->
@@ -77,5 +44,4 @@
             <form-error-page>/admin/login_error.jsp</form-error-page>
         </form-login-config>
     </login-config>
-    
 </web-app>

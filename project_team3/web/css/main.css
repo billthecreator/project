@@ -8,7 +8,7 @@ body {
   font-family: "Roboto", "Open Sans";
   font-size: 85%;
   margin: 0;
-  background-color: #303030;
+  background-color: #444;
   padding: 0; }
 
 h1 {
@@ -47,8 +47,8 @@ br {
   box-shadow: 0 0px 60px rgba(0, 0, 0, 0.5);
   padding: 8px 0;
   display: block;
-  background-color: #424242;
-  border-radius: 0px;
+  background-color: rgba(68, 68, 68, 0.5);
+  border-radius: 3px;
   overflow: hidden; }
   .card.withTitle {
     padding-top: 0 !important; }
@@ -250,13 +250,19 @@ tr td a {
       border-radius: 2px;
       background-color: rgba(224, 224, 224, 0); } }
 
-tr:not(.cardTitle):hover td {
+.productList:hover td {
   background-color: rgba(0, 0, 0, 0.1); }
-  tr:not(.cardTitle):hover td a {
+  .productList:hover td a {
     opacity: 100;
     transition: 0s opacity ease; }
-  tr:not(.cardTitle):hover td .coverArtLink i {
+  .productList:hover td .coverArtLink i {
     opacity: 100; }
+    .productList:hover td .coverArtLink i:hover {
+      background-color: rgba(0, 0, 0, 0.7); }
+
+tr:not(.productList) td a {
+  opacity: 100;
+  transition: 0s opacity ease; }
 
 .noColor tr td a {
   opacity: 100;

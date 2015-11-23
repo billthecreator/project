@@ -45,7 +45,7 @@
         <div class="container">
             
             <div class="card withTitle">
-                <form action="updateProduct" method="post" autocomplete="off">
+                <form action="<c:url value='/AdminController/updateProduct'/>" method="post" autocomplete="off">
                     <input type="hidden" name="productId" value="${product.getId()}">
                     <table class="noBorder noColor">
                         <tr class="cardTitle" style="background-color: ${pageColor};">
@@ -179,8 +179,8 @@
                                 <c:if test="${product.getId() > 0}">
                                     <input style="background-color: ${pageColor};" class="fLeft" type="submit" value="Update"/>
                                 </c:if>
-                                <a href="<c:url value='/loadProducts' />" class="button neutral fLeft" >Cancel</a>
-                                <c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/loadProducts?action=removeProduct&productCode=${product.code}' />" class="button neutral fRight flat" >Delete</a></c:if>
+                                <a href="<c:url value='/AdminController/displayProducts'/>" class="button neutral fLeft" >Cancel</a>
+                                <c:if test="${product.getId() > 0 && !prodError.anyErrors()}"><a href="<c:url value='/AdminController/deleteProduct'><c:param name='productCode' value='${product.code}'/></c:url>" class="button neutral fRight flat" >Delete</a></c:if>
                             </td>
                         </tr>
                     </table>

@@ -33,18 +33,15 @@
                         <th></th>
                         <th colspan="1" data-name="album">Album</th>
                         
-                        <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-pencil wordIcon"></i></th>
-                        <th class="center mobHide"><span class="iconWord"></span><i class="fa fa-ban wordIcon"></i></th>
+                        <th class="center mobHide"></span><i class="fa fa-pencil "></i></th>
+                        <th class="center mobHide"></span><i class="fa fa-ban "></i></th>
                         <th class="right" data-name="price"><span class="iconWord">Price</span><i class="fa fa-usd wordIcon"></i></th>
                     </tr>
                     <c:forEach var="items" items="${products}">  
-                    <tr>
+                    <tr class="productList">
                         <td class="code center colRes mobHide">${items.code}</td>
                         <td class="colRes" data-name="album">
-                            <a class="coverArtLink" href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='addProduct'/>
-                                   <c:param name='productCode' value='${items.code}'/>
-                                                     </c:url>">
+                            <a class="coverArtLink" href="<c:url value='/AdminController/updateProduct'><c:param name='productCode' value='${items.code}'/></c:url>">
                                 <img class="coverArt" src="${items.getImageURL()}"/>
                                 <i class="fa fa-ellipsis-v"></i>
                             </a>
@@ -52,30 +49,23 @@
                         <td class="description">
                             <div class="artist">${items.getArtistName()}</div>
                             <div class="album">${items.getAlbumName()}</div></td>
-                         <td class="center colRes mobHide"><a class="button flat" href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='addProduct'/>
-                                   <c:param name='productCode' value='${items.code}'/>
-                                                     </c:url>"><span class="iconWord">Edit</span><i class="fa fa-ellipsis-v wordIcon" title="Edit or delete this item"></i></a></td>
+                        <td class="center colRes mobHide"><a class="button flat" href="<c:url value='/AdminController/updateProduct'><c:param name='productCode' value='${items.code}'/></c:url>"><span class="iconWord">Edit</span><i class="fa fa-ellipsis-v wordIcon" title="Edit or delete this item"></i></a></td>
                         <td class="center colRes mobHide">
-                            <a class="button flat" href="<c:url value='/loadProducts' >
-                                   <c:param name='action' value='removeProduct'/>
-                                   <c:param name='productCode' value='${items.code}'/>
-                               </c:url>">Delete</a>
+                            <a class="button flat" href="<c:url value='/AdminController/deleteProduct'><c:param name='productCode' value='${items.code}'/></c:url>">Delete</a>
                         </td>
                         <td class="price right" data-name="price">${items.getPriceCurrencyFormat()}</td>
-                       
                     </tr>
                     </c:forEach>
                     </c:if>
+                    <tr>
+                        <td colspan="6" style="padding:0;">
+                            <div class="actionBar">
+                                <a class="button neutral fLeft" href="<c:url value='/AdminController/updateProduct'><c:param name='productCode' value=''/></c:url>">Add Product</a>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
-                    
-                <div class="actionButton">
-                    <form action="loadProducts">
-                        <input type="hidden" name="productCode" value=""/>
-                        <input type="hidden" name="action" value="addProduct"/>
-                        <input style="background-color: ${pageAccentColor};" type="submit" value="+"/>
-                    </form>
-                </div>
+                   
             </div>
             <br/>
         </div>

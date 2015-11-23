@@ -107,7 +107,7 @@ public class Product implements Serializable {
     }
     
     public String getImageURL() {
-        String imageURL = "musicStore/images/" + productId.toString() + "_cover.jpg";
+        String imageURL = "../musicStore/images/" + productId.toString() + "_cover.jpg";
         return imageURL;
     }
 

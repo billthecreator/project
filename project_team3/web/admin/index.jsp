@@ -60,7 +60,8 @@
                     <tr class="actionBar">
                         <td>
                             <div class="space50"></div>
-                            <a href="<c:url value='/loadProducts?action=displayProducts'/>" class="button neutral" >View All Products</a>
+                            <a href="<c:url value='/AdminController/displayProducts'/>" class="button neutral" >View All Products</a>
+                            <a style="opacity:100;" href="<c:url value='/AdminController/logout'/>" class="fRight button neutral flat" >Log out</a>     
                         </td>
                     </tr>
                 </table>

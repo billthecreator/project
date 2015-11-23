@@ -1,56 +1,90 @@
-package music.cart;
+package music.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.OutputStream;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import music.business.Product;
-import music.business.ProductError;
+
 import music.color.ColorPalette;
-import music.data.ProductCover;
-import music.data.ProductDB;
 
-/**
- *
- * @author William
- */
-public class UpdateProductServlet extends HttpServlet {
+import music.business.*;
+import music.data.*;
+
+public class AdminController extends HttpServlet {
+
+    ColorPalette palette = new ColorPalette();
+    List<Product> products = ProductDB.selectProducts();
+    HttpSession session;  
     
-    
-@Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException, ServletException {
         
-        HttpSession session = request.getSession();
-                
-        //put the list of products in a List
-        List<Product> products = ProductDB.selectProducts();
-        
-        //set the List to the "products" attribute
-        session.setAttribute("products", products);
-        
-        //default landing page
-        String url = "/loadProducts";
-        
-        String action = request.getParameter("action");
-        if (action == null) {
-            //default action
-            action = "updateProduct"; 
+        session = request.getSession();
+        String requestURI = request.getRequestURI();
+        String url = "/admin";
+        if (requestURI.endsWith("/displayProducts")) {
+            url = displayProducts(request, response);
+        } else if (requestURI.endsWith("/deleteProduct")) {
+            url = deleteProduct(request, response);
+        } else if (requestURI.endsWith("/updateProduct")) {
+            url = updateProduct(request, response);
+        } else if (requestURI.endsWith("/logout")){
+            url = "/admin/logout.jsp";
         }
         
-        if (action.equals("updateProduct")) {
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
+        getServletContext()
+                .getRequestDispatcher(url)
+                .forward(request, response);
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request,
+            HttpServletResponse response)
+            throws IOException, ServletException {
+
+        session = request.getSession();
+        String requestURI = request.getRequestURI();
+        String url = "/admin";
+        if (requestURI.endsWith("/updateProduct")) {
+            url = updateProductNOW(request, response);
+        } else if (requestURI.endsWith("/deleteProduct")) {
+            url = deleteProductNOW(request, response);
+        } 
+        
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
+        getServletContext()
+                .getRequestDispatcher(url)
+                .forward(request, response);
+    }
+
+    private String deleteProductNOW(HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        //remove the product from the list
+        String productCode = request.getParameter("productCode");
+        String url = "/admin/listProducts.jsp";   
+        if (productCode != null || !productCode.isEmpty()){
+            Product productToDelete = ProductDB.selectProduct(productCode);
+
+            if (ProductDB.exists(productToDelete.getId())){
+                // if this product exists in the list, then delete it
+                ProductDB.delete(productToDelete);
+            }
+            //return to the list of products after deletion or cancelation  
+        }
+        return url;
+    }
+    private String updateProductNOW(HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        
             //create or update the product based on the product code.
             long productId = 0;
             try { 
@@ -64,7 +98,7 @@ public class UpdateProductServlet extends HttpServlet {
             String productCoverURL  = request.getParameter("productCoverURL");
             
             ProductError prodError = new ProductError();
-            
+            String url = "/admin/addProduct.jsp";
             
             String message = "";
             int errorCode = 0;
@@ -136,7 +170,7 @@ public class UpdateProductServlet extends HttpServlet {
                     ColorPalette palette = new ColorPalette();
                     session.setAttribute("pageColor", palette.updatePrimary500);
                     session.setAttribute("pageAccentColor", palette.updateSecondary500);
-                    url = "/loadProducts";   
+                    url = "/admin/listProducts.jsp";   
                     try {
                         //test to see if price is double
                          newProduct.setPrice(Double.parseDouble(productPrice));
@@ -156,7 +190,7 @@ public class UpdateProductServlet extends HttpServlet {
                             ProductDB.insert(newProduct);
                         }
                         try {
-                            String dest = getServletContext().getRealPath("musicStore/images/");
+                            String dest = getServletContext().getRealPath("../musicStore/images/");
                             ProductCover.getProductCover(newProduct, dest);
                         } catch (Exception e) {
                             prodError.setCoverURLError(true);
@@ -171,17 +205,62 @@ public class UpdateProductServlet extends HttpServlet {
                         session.setAttribute("product", newProduct);
                         prodError.setPriceError2(true);
                         session.setAttribute("prodError", prodError);
-
-                        url = "/admin/addProduct.jsp";   
+ 
                     }          
                 } else {
-                    url = "/admin/addProduct.jsp";
+                    
                 }
             }
             
-        }
-        getServletContext()
-                .getRequestDispatcher(url)
-                .forward(request, response);
+        return url;
     }
+    
+    private String displayProducts(HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        
+        session.setAttribute("pageColor", palette.defaultPrimary500);
+        session.setAttribute("pageAccentColor", palette.defaultSecondary500);
+        
+        String url = "/admin/listProducts.jsp";
+        return url;
+    }
+    
+    private String deleteProduct(HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        
+        
+        String productCode = request.getParameter("productCode");
+        session.setAttribute("product",  ProductDB.selectProduct(productCode));
+        session.setAttribute("pageColor", palette.deletePrimary500);
+        session.setAttribute("pageAccentColor", palette.deleteSecondary500);
+        String url = "/admin/deleteProduct.jsp";
+        return url;
+    }
+    
+    private String updateProduct(HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+       
+            //adding or editing a product
+            String productCode = request.getParameter("productCode");
+                        
+            String url = "/admin/addProduct.jsp";
+            if (productCode != null) {
+                //if the product code not not a null value
+                session.setAttribute("product",  ProductDB.selectProduct(productCode));
+            }
+            else {
+                //if the product code is null, set everything blank
+                //so the the product is new
+                session.setAttribute("product",  new Product());
+            }
+            ProductError prodError = new ProductError();
+//            NumberFormatException e = null;
+            session.setAttribute("prodError", prodError);
+            session.setAttribute("pageColor", palette.updatePrimary500);
+            session.setAttribute("pageAccentColor", palette.updateSecondary500);
+            
+            return url;
+            
+    }
+    
 }

@@ -13,7 +13,7 @@ body {
     font-family: "Roboto", "Open Sans";
     font-size: 85%;
     margin:0;
-    background-color: #303030;
+    background-color: #444; 
     padding:0;
 }
 h1 {
@@ -66,8 +66,8 @@ $mobileSize: 600px;
     box-shadow: 0 0px 60px rgba(black, .5);
     padding:8px 0;
     display: block;
-    background-color: #424242;
-    border-radius: 0px;
+    background-color: rgba(#444, .5);
+    border-radius: 3px;
     overflow:hidden;
 
     &.withTitle{padding-top: 0 !important;}
@@ -322,14 +322,24 @@ tr td a {
 
 }
 
-
-tr:not(.cardTitle):hover td {
+.productList:hover td {
     background-color: rgba(black, .1);
     a {
         opacity: 100;
         transition: 0s opacity ease;
     }
-    .coverArtLink i {opacity: 100;}
+    .coverArtLink i {
+        opacity: 100;
+        &:hover {
+            background-color: rgba(black, .7);
+        }
+    }
+} 
+tr:not(.productList) td {
+    a {
+        opacity: 100;
+        transition: 0s opacity ease;
+    }
 }
 .noColor {
     tr td a {
