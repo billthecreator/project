@@ -60,7 +60,7 @@
                     <tr>
                         <td colspan="6" style="padding:0;">
                             <div class="actionBar">
-                                <a class="button neutral fLeft" href="<c:url value='/AdminController/updateProduct'><c:param name='productCode' value=''/></c:url>">Add Product</a>
+                                <a style="background-color: ${pageColor}; color:white;" class="button fLeft" href="<c:url value='/AdminController/updateProduct'/>">Add Product</a>
                             </div>
                         </td>
                     </tr>

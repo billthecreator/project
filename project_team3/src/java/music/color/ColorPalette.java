@@ -18,4 +18,7 @@ public class ColorPalette {
     public String deletePrimary500 = "rgba(198,40,40,1)";
     public String deleteSecondary500 = "rgba(183,28,28,1)";
     
+    //color palette for error page
+    public String errorPrimary500 = "rgba(103,58,183,1)";
+    public String errorSecondary500 = "rgba(0,230,118,1)";
 }

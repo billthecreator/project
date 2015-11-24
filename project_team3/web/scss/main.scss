@@ -8,12 +8,31 @@ $primary600: rgba(251,140,0,1);
 $primary700: rgba(245,124,0,1);
 $secondary500:rgba(3,169,244,1);
 
+// Color Palette Dark Background
+$backgroundColor:#303030;
+$backgroundColorTable:#424242;
+$base: #fff;
+$primary:rgba($base, 1);
+$secondary:rgba($base, .7);
+$primaryDisabled:rgba($base, .3);
+$dividers:rbga($base, .12);
+
+// Color Palette Light Background
+// if you want the dark theme, disable the variables below
+
+$backgroundColor:#fafafa;
+$backgroundColorTable:#fff;
+$base: #000;
+$primary:rgba($base, .87);
+$secondary:rgba($base, .54);
+$primaryDisabled:rgba($base, .38);
+$dividers:rbga($base, .12);
 
 body {
     font-family: "Roboto", "Open Sans";
     font-size: 85%;
     margin:0;
-    background-color: #444; 
+    background-color: $backgroundColor; 
     padding:0;
 }
 h1 {
@@ -63,13 +82,13 @@ $mobileSize: 600px;
 
 .card {
     /*border: 1px solid rgba(black, .1);*/
-    box-shadow: 0 0px 60px rgba(black, .5);
-    padding:8px 0;
+    box-shadow: 0 0 75px rgba(black, .15);
+    padding:0px 0;
     display: block;
-    background-color: rgba(#444, .5);
+    background-color: $backgroundColorTable;
     border-radius: 3px;
     overflow:hidden;
-
+     
     &.withTitle{padding-top: 0 !important;}
     @media(max-width: ($mobileSize)){
         border-radius: 0px;
@@ -106,7 +125,7 @@ table {
             width:calc(100% - 32px);
             margin-left:  16px;
             height: 1px;
-            background-color: rgba(white, .3);
+            background-color: $dividers;
         }
         & .iconWord {
             @media (max-width: ($mobileSize)) {
@@ -125,7 +144,7 @@ table {
         font-size: 12px;
         text-transform: uppercase;
         padding: 16px 0;
-        color:rgba(#fff, .57);
+        color:$secondary;
 
         i{
             font-size: 16px !important;
@@ -137,6 +156,12 @@ table {
     .cardTitle{
         background-color: $secondary500;
 
+        .actionBar{
+            background-color:rgba(black, .05); 
+            
+            .flat {color: white}
+        }
+        
         td{
             padding:0;}
 
@@ -205,12 +230,12 @@ table {
         }
     }
     .code {
-        color: rgba(#fff, .7);
+        color: $secondary;
         font-weight: 400;
         font-size: 13px;
     }
     .description {
-        color: #fff;
+        color: $primary;
         font-weight: 400;
         font-size: 15px;
         line-height:20px;
@@ -234,7 +259,7 @@ table {
         }
     }
     .price {
-        color: rgba(#fff, .7);
+        color: $secondary;
         font-weight: 400;
         font-size: 16px;
         padding: 0 8px;
@@ -273,7 +298,7 @@ tr td a {
     font-weight: 500;
     font-size: 14px;
     padding: 16px 8px;
-    color: rgba(white, .87);
+    color: $secondary;
 
     &.coverArtLink{
         padding: 0;
@@ -440,8 +465,8 @@ tr td {
       border:none;
       border-bottom:1px solid #757575;
       background-color: transparent;
-      color:rgba(#fff, .7);
-      &:focus {color: white;}
+      color:$secondary;
+      &:focus {color: $primary;}
       @media(max-width: ($mobileSize)){
           font-size:13px;
           padding: 4px 0 8px;
@@ -449,7 +474,7 @@ tr td {
     }
     /* LABEL ======================================= */
     label{
-      color:rgba(#fff, .3);
+      color:$primaryDisabled;
       font-size:16px;
       font-weight:normal;
       position:absolute;
@@ -601,10 +626,10 @@ input[type="submit"], a.button {
     }
     &.flat {
         background-color: transparent;
-        color: white;
+        color: $primary;
         box-shadow: none;
         
-        &:hover {background-color: rgba(black, .3);}
+        &:hover {background-color: rgba(black, .25);}
         
     }
 }
@@ -622,13 +647,13 @@ a:focus{
 
 
 a, a:visited, a:active {
-    color: rgba(white, .8);
+    color: $secondary;
     text-decoration: none;
     border-bottom: 0px solid transparent;
     transition: .2s all ease;
 }
 a:hover {
-    color:rgba(white, .6);
+    color:$primary;
     border-bottom: 0px solid rgba(black, .6);
     transition: .2s all ease;
 }
@@ -649,7 +674,7 @@ a:hover {
     }
 }
 .actionBar{
-    padding: 8px 8px 16px 8px !important;
+    padding: 8px 8px 24px 8px !important;
     display:block;
     position:relative;
     width: calc(100% - 16px);
@@ -657,8 +682,10 @@ a:hover {
     
     .user{
         float:left;
+        opacity: .8;
+        font-family: arial;
         color: white;
-        font-size: 18px;
+        font-size: 13px;
         line-height: 32px;
         padding:8px;
     }

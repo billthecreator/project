@@ -26,6 +26,10 @@ public class AdminController extends HttpServlet {
             throws IOException, ServletException {
         
         session = request.getSession();
+        
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
+        
         String requestURI = request.getRequestURI();
         String url = "/admin";
         if (requestURI.endsWith("/displayProducts")) {
@@ -37,9 +41,6 @@ public class AdminController extends HttpServlet {
         } else if (requestURI.endsWith("/logout")){
             url = "/admin/logout.jsp";
         }
-        
-        products = ProductDB.selectProducts();
-        session.setAttribute("products", products);
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
@@ -57,7 +58,9 @@ public class AdminController extends HttpServlet {
             url = updateProductNOW(request, response);
         } else if (requestURI.endsWith("/deleteProduct")) {
             url = deleteProductNOW(request, response);
-        } 
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
         
         products = ProductDB.selectProducts();
         session.setAttribute("products", products);
@@ -80,6 +83,8 @@ public class AdminController extends HttpServlet {
             }
             //return to the list of products after deletion or cancelation  
         }
+        session.setAttribute("pageColor", palette.defaultPrimary500);
+        session.setAttribute("pageAccentColor", palette.defaultSecondary500);
         return url;
     }
     private String updateProductNOW(HttpServletRequest request,
@@ -240,19 +245,17 @@ public class AdminController extends HttpServlet {
     private String updateProduct(HttpServletRequest request,
             HttpServletResponse response) throws IOException {
        
-            //adding or editing a product
-            String productCode = request.getParameter("productCode");
-                        
+            String productCode = null;
             String url = "/admin/addProduct.jsp";
-            if (productCode != null) {
-                //if the product code not not a null value
+            //adding or editing a product
+            try {
+                productCode = request.getParameter("productCode");
                 session.setAttribute("product",  ProductDB.selectProduct(productCode));
-            }
-            else {
-                //if the product code is null, set everything blank
-                //so the the product is new
+            } catch (Exception e) {
+                productCode = null;
                 session.setAttribute("product",  new Product());
             }
+            
             ProductError prodError = new ProductError();
 //            NumberFormatException e = null;
             session.setAttribute("prodError", prodError);

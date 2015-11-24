@@ -57,11 +57,13 @@
                             </div>
                         </td>
                     </tr>
-                    <tr class="actionBar">
+                    <tr>
                         <td>
-                            <div class="space50"></div>
-                            <a href="<c:url value='/AdminController/displayProducts'/>" class="button neutral" >View All Products</a>
-                            <a style="opacity:100;" href="<c:url value='/AdminController/logout'/>" class="fRight button neutral flat" >Log out</a>     
+                            <div class="actionBar">
+                                <div class="space50"></div>
+                                <a href="<c:url value='/AdminController/displayProducts'/>" class="fLeft button neutral" >View All Products</a>
+                                <a style="opacity:100;" href="<c:url value='/AdminController/logout'/>" class="fLeft button neutral flat" >Log out</a>    
+                            </div>
                         </td>
                     </tr>
                 </table>

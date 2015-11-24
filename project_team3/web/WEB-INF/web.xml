@@ -9,8 +9,13 @@
         <servlet-name>AdminController</servlet-name>
         <url-pattern>/AdminController/*</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+
     <session-config>
-        <session-timeout>20160</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -23,7 +28,7 @@
         <web-resource-collection>
             <web-resource-name>Protected Area</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
-            <!--<url-pattern>/musicStore/*</url-pattern>-->
+            <url-pattern>/AdminController/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>programmer</role-name>
@@ -33,10 +38,6 @@
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
-    <!--    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>Admin Login</realm-name>
-    </login-config>-->
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
