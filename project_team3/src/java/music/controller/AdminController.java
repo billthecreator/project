@@ -39,6 +39,8 @@ public class AdminController extends HttpServlet {
             url = updateProduct(request, response);
         } else if (requestURI.endsWith("/logout")){
             url = "/admin/logout.jsp";
+        } else if (requestURI.endsWith("/dashboard")){
+            url = "/admin/index.jsp";
         }
         getServletContext()
                 .getRequestDispatcher(url)

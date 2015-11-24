@@ -62,7 +62,7 @@
                         <tr>
                             <td class="actionBar">
                                 <!--<div class="space50"></div>-->
-                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="<c:url value='/AdminController/'/>">Member Log in</a>
+                                <a  class="button neutral" onclick="javascript:event.target.port=8443;event.target.protocol = 'https:';" href="<c:url value='/AdminController/dashboard'/>">Member Log in</a>
                             </td>
                         </tr>
                      </table>
