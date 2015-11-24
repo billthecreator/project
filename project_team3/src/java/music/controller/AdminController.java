@@ -52,18 +52,17 @@ public class AdminController extends HttpServlet {
             throws IOException, ServletException {
 
         session = request.getSession();
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
+        
         String requestURI = request.getRequestURI();
         String url = "/admin";
         if (requestURI.endsWith("/updateProduct")) {
             url = updateProductNOW(request, response);
         } else if (requestURI.endsWith("/deleteProduct")) {
             url = deleteProductNOW(request, response);
-        } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
         
-        products = ProductDB.selectProducts();
-        session.setAttribute("products", products);
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);

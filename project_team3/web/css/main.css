@@ -149,8 +149,7 @@ table {
       table .cardTitle .title h2 {
         line-height: 18px;
         font-size: 16px;
-        opacity: .87;
-        /*@media(max-width: ($mobileSize)){font-size:17px;}*/ }
+        color: rgba(255, 255, 255, 0.87); }
       table .cardTitle .title a.button {
         display: inline-block;
         text-align: center;

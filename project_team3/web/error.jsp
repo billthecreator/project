@@ -27,7 +27,7 @@
                             </div>-->
                             <div class="title">    
                                 <h1>404</h1>
-                                <h2>The requested URL ${pageContext.errorData.requestURI} was not found on this server.</h2>
+                                <h2>The requested URL <span style="color:white;">${pageContext.errorData.requestURI}</span> was not found on this server.</h2>
                             </div>
                         </td>
                     </tr>
