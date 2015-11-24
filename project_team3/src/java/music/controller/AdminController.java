@@ -26,7 +26,6 @@ public class AdminController extends HttpServlet {
             throws IOException, ServletException {
         
         session = request.getSession();
-        
         products = ProductDB.selectProducts();
         session.setAttribute("products", products);
         
