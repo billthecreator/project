@@ -15,18 +15,18 @@ $base: #fff;
 $primary:rgba($base, 1);
 $secondary:rgba($base, .7);
 $primaryDisabled:rgba($base, .3);
-$dividers:rbga($base, .12);
+$dividers:rgba($base, .12);
 
 // Color Palette Light Background
 // if you want the dark theme, disable the variables below
 
-$backgroundColor:#fafafa;
+$backgroundColor:#fafafa; 
 $backgroundColorTable:#fff;
 $base: #000;
 $primary:rgba($base, .87);
 $secondary:rgba($base, .54);
 $primaryDisabled:rgba($base, .38);
-$dividers:rbga($base, .12);
+$dividers:rgba($base, .12);
 
 body {
     font-family: "Roboto", "Open Sans";
@@ -138,6 +138,9 @@ table {
 
         &[data-name="price"] {
             padding-right: 16px;
+        }
+        &[data-name="code"] {
+            padding-left: 16px;
         }
     }
     th {

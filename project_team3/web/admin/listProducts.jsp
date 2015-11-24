@@ -29,7 +29,7 @@
                     </tr>
                     <c:if test="${products != null && products.size() > 0}">
                     <tr>
-                        <th class="mobHide center">Code</th>
+                        <th class="mobHide" data-name="code">Code</th>
                         <th></th>
                         <th colspan="1" data-name="album">Album</th>
                         
@@ -39,7 +39,7 @@
                     </tr>
                     <c:forEach var="items" items="${products}">  
                     <tr class="productList">
-                        <td class="code center colRes mobHide">${items.code}</td>
+                        <td class="code colRes mobHide" data-name="code">${items.code}</td>
                         <td class="colRes" data-name="album">
                             <a class="coverArtLink" href="<c:url value='/AdminController/updateProduct'><c:param name='productCode' value='${items.code}'/></c:url>">
                                 <img class="coverArt" src="${items.getImageURL()}"/>

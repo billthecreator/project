@@ -84,7 +84,7 @@ table {
       width: calc(100% - 32px);
       margin-left: 16px;
       height: 1px;
-      background-color: rbga(#000, 0.12); }
+      background-color: rgba(0, 0, 0, 0.12); }
     @media (max-width: 600px) {
       table th .iconWord, table td .iconWord {
         display: none; } }
@@ -92,6 +92,8 @@ table {
       padding-left: 8px; }
     table th[data-name="price"], table td[data-name="price"] {
       padding-right: 16px; }
+    table th[data-name="code"], table td[data-name="code"] {
+      padding-left: 16px; }
   table th {
     font-size: 12px;
     text-transform: uppercase;

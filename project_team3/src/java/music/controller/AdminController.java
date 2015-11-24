@@ -1,16 +1,13 @@
 package music.controller;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import music.color.ColorPalette;
-
 import music.business.*;
 import music.data.*;
 
@@ -87,6 +84,7 @@ public class AdminController extends HttpServlet {
         session.setAttribute("pageAccentColor", palette.defaultSecondary500);
         return url;
     }
+    
     private String updateProductNOW(HttpServletRequest request,
             HttpServletResponse response) throws IOException {
         
