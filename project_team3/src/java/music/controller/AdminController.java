@@ -1,6 +1,7 @@
 package music.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,7 @@ public class AdminController extends HttpServlet {
         session = request.getSession();
         products = ProductDB.selectProducts();
         session.setAttribute("products", products);
+        session.setAttribute("snackBar", 0);
         
         String requestURI = request.getRequestURI();
         String url = "/admin";
@@ -39,6 +41,8 @@ public class AdminController extends HttpServlet {
         } else if (requestURI.endsWith("/dashboard")){
             url = "/admin/index.jsp";
         }
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
@@ -60,6 +64,8 @@ public class AdminController extends HttpServlet {
         } else if (requestURI.endsWith("/deleteProduct")) {
             url = deleteProductNOW(request, response);
         }
+        products = ProductDB.selectProducts();
+        session.setAttribute("products", products);
         
         getServletContext()
                 .getRequestDispatcher(url)
@@ -70,6 +76,8 @@ public class AdminController extends HttpServlet {
             HttpServletResponse response) throws IOException {
         //remove the product from the list
         String productCode = request.getParameter("productCode");
+        String productAlbum = ProductDB.selectProduct(productCode).getAlbumName();
+        String productArtist = ProductDB.selectProduct(productCode).getArtistName();
         String url = "/admin/listProducts.jsp";   
         if (productCode != null || !productCode.isEmpty()){
             Product productToDelete = ProductDB.selectProduct(productCode);
@@ -82,6 +90,9 @@ public class AdminController extends HttpServlet {
         }
         session.setAttribute("pageColor", palette.defaultPrimary500);
         session.setAttribute("pageAccentColor", palette.defaultSecondary500);
+        session.setAttribute("snackBar", 1);
+        session.setAttribute("snackBarMessage", productAlbum + " by " + productArtist + " was deleted.");
+        System.out.println(productAlbum + " by " + productArtist + " deleted by " + request.getRemoteUser() + " at " + new Date().toString());
         return url;
     }
     
@@ -185,15 +196,17 @@ public class AdminController extends HttpServlet {
                                 // that product's ID matches the same as the pages, THEN
                                 // UPDATE
                                 ProductDB.update(newProduct);
+                                System.out.println(productAlbum + " by " + productArtist + " updated by " + request.getRemoteUser() + " at " + new Date().toString() );
                             }
                             
                             // if this product exists in the list, then update it
                         } else {
                             // if this product doesn't exist, create a new one
                             ProductDB.insert(newProduct);
+                            System.out.println(productAlbum + " by " + productArtist + " created by " + request.getRemoteUser() + " at " + new Date().toString());
                         }
                         try {
-                            String dest = getServletContext().getRealPath("../musicStore/images/");
+                            String dest = getServletContext().getRealPath("/musicStore/images/");
                             ProductCover.getProductCover(newProduct, dest);
                         } catch (Exception e) {
                             prodError.setCoverURLError(true);

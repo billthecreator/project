@@ -69,5 +69,15 @@
             </div>
             <br/>
         </div>
+        
+        <c:if test="${snackBar == 1}">
+        <div class="snackBarContainer">
+            <div class="snackBar">
+                <div class="snackBarMessage">
+                    ${snackBarMessage}
+                </div>
+            </div>
+        </div>
+        </c:if>
     </body>
 </html>

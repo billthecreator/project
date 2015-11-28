@@ -61,7 +61,7 @@
                         <td>
                             <div class="actionBar">
                                 <div class="space50"></div>
-                                <a href="<c:url value='/AdminController/displayProducts'/>" class="fLeft button neutral" >View All Products</a>
+                                <a style="background-color: <%= palette.defaultPrimary500 %>;" href="<c:url value='/AdminController/displayProducts'/>" class="fLeft button" >View All Products</a>
                                 <a style="opacity:100;" href="<c:url value='/AdminController/logout'/>" class="fLeft button neutral flat" >Log out</a>    
                             </div>
                         </td>

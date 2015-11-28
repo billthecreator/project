@@ -29,16 +29,13 @@ public class ProductDB {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            System.out.println("trans.begin()");
             em.merge(product);
             trans.commit();
-            System.out.println("em.merge()");
         } catch (Exception e) {
             trans.rollback();
             System.out.println(e);
         } finally {
             em.close();
-            System.out.println("em.close()");
         }
     }
 
@@ -47,15 +44,12 @@ public class ProductDB {
         EntityTransaction trans = em.getTransaction();
         try {
             trans.begin();
-            System.out.println("trans.begin()");
             em.remove(em.merge(product));
             trans.commit();
-            System.out.println("em.remove(em.merge())");
         } catch (Exception e) {
             trans.rollback();
         } finally {
             em.close();
-            System.out.println("em.close()");
         }
     }
 

@@ -20,11 +20,11 @@ $dividers:rgba($base, .12);
 // Color Palette Light Background
 // if you want the dark theme, disable the variables below
 
-$backgroundColor:#fafafa; 
+$backgroundColor:#eee; 
 $backgroundColorTable:#fff;
 $base: #000;
 $primary:rgba($base, .87);
-$secondary:rgba($base, .54);
+$secondary:rgba($base, .54); 
 $primaryDisabled:rgba($base, .38);
 $dividers:rgba($base, .12);
 
@@ -82,11 +82,11 @@ $mobileSize: 600px;
 
 .card {
     /*border: 1px solid rgba(black, .1);*/
-    box-shadow: 0 0 75px rgba(black, .15);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
     padding:0px 0;
     display: block;
     background-color: $backgroundColorTable;
-    border-radius: 3px;
+    border-radius: 5px;
     overflow:hidden;
      
     &.withTitle{padding-top: 0 !important;}
@@ -516,9 +516,9 @@ tr td {
           bottom:0px;
           position:absolute;
           background-color: none;
-          transition:0.2s ease all;
-          -moz-transition:0.2s ease all;
-          -webkit-transition:0.2s ease all;
+          transition:0.2s cubic-bezier(0.4,0,0.2,1) all;
+          -moz-transition:0.2s cubic-bezier(0.4,0,0.2,1) all;
+          -webkit-transition:0.2s cubic-bezier(0.4,0,0.2,1) all;
         }
     }
     .bar:before {
@@ -556,7 +556,7 @@ tr td {
       top:0%;
       left:0;
       pointer-events:none;
-      opacity:0.5;
+      opacity:00;
     }
 
     /* active state */
@@ -603,6 +603,12 @@ input[type="submit"], a.button {
     &.mL10 {margin-left: 16px;}
     &.mR10 {margin-right: 16px;}
 
+    &:focus {
+        background-color: rgba(black, .2);
+        box-shadow:0 0px 5px rgba(black, .7);
+        opacity:1;
+    }
+    
     &:hover{
         background-color: $primary600;
         box-shadow:0 1px 2px rgba(black, .5);
@@ -625,13 +631,18 @@ input[type="submit"], a.button {
             box-shadow:0 5px 10px rgba(black, .25);
             padding: 8px 16px;
         }
+        &:focus {
+            background-color: rgba(black, .2);
+            opacity:1;
+        }
     }
     &.flat {
         background-color: transparent;
         color: $primary;
         box-shadow: none;
         
-        &:hover {background-color: rgba(black, .25);}
+        &:hover {background-color: rgba(black, .25);
+        box-shadow: none;}
         
     }
 }
@@ -649,13 +660,13 @@ a:focus{
 
 
 a, a:visited, a:active {
-    color: $secondary;
+    color: white;
     text-decoration: none;
     border-bottom: 0px solid transparent;
     transition: .2s all ease;
 }
 a:hover {
-    color:$primary;
+    color:white;
     border-bottom: 0px solid rgba(black, .6);
     transition: .2s all ease;
 }
@@ -694,6 +705,66 @@ a:hover {
     a {display: inline-block !important;text-align: center; min-width: 44px;}
     input[type='submit']{}
 }
+.snackBarContainer {
+        position: fixed;
+        bottom: 0;
+        display: block;
+        margin: auto;
+        width: 100%;
+        z-index:1000;
+        
+    .snackBar{
+        position:relative;
+        
+        margin: 0 auto;
+        width: 100%;
+        min-width: 288px;
+        max-width: 568px;
+        height: 48px;
+        background-color: #323232;
+        color: #fff;
+        border-radius: 2px;
+        bottom: -48px;
+        animation: show-slide .25s ease-in, hide-slide .8s ease-out 5s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;
+            
+        @media (max-width: ($mobileSize)) {
+            border-radius: 0px;
+        }
+        
+        .snackBarMessage{
+            font-size:14px;
+            line-height: 20px;
+            padding: 14px 24px
+        }
+    }
+}
+@-webkit-keyframes show-slide {
+        from {bottom:-48px;}
+        to { bottom:0; }
+}
+@-moz-keyframes show-slide {
+        from { bottom:-48px;}
+        to { bottom:0; }
+}
+@keyframes show-slide {
+        from { bottom:-48px;}
+        to { bottom:0; }
+}
+@-webkit-keyframes hide-slide {
+        from { bottom:0;}
+        to { bottom:-48px; }
+}
+@-moz-keyframes hide-slide {
+        from { bottom:0;}
+        to { bottom:-48px; }
+}
+@keyframes hide-slide {
+        from { bottom:0;}
+        to { bottom:-48px; }
+}
+
 /* container */
 .container {
     width: 100%;
