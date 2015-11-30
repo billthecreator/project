@@ -196,6 +196,8 @@ public class AdminController extends HttpServlet {
                                 // that product's ID matches the same as the pages, THEN
                                 // UPDATE
                                 ProductDB.update(newProduct);
+                                session.setAttribute("snackBar", 1);
+                                session.setAttribute("snackBarMessage", productAlbum + " by " + productArtist + " was updated.");
                                 System.out.println(productAlbum + " by " + productArtist + " updated by " + request.getRemoteUser() + " at " + new Date().toString() );
                             }
                             
@@ -203,6 +205,8 @@ public class AdminController extends HttpServlet {
                         } else {
                             // if this product doesn't exist, create a new one
                             ProductDB.insert(newProduct);
+                            session.setAttribute("snackBar", 1);
+                            session.setAttribute("snackBarMessage", productAlbum + " by " + productArtist + " was created.");
                             System.out.println(productAlbum + " by " + productArtist + " created by " + request.getRemoteUser() + " at " + new Date().toString());
                         }
                         try {
